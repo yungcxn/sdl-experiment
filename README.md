@@ -16,5 +16,5 @@ sudo pacman -S sdl2 sdl2_mixer gcc make
 
 ### Fedora
 ```
-sudo dnf install SDL2 SDL2_mixer gcc make
+sudo dnf install SDL2 SDL2_mixer 
 ```

@@ -1,2 +1,20 @@
 # sdl-experiment
-SDL experiment using C
+This C+SDL game aims to be:
+- minimal
+- performant
+- modular in regards to graphics libraries: should be easy to exchange
+- no bloat
+- run on wayland (changeable)
+- still multiplatform 
+
+## Install
+
+### Arch
+```
+sudo pacman -S sdl2 sdl2_mixer
+```
+
+### Fedora
+```
+sudo dnf install SDL2 SDL2_mixer
+```

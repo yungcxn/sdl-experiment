@@ -11,10 +11,10 @@ This C+SDL game aims to be:
 
 ### Arch
 ```
-sudo pacman -S sdl2 sdl2_mixer
+sudo pacman -S sdl2 sdl2_mixer gcc make
 ```
 
 ### Fedora
 ```
-sudo dnf install SDL2 SDL2_mixer
+sudo dnf install SDL2 SDL2_mixer gcc make
 ```

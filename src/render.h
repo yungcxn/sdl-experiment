@@ -2,8 +2,9 @@
 #define RENDER_H
 
 #include "./gfx.h"
-#include "./data/color.h"
+#include "./util/color.h"
 #include "./util/primitive.h"
+#include "./util/img.h"
 
 STATUS render_render();
 

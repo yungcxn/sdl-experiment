@@ -2,6 +2,7 @@
 #define COLOR_H
 
 #include <stdint.h>
+#include "./primitive.h"
 
 typedef struct {
   byte r,g,b;

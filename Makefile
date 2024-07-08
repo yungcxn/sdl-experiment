@@ -22,7 +22,7 @@ clean-obj:
 
 clean:
 	find . -name '*.o' -type f -delete
-	rm -f $(EXEC)
+	rm -rf $(EXEC)
 
 print-%:
 	@echo '$*=$($*)'

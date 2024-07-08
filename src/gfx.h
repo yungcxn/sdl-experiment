@@ -6,9 +6,9 @@
 #include <SDL2/SDL.h>
 
 #define FPS 60.0
-#define SCREEN_WIDTH 256
-#define SCREEN_HEIGHT 224
-#define TILE_WIDTH 8 
+#define SCREEN_WIDTH 512
+#define SCREEN_HEIGHT 448
+#define TILE_WIDTH 16 
 
 typedef struct {
   SDL_Window* window;

@@ -12,6 +12,7 @@ typedef struct {
 } map_free_sprite_t; // for environment only!
  
 typedef struct {
+  int map_id;
   int tile_width;
   int tile_height;
   float** height_map; // i can make use of floats to implement special stuff

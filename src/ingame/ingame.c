@@ -17,5 +17,3 @@ void ingame_destroy(ingame_data_t** ingame_data) {
   free(*ingame_data);
   *ingame_data = NULL;
 }
-
-void ingame_update() {}

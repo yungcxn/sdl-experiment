@@ -22,6 +22,7 @@ def transform_file(path):
     toprint += f"#define {qualified_name} {content}\n\n"
     return toprint
 
+
 filename = "res.h"
 
 header = ""
@@ -35,10 +36,12 @@ for root, dirs, files in os.walk(here + "/files"):
   for file in files:
     content += transform_file(file)
 
+
 content = header_header + content + header_footer
 
 # write it to the header file res.h
 with open(here + "/" + filename, "w") as f:
   f.write(content)
+
 
 print(content)

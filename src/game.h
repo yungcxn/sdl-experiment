@@ -7,8 +7,7 @@
 #include "./event/event.h"
 #include "./util/time.h"
 #include "./ingame/ingame.h"
-
-#define DEBUG_GAME
+#include "./util/debug.h"
 
 typedef enum {
   GAME_STATE_UNDEFINED = 0,

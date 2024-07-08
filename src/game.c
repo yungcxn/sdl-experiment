@@ -21,18 +21,11 @@ STATUS game_mainloop() {
   game_data->state = GAME_STATE_UNDEFINED;
 
   bool running = true;
-
-  /* for fps calculation */
-  #ifdef DEBUG_GAME
-    uint32_t start_time = time_get_ticks();
-    int frames_per_sec = 0;
-  #endif
+  debug_reset_fps_count();
   
   while (running) {
     /* PRE */
-    #ifdef DEBUG_GAME
-      uint32_t current_time = time_get_ticks();
-    #endif
+    debug_update_current_time();
 
     /* IN */
     STATUS game_status = game_update(game_data);
@@ -45,15 +38,7 @@ STATUS game_mainloop() {
     render_render();
 
     /* POST */
-    #ifdef DEBUG_GAME
-      frames_per_sec++;
-      if (current_time - start_time >= 1000) {
-        float fps = frames_per_sec / ((current_time - start_time) / 1000.0f);
-        printf("FPS: %.2f\n", fps);
-        start_time = current_time;
-        frames_per_sec = 0;
-      }
-    #endif
+    debug_calc_and_print_fps();
 
   }
 

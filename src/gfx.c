@@ -18,7 +18,7 @@ STATUS gfx_init() {
     return STATUS_SDL;
   }
 
-  g_gfx_tools.renderer = SDL_CreateRenderer(g_gfx_tools.window, -1, SDL_RENDERER_PRESENTVSYNC |SDL_RENDERER_ACCELERATED);
+  g_gfx_tools.renderer = SDL_CreateRenderer(g_gfx_tools.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
   if (g_gfx_tools.renderer == NULL) {
     SDL_Log("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
     return STATUS_SDL;
@@ -75,6 +75,22 @@ void gfx_fill_rect(int x, int y, int w, int h, byte r, byte g, byte b) {
 
 void gfx_fill_rect_c(int x, int y, int w, int h, rgba_t color) {
   gfx_fill_rect_a(x, y, w, h, color.r, color.g, color.b, color.a);
+}
+
+
+void gfx_draw_point_a(int x, int y, byte r, byte g, byte b, byte a) {
+  SDL_SetRenderDrawColor(g_gfx_tools.renderer, r, g, b, a);
+  SDL_RenderDrawPoint(g_gfx_tools.renderer, x, y);
+}
+
+
+void gfx_draw_point(int x, int y, byte r, byte g, byte b) {
+  gfx_draw_point_a(x, y, r, g, b, 255);
+}
+
+
+void gfx_draw_point_c(int x, int y, rgba_t color) {
+  gfx_draw_point_a(x, y, color.r, color.g, color.b, color.a);
 }
 
 

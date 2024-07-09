@@ -45,3 +45,7 @@ sudo dnf install SDL2 SDL2_mixer
 - interactive_object like chests
 - sensable_area for player to change hostile mob from idle to aggro
 - breadcrumbs to let hostile mob move to last one after exiting sensable_area
+
+My stolen palette:
+
+![alt text](palette.png)

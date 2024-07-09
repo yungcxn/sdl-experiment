@@ -43,3 +43,5 @@ sudo dnf install SDL2 SDL2_mixer
 - guis vs gui guioverlays (hud, textbox, interactionbox)
 - hardcoded font?
 - interactive_object like chests
+- sensable_area for player to change hostile mob from idle to aggro
+- breadcrumbs to let hostile mob move to last one after exiting sensable_area

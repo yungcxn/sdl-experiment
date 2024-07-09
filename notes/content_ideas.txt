@@ -7,7 +7,7 @@ content_ideas.txt
   + a big sword (from berserk) 
   + stone grab and throw (from elden ring)
   + a big wrench
-  + cat ak47 
+  + inek ak47 (cat)
   + normal ak47 
   + flame sword
   + death scythe
@@ -20,6 +20,7 @@ content_ideas.txt
   + dragon dance (knife)
   + "fette säule"
   + blackbelt (hadouken+shoryuken+tatsumaki senpukyaku)
+  + magic?
 
 - upgradable progression:
   + user stat tree

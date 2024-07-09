@@ -48,6 +48,8 @@ sudo dnf install SDL2 SDL2_mixer
 - sensable_area for player to change hostile mob from idle to aggro
 - breadcrumbs to let hostile mob move to last one after exiting sensable_area
 - move hovered text! this is nice
+- normalized move distance vectors
+- move acceleration, not instantanious
 
 My stolen palette:
 

@@ -1,0 +1,27 @@
+content_ideas.txt
+
+- weapons:
+  + Y-SABER (from zero)
+  + y-buster (from mmx)
+  + moon sword (from elden ring)
+  + a big sword (from berserk) 
+  + stone grab and throw (from elden ring)
+  + a big wrench
+  + cat ak47 
+  + normal ak47 
+  + flame sword
+  + death scythe
+  + bow 
+  + "drecksmesser"
+  + grappling hook
+  + eyeball throwable
+  + bowsers shell
+  + master hand & crazy hand
+  + dragon dance (knife)
+  + "fette säule"
+  + blackbelt (hadouken+shoryuken+tatsumaki senpukyaku)
+
+- upgradable progression:
+  + user stat tree
+  + user enhancement collectibles
+  + weapon enhancement collectibles

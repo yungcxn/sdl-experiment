@@ -27,6 +27,7 @@ sudo dnf install SDL2 SDL2_mixer
 
 ## Urgent TODOs
 
+- overwork structs!
 - initialise and destroy functions for complex structs
 - bb should be set to x and y (top left) and sprite has offset
 

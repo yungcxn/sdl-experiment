@@ -1,5 +1,5 @@
 # sdl-experiment
-This C+SDL game aims to be:
+This COMPLETELY FROM SCRATCH! C + SDL game aims to be:
 - minimal
 - performant
 - modular in regards to graphics libraries: should be easy to exchange

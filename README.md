@@ -51,6 +51,7 @@ sudo dnf install SDL2 SDL2_mixer
 - move hovered text! this is nice
 - normalized move distance vectors
 - move acceleration, not instantanious
+- darkness in caves manages by dithering!
 
 My stolen palette:
 

@@ -16,8 +16,8 @@ typedef struct {
   QUEUE_INT* array;
 } queue;
 
- bool queue_is_full(queue q);
- bool queue_is_empty(queue q);
+bool queue_is_full(queue q);
+bool queue_is_empty(queue q);
 void queue_init(queue** q, int size);
 void queue_destroy(queue** q);
 void queue_en(queue* q, QUEUE_INT x);

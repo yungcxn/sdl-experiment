@@ -17,6 +17,4 @@ typedef struct {
 /* and   a is alpha 000-111        */
 typedef byte c32;
 
-typedef rgb c32_palette[32];
-
 #endif

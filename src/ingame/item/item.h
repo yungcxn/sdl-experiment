@@ -8,7 +8,7 @@
 typedef struct {
   char name[MAX_ITEM_NAME];
   int id;
-  img_anim_sprite_ptr icon_animation;
+  img_anim_sprite* icon_animation;
 } item_t;
 
 #endif 

@@ -8,7 +8,7 @@
 typedef struct {
   int map_pixel_x; // positioning is top left
   int map_pixel_y;
-  img_sprite_ptr sprite_ref;
+  img_sprite* sprite_ref;
 } map_random_sprite_t; // for environment only!
  
 typedef struct {
@@ -16,7 +16,7 @@ typedef struct {
   int tile_width;
   int tile_height;
   float* heights_arr; // array, i can make use of floats to implement special stuff
-  img_tile_ptr* tiles_arr;
+  img_tile** tiles_arr;
 
   int free_sprites;
   map_random_sprite_t* free_sprites_arr;

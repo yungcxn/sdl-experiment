@@ -27,7 +27,7 @@ filename = "res.h"
 
 header = ""
 
-header_header = "#ifndef RES_H\n#define RES_H\n\n\n"
+header_header = "#ifndef RES_H\n#define RES_H\n\n\n#define RES_H_SPRITE_AMOUNT 0\n\n#define RES_H_TILE_AMOUNT 1\n\n"
 header_footer = "\n#endif\n"
 content = ""
 

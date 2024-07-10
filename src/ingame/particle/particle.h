@@ -6,7 +6,7 @@
 
 typedef struct {
   int id;
-  img_anim_sprite_ptr animation;
+  img_anim_sprite* animation;
 } particle_t;
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "../../util/img.h"
 #include "../../util/bb.h"
+#include "../../util/vec.h"
 
 #define MAX_ENTITY_NAME 20
 #define ENTITY_DEAD 0
@@ -19,19 +20,7 @@ typedef struct {
   char name[MAX_ENTITY_NAME];
   entity_type_t type;
   int id;
-  int x;
-  int y;
-  int z;
-
-  bool has_health;
-  int health;
-
-  byte state_amount;
-  byte* state_arr; // every entity should implement this by himself
-  img_anim_sprite_ptr* animation_arr; // should match to state_arr
-
-  bb_t* collision_box;
-  bb_t* damage_box;
+  vec3d pos; // this is ideally in the bottom center of the entity, right pixel
 } entity_t;
 
 typedef void* entity_raw_ptr;

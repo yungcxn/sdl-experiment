@@ -9,6 +9,7 @@
 #include "./ingame/ingame.h"
 #include "./util/debug.h"
 
+// TODO should be a state machine
 typedef enum {
   GAME_STATE_UNDEFINED = 0,
   GAME_STATE_TITLE,
@@ -24,7 +25,7 @@ typedef struct {
 
 STATUS game_setup();
 STATUS game_destroy();
-STATUS game_update();
+STATUS game_update(game_data_t* game_data, uint32_t dt);
 STATUS game_mainloop();
 
 #endif

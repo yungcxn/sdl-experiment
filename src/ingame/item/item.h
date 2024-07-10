@@ -9,10 +9,6 @@ typedef struct {
   char name[MAX_ITEM_NAME];
   int id;
   img_anim_sprite_ptr icon_animation;
-
-  byte state_amount;
-  byte* state_arr; // every item should implement it itself
-  img_anim_sprite_ptr* animation_arr;
 } item_t;
 
 #endif 

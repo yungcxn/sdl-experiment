@@ -6,10 +6,17 @@
 
 typedef struct {
   byte r,g,b;
-} rgb_t;
+} rgb;
 
 typedef struct {
   byte r,g,b,a;
-} rgba_t;
+} rgba;
+
+/* aaaccccc                        */
+/* where c is color reference code */
+/* and   a is alpha 000-111        */
+typedef byte c32;
+
+typedef rgb c32_palette[32];
 
 #endif

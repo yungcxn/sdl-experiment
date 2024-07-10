@@ -6,9 +6,16 @@
 /* this bounding box type as pixel values relative to the loaded sprite */
 /* this is usually referenced by pointer since this replicates for many entites/proj/etc. */
 typedef struct {
-  vec2d_t i;  // ---->
-              // |
-  vec2d_t j;  // V
-} bb_t;
+  vec2d i;  // ---->
+            // |
+  vec2d j;  // V
+} bb;
+
+typedef struct {
+  vec2d b_i;
+  vec2d i;
+  vec2d b_j;
+  vec2d j;
+} biased_bb;
 
 #endif 

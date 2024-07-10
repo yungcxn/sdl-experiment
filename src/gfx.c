@@ -23,6 +23,9 @@ STATUS gfx_init() {
     SDL_Log("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
     return STATUS_SDL;
   }
+  SDL_SetRenderDrawColor(g_gfx_tools.renderer, 0, 0, 0, 255);
+  SDL_RenderPresent(g_gfx_tools.renderer);
+  //SDL_RenderClear(g_gfx_tools.renderer);
   SDL_RenderSetLogicalSize(g_gfx_tools.renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
   return STATUS_SUCCESS;

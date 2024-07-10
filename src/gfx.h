@@ -9,7 +9,7 @@
 
 #define FPS 60.0
 #define SCREEN_WIDTH 512
-#define SCREEN_HEIGHT 448
+#define SCREEN_HEIGHT 288
 #define TILE_WIDTH 16 
 
 typedef struct {

@@ -8,6 +8,6 @@
 #include "./util/primitive.h"
 #include "./util/img.h"
 
-STATUS render_render(uint32_t dt);
+STATUS render_render(float dt);
 
 #endif

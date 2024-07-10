@@ -5,6 +5,7 @@
 #include "./time.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <SDL2/SDL.h>
 
 
 extern uint32_t debug_start_time;
@@ -15,6 +16,7 @@ extern uint32_t debug_current_time;
 void debug_reset_fps_count();
 void debug_update_current_time();
 void debug_calc_and_print_fps();
+void debug_joystick_count();
 
 
 #endif 

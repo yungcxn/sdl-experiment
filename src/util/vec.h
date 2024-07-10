@@ -1,12 +1,17 @@
 #ifndef VEC_H
 #define VEC_H
 
-typedef struct{
-  int x,y;
-} vec2d;
+#include "./math.h"
 
 typedef struct{
-  int x,y,z;
-} vec3d;
+  float x,y;
+} vec2f;
+
+typedef struct{
+  float x,y,z;
+} vec3f;
+
+vec2f vec2f_normalized(vec2f v);
+vec3f vec3f_normalized(vec3f v);
 
 #endif 

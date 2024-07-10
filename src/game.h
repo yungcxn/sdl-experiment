@@ -21,11 +21,12 @@ typedef enum {
 typedef struct {
   game_state_t state;
   ingame_data_t* ingame_data;
+  input_keystroke_queue_t* input_keystroke_queue;
 } game_data_t;
 
 STATUS game_setup();
 STATUS game_destroy();
-STATUS game_update(game_data_t* game_data, uint32_t dt);
+STATUS game_update(game_data_t* game_data, float dt);
 STATUS game_mainloop();
 
 #endif

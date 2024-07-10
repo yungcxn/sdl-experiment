@@ -1,4 +1,5 @@
 #include "./game.h"
+#include <SDL2/SDL.h>
 
 STATUS game_setup() {
   return gfx_init();
@@ -10,7 +11,7 @@ STATUS game_destroy() {
   return gfx_destroy();
 }
 
-STATUS game_update(game_data_t* game_data, uint32_t dt) {
+STATUS game_update(game_data_t* game_data, float dt) {
   STATUS event_status = event_handle();
   return event_status;
 }
@@ -22,13 +23,14 @@ STATUS game_mainloop() {
 
   bool running = true;
   uint32_t current_ticks = time_get_ticks();
-  uint32_t dt = 0;
+  float dt = 0.0f;
 
   debug_reset_fps_count();
+  debug_joystick_count();
   
   while (running) {
     /* PRE */
-    dt = time_get_ticks() - current_ticks;
+    dt = (time_get_ticks() - current_ticks) / 1000.0f;
     current_ticks = time_get_ticks();
 
     debug_update_current_time();

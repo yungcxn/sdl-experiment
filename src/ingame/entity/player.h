@@ -9,12 +9,12 @@ typedef struct {
   entity_t player_entity;
   player_state_t current_state;
   img_sprite_ptr states_sprite;
-  vec2d sprite_bias;
+  vec2f sprite_bias;
   biased_bb collision_box; // relative to player_entity.pos
   biased_bb hurt_box; // relative to player_entity.pos
 } player_t;
 
-player_state_t player_fsm_get_next(player_state_t p, uint32_t dt);
-void player_fsm_simulate(player_t* p, uint32_t dt);
+player_state_t player_fsm_get_next(player_state_t p, float dt);
+void player_fsm_simulate(player_t* p, float dt);
 
 #endif

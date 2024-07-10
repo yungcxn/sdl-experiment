@@ -20,7 +20,7 @@ typedef struct {
   char name[MAX_ENTITY_NAME];
   entity_type_t type;
   int id;
-  vec3d pos; // this is ideally in the bottom center of the entity, right pixel
+  vec3f pos; // this is ideally in the bottom center of the entity
 } entity_t;
 
 typedef void* entity_raw_ptr;

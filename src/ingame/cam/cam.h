@@ -7,7 +7,7 @@
 typedef struct {
   bool is_needed;
   bool fixed;
-  vec2d pos;
+  vec2f pos;
 } cam_t;
 
 #endif

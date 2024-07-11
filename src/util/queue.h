@@ -18,8 +18,8 @@ typedef struct {
 
 bool queue_is_full(queue q);
 bool queue_is_empty(queue q);
-void queue_init(queue** q, int size);
-void queue_destroy(queue** q);
+queue* queue_init(int size);
+void queue_destroy(queue* q);
 void queue_en(queue* q, QUEUE_INT x);
 QUEUE_INT queue_peak(queue q);
 QUEUE_INT queue_de(queue* q);

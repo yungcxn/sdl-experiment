@@ -19,8 +19,8 @@ typedef struct {
   particle_t* loaded_particles_arr;
 } ingame_data_t;
 
-void ingame_init(ingame_data_t** ingame_data);
-void ingame_destroy(ingame_data_t** ingame_data);
+ingame_data_t* ingame_init();
+void ingame_destroy(ingame_data_t* ingame_data);
 void ingame_update(ingame_data_t* ingame_data);
 
 #endif

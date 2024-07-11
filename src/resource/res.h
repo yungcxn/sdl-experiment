@@ -3,7 +3,6 @@
 
 
 #define RES_H_SPRITE_AMOUNT 0
-
 #define RES_H_TILE_AMOUNT 1
 
 #define RES_GRASS_W 16

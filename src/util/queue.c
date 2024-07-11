@@ -10,17 +10,18 @@
   return q.rear == q.front;
 }
 
-void queue_init(queue** q, int size){
-  *q = (queue*) malloc(sizeof(queue));
-  (*q)->rear = -1;
-  (*q)->front = -1;
-  (*q)->size = size;
-  (*q)->array = (QUEUE_INT*) calloc(1, size * sizeof(QUEUE_INT));
+queue* queue_init(int size){
+  queue* q = (queue*) malloc(sizeof(queue));
+  q->rear = -1;
+  q->front = -1;
+  q->size = size;
+  q->array = (QUEUE_INT*) calloc(1, size * sizeof(QUEUE_INT));
+  return q;
 }
 
-void queue_destroy(queue** q){
-  free((*q)->array);
-  free(*q);
+void queue_destroy(queue* q){
+  free(q->array);
+  free(q);
 }
 
 void queue_en(queue* q, QUEUE_INT x){

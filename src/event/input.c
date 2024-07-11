@@ -1,12 +1,12 @@
 #include "./input.h"
 
 
-void input_keystroke_queue_init(input_keystroke_queue_t* keystroke_queue, int size) {
-  queue_init(&keystroke_queue, size);
+input_keystroke_queue_t* input_keystroke_queue_init(int size) {
+  return queue_init(size);
 } 
 
 void input_keystroke_queue_destroy(input_keystroke_queue_t* keystroke_queue) {
-  queue_destroy(&keystroke_queue);
+  queue_destroy(keystroke_queue);
 } 
 
 void input_keystroke_queue_timed_clean(input_keystroke_queue_t* keystroke_queue, uint32_t current_ticks) {

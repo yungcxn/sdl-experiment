@@ -1,13 +1,10 @@
 #include "./game.h"
-#include <SDL2/SDL.h>
 
 STATUS game_setup() {
   return gfx_init();
 }
 
 STATUS game_destroy() {
-
-
   return gfx_destroy();
 }
 

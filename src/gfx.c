@@ -1,8 +1,10 @@
 #include "./gfx.h"
 
+//TODO no extern!
 gfx_tool_t g_gfx_tools = {
   .window = NULL,
-  .renderer = NULL
+  .renderer = NULL,
+  .gmem_tools = NULL,
 };
 
 
@@ -28,6 +30,8 @@ STATUS gfx_init() {
   //SDL_RenderClear(g_gfx_tools.renderer);
   SDL_RenderSetLogicalSize(g_gfx_tools.renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+  g_gfx_tools.gmem_tools = gmem_init();
+
   return STATUS_SUCCESS;
 }
 
@@ -36,7 +40,7 @@ STATUS gfx_destroy() {
   SDL_DestroyRenderer(g_gfx_tools.renderer);
   SDL_DestroyWindow(g_gfx_tools.window);
   SDL_Quit();
-
+  gmem_destroy(g_gfx_tools.gmem_tools);
   return STATUS_SUCCESS;
 }
 
@@ -59,7 +63,7 @@ void gfx_draw_rect(int x, int y, int w, int h, byte r, byte g, byte b) {
 }
 
 
-void gfx_draw_rect_c(int x, int y, int w, int h, rgba color) {
+void gfx_draw_rect_rgba(int x, int y, int w, int h, rgba color) {
   gfx_draw_rect_a(x, y, w, h, color.r, color.g, color.b, color.a);
 }
 
@@ -76,9 +80,19 @@ void gfx_fill_rect(int x, int y, int w, int h, byte r, byte g, byte b) {
 }
 
 
-void gfx_fill_rect_c(int x, int y, int w, int h, rgba color) {
+void gfx_fill_rect_rgba(int x, int y, int w, int h, rgba color) {
   gfx_fill_rect_a(x, y, w, h, color.r, color.g, color.b, color.a);
 }
+
+void gfx_fill_rect_c16_split(int x, int y, int w, int h,  byte ref, byte a) {
+  gfx_fill_rect_rgba(x, y, w, h, *(g_gfx_tools.gmem_tools->color_table_ptr)[ref]);
+}
+
+
+void gfx_fill_rect_c16(int x, int y, int w, int h, c16 c) {
+  gfx_fill_rect_c16_split(x, y, w, h, c16ref_from_c16(c), alpha_from_c16(c));
+}
+
 
 
 void gfx_draw_point_a(int x, int y, byte r, byte g, byte b, byte a) {
@@ -92,8 +106,18 @@ void gfx_draw_point(int x, int y, byte r, byte g, byte b) {
 }
 
 
-void gfx_draw_point_c(int x, int y, rgba color) {
+void gfx_draw_point_rgba(int x, int y, rgba color) {
   gfx_draw_point_a(x, y, color.r, color.g, color.b, color.a);
+}
+
+
+void gfx_draw_point_c16_split(int x, int y, byte ref, byte a) {
+  gfx_draw_point_rgba(x, y, *(g_gfx_tools.gmem_tools->color_table_ptr)[ref]);
+}
+
+
+void gfx_draw_point_c16(int x, int y, c16 c) {
+  gfx_draw_point_c16_split(x, y, c16ref_from_c16(c), alpha_from_c16(c));
 }
 
 

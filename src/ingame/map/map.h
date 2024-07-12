@@ -12,6 +12,10 @@ typedef struct {
   gfx_sprite_id sprite_id;
 } map_tile_t; // for environment only!
 
+// TODO
+// monsters
+// nonlive_interact
+// live_interact
 typedef struct {
   uint16_t h_tiles; // height in tiles
   uint16_t w_tiles;

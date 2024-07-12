@@ -12,7 +12,6 @@
     "particle.h": "c",
     "img.h": "c",
     "vec.h": "c",
-    "bb.h": "c",
     "input.h": "c",
     "array": "c",
     "bitset": "c",

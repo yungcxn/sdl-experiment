@@ -2,13 +2,14 @@
 #define PLAYER_H
 
 #include "./entity.h"
+#include "../../gfx.h"
 
 typedef uint32_t player_state_t;
 
 typedef struct {
   entity_t player_entity;
   player_state_t current_state;
-  img_sprite* states_sprite;
+  gfx_sprite_id state_sprite;
   vec2f sprite_bias;
   biased_bb collision_box; // relative to player_entity.pos
   biased_bb hurt_box; // relative to player_entity.pos

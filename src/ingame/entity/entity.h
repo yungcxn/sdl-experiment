@@ -1,7 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "../../util/img.h"
 #include "../../util/bb.h"
 #include "../../util/vec.h"
 

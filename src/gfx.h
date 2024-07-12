@@ -4,47 +4,56 @@
 /* Low-level rendering Header */
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "./util/primitive.h"
-#include "./util/color.h"
-#include "./gmem.h"
+#include "./resource/res.h"
 
 #define SCREEN_WIDTH 512
 #define SCREEN_HEIGHT 288
+#define TILE_WIDTH 16 
+
+typedef struct {
+  uint16_t x,y,w,h;
+} gfx_sprite_info;
 
 typedef struct {
   SDL_Window* window;
   SDL_Renderer* renderer;
-  SDL_Texture* texture;
-  gmem_ptr_route_t* gmem_tools;
+  uint32_t pixels;
+  uint32_t* pixel_array; // rgba
+  SDL_Texture* spritesheet;
+  gfx_sprite_info* si_array; // sprite info array
 } gfx_tool_t;
 
-extern gfx_tool_t g_gfx_tools;
+typedef uint16_t gfx_sprite_id;
 
-STATUS gfx_init();
-STATUS gfx_destroy();
-
-void gfx_clear();
-
-void gfx_draw_rect_a(int x, int y, int w, int h, byte r, byte g, byte b, byte a);
-void gfx_draw_rect_rgba(int x, int y, int w, int h, rgba color);
-void gfx_draw_rect(int x, int y, int w, int h, byte r, byte g, byte b); 
-
-void gfx_fill_rect_a(int x, int y, int w, int h, byte r, byte g, byte b, byte a);
-void gfx_fill_rect_rgba(int x, int y, int w, int h, rgba color);
-void gfx_fill_rect(int x, int y, int w, int h, byte r, byte g, byte b); 
-void gfx_fill_rect_c16_split(int x, int y, int w, int h,  byte ref, byte a);
-void gfx_fill_rect_c16(int x, int y, int w, int h, c16 c);
+gfx_tool_t* gfx_init();
+void gfx_destroy(gfx_tool_t*);
 
 
-void gfx_draw_point_a(int x, int y, byte r, byte g, byte b, byte a);
-void gfx_draw_point_rgba(int x, int y, rgba color);
-void gfx_draw_point(int x, int y, byte r, byte g, byte b); 
+uint32_t* gfx_pixel_array_init();
+void gfx_pixel_array_destroy(uint32_t* pixel_array);
+
+gfx_sprite_info* gfx_sprite_info_init();
+void gfx_sprite_info_destroy(gfx_sprite_info* si);
+
+
+void gfx_clear(gfx_tool_t* t);
+
+void gfx_draw_rect_a(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b, byte a);
+void gfx_draw_rect(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b); 
+
+void gfx_fill_rect_a(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b, byte a);
+void gfx_fill_rect(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b); 
+
+
+void gfx_draw_point_a(gfx_tool_t* t, int x, int y, byte r, byte g, byte b, byte a);
+void gfx_draw_point(gfx_tool_t* t, int x, int y, byte r, byte g, byte b); 
 
 // p = paletted
-void gfx_draw_point_c16_split(int x, int y, byte ref, byte a);
-void gfx_draw_point_c16(int x, int y, c16 c);
+void gfx_draw_point_c16_split(gfx_tool_t* t, int x, int y, byte ref, byte a);
 
 void gfx_delay(uint32_t d);
-void gfx_commit();
+void gfx_commit(gfx_tool_t* t);
 
 #endif 

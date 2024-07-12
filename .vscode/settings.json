@@ -38,6 +38,8 @@
     "gfx.h": "c",
     "res.h": "c",
     "gmem.h": "c",
-    "queue.h": "c"
+    "queue.h": "c",
+    "render.h": "c",
+    "*.tcc": "c"
   }
 }

@@ -3,23 +3,16 @@
 
 #define MAP_BASE_HEIGHT 1
 
-#include "../../util/img.h"
+#define MAP_MAX_TILES 200
 
 typedef struct {
   int map_pixel_x; // positioning is top left
   int map_pixel_y;
-  img_sprite* sprite_ref;
-} map_random_sprite_t; // for environment only!
- 
-typedef struct {
-  int map_id;
-  int tile_width;
-  int tile_height;
-  float* heights_arr; // array, i can make use of floats to implement special stuff
-  img_tile** tiles_arr;
+  int map_pixel_z; // height
+  gfx_sprite_id sprite_id;
+} map_tile_t; // for environment only!
 
-  int free_sprites;
-  map_random_sprite_t* free_sprites_arr;
-} map_map_t;
+typedef map_tile_t map_map_t[MAP_MAX_TILES];
+
 
 #endif

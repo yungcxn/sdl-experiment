@@ -1,8 +1,8 @@
 #include "./input.h"
 
 
-input_keystroke_queue_t* input_keystroke_queue_init(int size) {
-  return queue_init(size);
+input_keystroke_queue_t* input_keystroke_queue_init() {
+  return queue_init(INPUT_MAX_QUEUED_STROKES);
 } 
 
 void input_keystroke_queue_destroy(input_keystroke_queue_t* keystroke_queue) {

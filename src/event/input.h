@@ -20,7 +20,7 @@ typedef struct {
 
 typedef queue input_keystroke_queue_t;
 
-input_keystroke_queue_t* input_keystroke_queue_init(int size);
+input_keystroke_queue_t* input_keystroke_queue_init();
 void input_keystroke_queue_destroy(input_keystroke_queue_t* keystroke_queue);
 
 void input_keystroke_queue_timed_clean(input_keystroke_queue_t* keystroke_queue, uint32_t current_ticks);

@@ -30,14 +30,6 @@ typedef uint16_t gfx_sprite_id;
 gfx_tool_t* gfx_init();
 void gfx_destroy(gfx_tool_t*);
 
-
-uint32_t* gfx_pixel_array_init();
-void gfx_pixel_array_destroy(uint32_t* pixel_array);
-
-gfx_sprite_info* gfx_sprite_info_init();
-void gfx_sprite_info_destroy(gfx_sprite_info* si);
-
-
 void gfx_clear(gfx_tool_t* t);
 
 void gfx_draw_rect_a(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b, byte a);

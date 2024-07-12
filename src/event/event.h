@@ -5,6 +5,6 @@
 #include "../util/primitive.h"
 #include "./input.h"
 
-STATUS event_handle();
+void event_handle(bool* running, uint32_t current_ticks, input_keystroke_queue_t* ikq);
 
 #endif 

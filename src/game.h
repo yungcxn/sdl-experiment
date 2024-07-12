@@ -25,7 +25,6 @@ typedef struct {
   gfx_tool_t* gt;
 } game_data_t;
 
-STATUS game_update(game_data_t* game_data, float dt);
-STATUS game_mainloop();
+int game_mainloop();
 
 #endif

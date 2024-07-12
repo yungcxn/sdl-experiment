@@ -6,6 +6,6 @@
 #include "./gfx.h"
 #include "./util/primitive.h"
 
-STATUS render_render(gfx_tool_t* gt, float dt);
+void render_render(gfx_tool_t* gt, float dt);
 
 #endif

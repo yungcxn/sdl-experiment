@@ -1,13 +1,6 @@
 #include "./gfx.h"
 
-//TODO no extern!
-gfx_tool_t g_gfx_tools = {
-  .window = NULL,
-  .renderer = NULL
-};
-
-
-void gfx_create_spritesheet(SDL_Texture* in, SDL_Renderer* renderer, uint32_t* rgba_array, int width, int height) {
+static void gfx_create_spritesheet(SDL_Texture* in, SDL_Renderer* renderer, uint32_t* rgba_array, int width, int height) {
   // Create SDL_Surface from the pixel data
   SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
     rgba_array, 
@@ -36,13 +29,13 @@ void gfx_create_spritesheet(SDL_Texture* in, SDL_Renderer* renderer, uint32_t* r
   }
 }
 
-uint32_t* gfx_pixel_array_init() {
+static uint32_t* gfx_pixel_array_init() {
   // TODO
   return 0;
 }
 
 
-void gfx_pixel_array_destroy(uint32_t* pixel_array) {
+static void gfx_pixel_array_destroy(uint32_t* pixel_array) {
   free(pixel_array);
 }
 
@@ -60,7 +53,7 @@ gfx_sprite_info* gfx_sprite_info_init() {
 }
 
 
-void gfx_sprite_info_destroy(gfx_sprite_info* si) {
+static void gfx_sprite_info_destroy(gfx_sprite_info* si) {
   free(si);
 }
 

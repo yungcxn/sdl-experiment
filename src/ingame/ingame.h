@@ -21,6 +21,6 @@ typedef struct {
 
 ingame_data_t* ingame_init();
 void ingame_destroy(ingame_data_t* ingame_data);
-void ingame_update(ingame_data_t* ingame_data);
+void ingame_update(ingame_data_t* ingame_data); // needs input dequeued in this frame
 
 #endif

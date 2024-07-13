@@ -1,4 +1,0 @@
-#ifndef COLLISION_GUARD_H
-#define COLLISION_GUARD_H
-
-#endif

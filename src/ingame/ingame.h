@@ -8,6 +8,7 @@
 typedef struct {
   player_t player_ref;
   map_map_t loaded_map;
+  //base_entity_t TODO
   int loaded_entities_amount;
 
   int loaded_particles_amount;

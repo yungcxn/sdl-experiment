@@ -2,11 +2,16 @@
 #define PRIMITIVE_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 #define bool _Bool
 #define true 1
 #define false 0
 #define byte uint8_t
+
+// from super duper nice linux kernel
+#define container_of(ptr, type, member) \
+    ((type *)((char *)(ptr) - offsetof(type, member)))
 
 #define STATUS char
 

@@ -8,6 +8,10 @@ typedef struct{
 } vec2f;
 
 typedef struct{
+  vec2f b, v; //bias vec, value v
+} mat22f;
+
+typedef struct{
   float x,y,z;
 } vec3f;
 

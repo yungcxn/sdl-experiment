@@ -39,6 +39,7 @@
     "gmem.h": "c",
     "queue.h": "c",
     "render.h": "c",
-    "*.tcc": "c"
+    "*.tcc": "c",
+    "base_entity.h": "c"
   }
 }

@@ -2,13 +2,13 @@
 #define PALETTE_H
 
 /* these colors are loaded in memory via malloc */
-#define PALETTE_COLOR_0 0x130e1cff //original : 0x0a080d
+#define PALETTE_COLOR_0 0x0a080dff
 #define PALETTE_COLOR_1 0x697594ff
 #define PALETTE_COLOR_2 0xdfe9f5ff 
 #define PALETTE_COLOR_3 0xf7aaa8ff
 #define PALETTE_COLOR_4 0xd4689aff
 #define PALETTE_COLOR_5 0x782c96ff
-#define PALETTE_COLOR_6 0xe83562ff
+#define PALETTE_COLOR_6 0xd41c3dff
 #define PALETTE_COLOR_7 0xf2825cff
 #define PALETTE_COLOR_8 0xffc76eff
 #define PALETTE_COLOR_9 0x88c44dff

@@ -26,3 +26,6 @@ content_ideas.txt
   + user stat tree
   + user enhancement collectibles
   + weapon enhancement collectibles
+
+- environment
+  + sunflowers!!!!1

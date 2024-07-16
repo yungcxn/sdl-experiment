@@ -10,7 +10,7 @@
 typedef uint32_t player_state_t;
 
 typedef struct {
-  base_entity_t* core;
+  base_entity_t core;
   player_state_t current_state;
   gfx_sprite_id state_sprite;
   vec2f sprite_bias;

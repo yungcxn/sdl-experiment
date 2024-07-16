@@ -6,9 +6,8 @@
 #define MAP_BASE_HEIGHT 1
 
 typedef struct {
-  uint16_t map_tile_x; // positioning is top left
-  uint16_t map_tile_y;
-  float map_tile_z; // height
+  uint32_t map_tile_x; // positioning is top left
+  uint32_t map_tile_y;
   gfx_sprite_id sprite_id;
 } map_tile_t; // for environment only!
 
@@ -17,9 +16,12 @@ typedef struct {
 // nonlive_interact
 // live_interact
 typedef struct {
-  uint16_t h_tiles; // height in tiles
-  uint16_t w_tiles;
-  map_tile_t* tile_arr;
+  uint32_t h_tiles; // height in tiles
+  uint32_t w_tiles;
+  map_tile_t* base1;
+  map_tile_t* base2;
+  map_tile_t* bg;
+  map_tile_t* fg;
 } map_map_t;
 
 #endif

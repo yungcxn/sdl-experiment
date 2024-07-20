@@ -27,13 +27,13 @@ int game_mainloop() {
   while (running) {
     /* PRE */
     dt = (time_get_ticks() - current_ticks) / 1000.0f;
+    dt = dt > GAME_LAG_TIMEOUT ? GAME_LAG_TIMEOUT : dt;
     current_ticks = time_get_ticks();
 
     debug_update_current_time();
 
     /* IN */
     game_update(&running, game_data, dt);
-
     render_render(game_data->gt, dt);
 
     /* POST */

@@ -1,5 +1,5 @@
 #ifndef INGAME_H
-#define IMGAME_H
+#define INGAME_H
 
 #include "./entity/player.h"
 #include "./map/map.h"

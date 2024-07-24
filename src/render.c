@@ -33,8 +33,8 @@ static void render_map(gfx_tool_t* gt, map_map_t* map, cam_t* cam) {
         bool j_in_map = j < map->base_tile_height;
         if (ipos && jpos && i_in_map && j_in_map) {
           // try to render map
-          map_tile_t target_tile = (map->bg)[j * map->base_tile_width + i];
-          gfx_render_sprite_i(gt, target_tile.sprite_id, scr_x, scr_y);
+          uint16_t target_tile_code = map->base[j * map->base_tile_width + i];
+          gfx_render_sprite_i(gt, target_tile_code, scr_x, scr_y);
         }
         scr_x += 16;
       }

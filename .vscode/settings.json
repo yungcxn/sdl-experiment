@@ -40,6 +40,15 @@
     "queue.h": "c",
     "render.h": "c",
     "*.tcc": "c",
-    "base_entity.h": "c"
+    "base_entity.h": "c",
+    "stdbool.h": "c",
+    "compare": "c",
+    "palette.h": "c",
+    "ios": "c",
+    "cam.h": "c",
+    "player.h": "c",
+    "game.h": "c",
+    "sdl_image.h": "c",
+    "stdlib.h": "c"
   }
 }

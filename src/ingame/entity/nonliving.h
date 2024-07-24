@@ -2,6 +2,7 @@
 #define NONLIVING_H
 
 #include "../../util/vec.h"
+#include "./base_entity.h"
 
 /* for example:     */
 /* teleporters      */

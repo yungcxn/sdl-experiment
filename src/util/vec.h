@@ -8,7 +8,7 @@ typedef struct{
 } vec2f;
 
 typedef struct{
-  vec2f b, v; //bias vec, value v
+  vec2f i,j;
 } mat22f;
 
 typedef struct{

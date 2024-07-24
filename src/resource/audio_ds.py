@@ -13,7 +13,7 @@ def convert_to_snes_quality(input_file, output_file):
     audio = audio.set_frame_rate(32000)
     
     # Convert to 16-bit samples
-    audio = audio.set_sample_width(2)  # 2 bytes = 16 bits
+    audio = audio.set_sample_width(2)  # 2 uint8_ts = 16 bits
     
     # Export as a WAV file with the desired SNES-like quality
     audio.export(output_file, format="wav")

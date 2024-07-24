@@ -3,15 +3,18 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdbool.h>
 
-#define bool _Bool
-#define true 1
-#define false 0
-#define byte uint8_t
+typedef char* string;
+
 
 // from super duper nice linux kernel
 #define container_of(ptr, type, member) \
     ((type *)((char *)(ptr) - offsetof(type, member)))
+
+#define array_len(arr) (sizeof(arr) / sizeof((arr)[0]))
+
+#define safe_free(ptr) do { free((ptr)); (ptr) = NULL; } while (0)
 
 #define STATUS char
 

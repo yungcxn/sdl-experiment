@@ -9,11 +9,16 @@ static void game_update(bool* running, game_data_t* game_data, float dt) {
   ingame_update(game_data->ingame_data);
 }
 
+
 int game_mainloop() {
 
   game_data_t* game_data = (game_data_t*) malloc(sizeof(game_data_t));
   game_data->state = GAME_STATE_UNDEFINED;
   game_data->gt = gfx_init();
+
+  if (game_data->gt == 0)
+    return 0;
+
   game_data->ingame_data = ingame_init();
   game_data->input_keystroke_queue = input_keystroke_queue_init();
 
@@ -23,6 +28,8 @@ int game_mainloop() {
 
   debug_reset_fps_count();
   debug_joystick_count();
+  // TEST 
+  game_data->ingame_data->cam.pos = (vec2f) {50.0f, 50.0f};
   
   while (running) {
     /* PRE */
@@ -34,7 +41,7 @@ int game_mainloop() {
 
     /* IN */
     game_update(&running, game_data, dt);
-    render_render(game_data->gt, dt);
+    render_render(game_data->gt, game_data->ingame_data, dt);
 
     /* POST */
     debug_calc_and_print_fps();

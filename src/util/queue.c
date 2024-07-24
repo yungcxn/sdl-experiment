@@ -15,7 +15,7 @@ queue* queue_init(int size){
   q->rear = -1;
   q->front = -1;
   q->size = size;
-  q->array = (QUEUE_INT*) calloc(1, size * sizeof(QUEUE_INT));
+  q->array = (QUEUE_INT*) calloc(size, sizeof(QUEUE_INT));
   return q;
 }
 

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -DDEBUG_GAME -Wall -g -std=c99 -I./include 
+CFLAGS = -g3 -DDEBUG_GAME -Wall -Wextra -Wshadow -g -std=c99 -I./include 
 LIBS = -lSDL2 -lSDL2_mixer
 SRCS := $(shell find . -name '*.c')
 OBJS := $(SRCS:.c=.o)

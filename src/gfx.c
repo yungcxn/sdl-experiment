@@ -1,37 +1,41 @@
 #include "./gfx.h"
 
-static void gfx_create_spritesheet(SDL_Texture* in, SDL_Renderer* renderer, uint32_t* rgba_array, int width, int height) {
-  // Create SDL_Surface from the pixel data
-  SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
-    rgba_array, 
-    width, 
-    height, 
-    32,     
-    width * 4,    
-    0x000000FF,    
-    0x0000FF00,   
-    0x00FF0000,    
-    0xFF000000     
-  );
-
-  if (!surface) {
-    printf("SDL_CreateRGBSurfaceFrom failed: %s\n", SDL_GetError());
-  }
-
-  // Create texture from the surface
-  in = SDL_CreateTextureFromSurface(renderer, surface);
-
-  // Free the surface as it is no longer needed
-  SDL_FreeSurface(surface);
-
-  if (!in) {
-    printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
-  }
-}
-
 static uint32_t* gfx_pixel_array_init() {
-  // TODO
-  return 0;
+  uint8_t data[] = {RES_ALL_DATA};
+  uint16_t width = RES_ALL_WIDTH;
+  uint16_t height = RES_ALL_HEIGHT;
+
+  uint32_t* pixel_array = (uint32_t*) malloc(sizeof(uint32_t) * width * height);
+
+  for (uint16_t j = 0; j < height; j++) {
+    for (uint16_t i = 0; i < width; i++) {
+      uint32_t translated_color = 0x00000000;
+      uint32_t ind = j * width + i;
+      uint8_t palette_color_index = data[ind];
+      
+      switch (palette_color_index) {
+        case 0: translated_color = PALETTE_COLOR_0; break;
+        case 1: translated_color = PALETTE_COLOR_1; break;
+        case 2: translated_color = PALETTE_COLOR_2; break;
+        case 3: translated_color = PALETTE_COLOR_3; break;
+        case 4: translated_color = PALETTE_COLOR_4; break;
+        case 5: translated_color = PALETTE_COLOR_5; break;
+        case 6: translated_color = PALETTE_COLOR_6; break;
+        case 7: translated_color = PALETTE_COLOR_7; break;
+        case 8: translated_color = PALETTE_COLOR_8; break;
+        case 9: translated_color = PALETTE_COLOR_9; break;
+        case 10: translated_color = PALETTE_COLOR_10; break;
+        case 11: translated_color = PALETTE_COLOR_11; break;
+        case 12: translated_color = PALETTE_COLOR_12; break;
+        case 13: translated_color = PALETTE_COLOR_13; break;
+        case 14: translated_color = PALETTE_COLOR_14; break;
+        case 15: translated_color = PALETTE_COLOR_15; break;
+      }
+      pixel_array[ind] = translated_color;
+    }
+  }
+
+  return pixel_array;
 }
 
 
@@ -39,15 +43,47 @@ static void gfx_pixel_array_destroy(uint32_t* pixel_array) {
   free(pixel_array);
 }
 
+static SDL_Texture* gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t* rgba_array, int width, int height) {
+  // Create SDL_Surface from the pixel data 
+  SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
+    rgba_array, 
+    width, 
+    height, 
+    32,     
+    width * 4,    
+    0xFF000000,    
+    0x00FF0000,   
+    0x0000FF00,    
+    0x000000FF     
+  );
 
-gfx_sprite_info* gfx_sprite_info_init() {
-  gfx_sprite_info* si = (gfx_sprite_info*) malloc(sizeof(gfx_sprite_info));
+  if (!surface) {
+    printf("SDL_CreateRGBSurfaceFrom failed: %s\n", SDL_GetError());
+  }
+
+  // Create texture from the surface
+  SDL_Texture* in = SDL_CreateTextureFromSurface(renderer, surface);
+
+  // Free the surface as it is no longer needed
+  SDL_FreeSurface(surface);
+
+  if (!in) {
+    printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
+    return 0;
+  }
+
+  return in;
+}
+
+
+static gfx_sprite_info* gfx_sprite_info_init() {
+  uint16_t sprites = 0;
+  gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites * sizeof(gfx_sprite_info));
 
   // HERE SPRITES
-  si[0] = (gfx_sprite_info) {0,0,TILE_WIDTH,TILE_WIDTH};
-  #define GFX_SPRITE_GRASS_ID 0
-
-  // ...
+  si[0] = (gfx_sprite_info) {0,0,16,16};
+  si[1] = (gfx_sprite_info) {16,0,16,16};
+  si[2] = (gfx_sprite_info) {32,0,16,16};
 
   return si;
 }
@@ -67,30 +103,34 @@ gfx_tool_t* gfx_init() {
     return 0;
   }
 
-  t->window = SDL_CreateWindow("Minimal SDL Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+  t->window = SDL_CreateWindow("Minimal SDL Example", SDL_WINDOWPOS_UNDEFINED,
+   SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT,
+   SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+
   if (t->window == 0) {
     SDL_Log("Window could not be created! SDL_Error: %s\n", SDL_GetError());
     return 0;
   }
 
-  t->renderer = SDL_CreateRenderer(t->window, -1, /*SDL_RENDERER_PRESENTVSYNC | */SDL_RENDERER_ACCELERATED);
+  t->renderer = SDL_CreateRenderer(t->window, -1,
+   /*SDL_RENDERER_PRESENTVSYNC | */SDL_RENDERER_ACCELERATED);
+
   if (t->renderer == 0) {
     SDL_Log("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
     return 0;
   }
+
   SDL_SetRenderDrawColor(t->renderer, 0, 0, 0, 255);
   SDL_RenderPresent(t->renderer);
-  //SDL_RenderClear(t->renderer);
   SDL_RenderSetLogicalSize(t->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-  t->pixels = RES_SPRITESHEET_PIXELS;
   t->pixel_array = gfx_pixel_array_init();
+  t->spritesheet = gfx_spritesheet_init(t->renderer, t->pixel_array, RES_ALL_WIDTH, RES_ALL_HEIGHT);
+  if(t->spritesheet == 0)
+    return 0;
 
-  // TODO
-  gfx_create_spritesheet(t->spritesheet, t->renderer, 0, 0, 0);
   t->si_array = gfx_sprite_info_init();
   
-
   return t;
 }
 
@@ -125,38 +165,48 @@ void gfx_clear(gfx_tool_t* t) {
 }
 
 
-void gfx_draw_rect_a(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b, byte a) {
+void gfx_draw_rect_a(gfx_tool_t* t, int x, int y, int w, int h,
+ uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+
   SDL_Rect rect = {x,y,w,h};
   SDL_SetRenderDrawColor(t->renderer, r, g, b, a);
   SDL_RenderDrawRect(t->renderer, &rect);
 }
 
 
-void gfx_draw_rect(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b) {
+void gfx_draw_rect(gfx_tool_t* t, int x, int y, int w, int h, 
+ uint8_t r, uint8_t g, uint8_t b) {
+
   gfx_draw_rect_a(t, x, y, w, h, r, g, b, 255);
 }
 
 
-void gfx_fill_rect_a(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b, byte a) {
+void gfx_fill_rect_a(gfx_tool_t* t, int x, int y, int w, int h, 
+ uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+
   SDL_Rect rect = {x,y,w,h};
   SDL_SetRenderDrawColor(t->renderer, r, g, b, a);
   SDL_RenderFillRect(t->renderer, &rect);
 }
 
 
-void gfx_fill_rect(gfx_tool_t* t, int x, int y, int w, int h, byte r, byte g, byte b) {
+void gfx_fill_rect(gfx_tool_t* t, int x, int y, int w, int h,
+ uint8_t r, uint8_t g, uint8_t b) {
+
   gfx_fill_rect_a(t, x, y, w, h, r, g, b, 255);
 }
 
 
 
-void gfx_draw_point_a(gfx_tool_t* t, int x, int y, byte r, byte g, byte b, byte a) {
+void gfx_draw_point_a(gfx_tool_t* t, int x, int y, 
+ uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+
   SDL_SetRenderDrawColor(t->renderer, r, g, b, a);
   SDL_RenderDrawPoint(t->renderer, x, y);
 }
 
 
-void gfx_draw_point(gfx_tool_t* t, int x, int y, byte r, byte g, byte b) {
+void gfx_draw_point(gfx_tool_t* t, int x, int y, uint8_t r, uint8_t g, uint8_t b) {
   gfx_draw_point_a(t, x, y, r, g, b, 255);
 }
 

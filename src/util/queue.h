@@ -3,6 +3,7 @@
 
 #include "./primitive.h"
 #include <stdint.h>
+#include <stdlib.h>
 
 /* should be the biggest needed space across the project */
 /* or i will use custom size queues for every size       */

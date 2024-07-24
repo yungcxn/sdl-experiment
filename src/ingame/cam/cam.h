@@ -12,14 +12,13 @@ typedef enum {
 
 /* camera width and height is determined by gfx */
 typedef struct {
+  vec2f pos;
   bool is_needed;
   bool fixed;
   uint32_t shake_ticks_left;
-  byte shake_mod;
+  uint8_t shake_mod;
   uint32_t lag_ticks_left;
-  byte lag_mod;
-  vec2f pos;
-  
+  uint8_t lag_mod;
 } cam_t;
 
 #endif

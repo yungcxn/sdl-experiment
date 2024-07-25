@@ -27,9 +27,9 @@ sudo dnf install SDL2-devel SDL2_mixer-devel
 
 ## Urgent TODOs
 
-- overwork structs!
-- initialise and destroy functions for complex structs
-- bb should be set to x and y (top left) and sprite has offset
+- work on input
+- work on player
+- solve map sprite update
 
 ## Notes
 

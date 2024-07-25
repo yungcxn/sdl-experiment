@@ -77,7 +77,6 @@
 #define GFX_SPRITE_CAN_IDLE_L         54
 
 
-
 #define GFX_SPRITE_MAX_ID GFX_SPRITE_CAN_IDLE_L
 
 typedef uint16_t sprite_code_t;

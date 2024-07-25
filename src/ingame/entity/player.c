@@ -10,6 +10,7 @@ player_t* player_init() {
   player->core.alt_collision_box = (mat22f) {0.0f, 0.0f, 0.0f, 0.0f};
   player->core.hurt_box = (mat22f) {0.0f, 0.0f, 0.0f, 0.0f};
   player->state = PLAYER_STATE_NONE;
+  //player->state_sprite = GFX_
   return player;
 }
 

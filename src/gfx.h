@@ -10,12 +10,19 @@
 #include "./resource/res.h"
 #include "./resource/palette.h"
 
-#define SCREEN_WIDTH 512 // 32 tiles
-#define SCREEN_HEIGHT 288 // 18
-#define SCREEN_TILES_HOR 32
-#define SCREEN_TILES_VERT 18
-#define SCREEN_TILES_HOR_H 16
-#define SCREEN_TILES_VERT_H 9
+#define GFX_SCREEN_WIDTH 512 // 32 tiles
+#define GFX_SCREEN_HEIGHT 288 // 18
+#define GFX_SCREEN_TILES_HOR 32
+#define GFX_SCREEN_TILES_VERT 18
+#define GFX_SCREEN_TILES_HOR_H 16
+#define GFX_SCREEN_TILES_VERT_H 9
+
+#define GFX_SPRITE_NONE -1
+#define GFX_SPRITE_GRASS_A 0
+#define GFX_SPRITE_GRASS_B 1
+#define GFX_SPRITE_GRASS_C 2
+
+typedef uint16_t sprite_code_t;
 
 typedef struct {
   uint16_t x,y,w,h;

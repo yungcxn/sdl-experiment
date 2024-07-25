@@ -29,7 +29,8 @@ int game_mainloop() {
   debug_reset_fps_count();
   debug_joystick_count();
   // TEST 
-  game_data->ingame_data->cam.pos = (vec2f) {50.0f, 50.0f};
+  map_load_map(game_data->ingame_data->map_handler, MAP_OVERWORLD_ID);
+  game_data->ingame_data->cam.pos = (vec2f) {100.0f, 100.0f};
   
   while (running) {
     /* PRE */

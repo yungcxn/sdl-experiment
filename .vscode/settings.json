@@ -49,6 +49,7 @@
     "player.h": "c",
     "game.h": "c",
     "sdl_image.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "event.h": "c"
   }
 }

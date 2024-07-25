@@ -7,6 +7,12 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
+#ifdef DEBUG_GAME
+    #define debug_printf(fmt, ...) fprintf(stderr, "%s:%s(): " fmt, \
+            __FILE__, __func__, ##__VA_ARGS__)
+#else
+    #define debug_printf(fmt, ...) ((void)0)
+#endif
 
 extern uint32_t debug_start_time;
 extern int debug_frames_per_sec;

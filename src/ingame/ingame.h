@@ -8,8 +8,8 @@
 
 
 typedef struct {
-  player_t player_ref;
-  map_handler_t map_handler;
+  player_t* player_ref;
+  map_handler_t* map_handler;
   cam_t cam;
   //base_entity_t TODO
   int loaded_entities_amount;

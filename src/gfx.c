@@ -81,9 +81,9 @@ static gfx_sprite_info* gfx_sprite_info_init() {
   gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites * sizeof(gfx_sprite_info));
 
   // HERE SPRITES
-  si[0] = (gfx_sprite_info) {0,0,16,16};
-  si[1] = (gfx_sprite_info) {16,0,16,16};
-  si[2] = (gfx_sprite_info) {32,0,16,16};
+  si[0] = (gfx_sprite_info) {0,0,16,16};    // GFX_SPRITE_GRASS_A
+  si[1] = (gfx_sprite_info) {16,0,16,16};   // GFX_SPRITE_GRASS_B
+  si[2] = (gfx_sprite_info) {32,0,16,16};   // GFX_SPRITE_GRASS_C
 
   return si;
 }
@@ -104,7 +104,7 @@ gfx_tool_t* gfx_init() {
   }
 
   t->window = SDL_CreateWindow("Minimal SDL Example", SDL_WINDOWPOS_UNDEFINED,
-   SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT,
+   SDL_WINDOWPOS_UNDEFINED, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT,
    SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
   if (t->window == 0) {
@@ -122,7 +122,7 @@ gfx_tool_t* gfx_init() {
 
   SDL_SetRenderDrawColor(t->renderer, 0, 0, 0, 255);
   SDL_RenderPresent(t->renderer);
-  SDL_RenderSetLogicalSize(t->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+  SDL_RenderSetLogicalSize(t->renderer, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT);
 
   t->pixel_array = gfx_pixel_array_init();
   t->spritesheet = gfx_spritesheet_init(t->renderer, t->pixel_array, RES_ALL_WIDTH, RES_ALL_HEIGHT);
@@ -145,7 +145,7 @@ void gfx_destroy(gfx_tool_t* t) {
   SDL_Quit();
 }
 
-void gfx_render_sprite_i(gfx_tool_t* t, uint16_t si_index, int x, int y) {
+void gfx_render_sprite_i(gfx_tool_t* t, sprite_code_t si_index, int x, int y) {
     gfx_sprite_info si = t->si_array[si_index];
     SDL_Rect src = { si.x, si.y, si.w, si.h };
     SDL_Rect dest = { x, y, si.w, si.h };

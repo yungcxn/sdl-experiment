@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "../../util/primitive.h"
+#include "../../util/debug.h"
+#include "../../gfx.h"
 
 #define MAP_OVERWORLD_ID 1
 
@@ -20,8 +22,8 @@ typedef struct {
 typedef struct {
   uint16_t base_tile_width; // height in tiles
   uint16_t base_tile_height;
-  uint16_t* base;
-  uint16_t base2_len;
+  sprite_code_t* base;
+  sprite_code_t base2_len;
   map_tile_t* base2;
   uint16_t bg_len;
   map_tile_t* bg;

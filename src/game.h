@@ -4,6 +4,7 @@
 #include "./util/primitive.h"
 #include "./gfx.h"
 #include "./ingame/ingame.h"
+#include "./ingame/map/map.h"
 #include "./render.h"
 #include "./event/event.h"
 #include "./util/time.h"

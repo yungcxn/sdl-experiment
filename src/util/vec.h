@@ -8,7 +8,8 @@ typedef struct{
 } vec2f;
 
 typedef struct{
-  vec2f i,j;
+  float ix, iy;
+  float jx, jy;
 } mat22f;
 
 typedef struct{

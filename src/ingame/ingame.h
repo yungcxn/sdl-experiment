@@ -2,19 +2,15 @@
 #define INGAME_H
 
 #include "./entity/player.h"
-#include "./map/map.h"
+#include "./world/world.h"
 #include "./particle/particle.h"
 #include "./cam/cam.h"
 
 
 typedef struct {
-  player_t* player_ref;
-  map_handler_t* map_handler;
+  player_t* player; // in world_handler as base_entity_t
+  world_handler_t* world_handler;
   cam_t cam;
-  //base_entity_t TODO
-  int loaded_entities_amount;
-  int loaded_particles_amount;
-  particle_t* loaded_particles_arr;
 } ingame_data_t;
 
 ingame_data_t* ingame_init();

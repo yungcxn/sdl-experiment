@@ -75,15 +75,81 @@ static SDL_Texture* gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t* rgba_
   return in;
 }
 
+#define _reg_sprite(i,x,y) si[i] = (gfx_sprite_info) {x,y,16,16}
+#define _reg_sprite_c(i,x,y,w,h) si[i] = (gfx_sprite_info) {x,y,w,h}
 
 static gfx_sprite_info* gfx_sprite_info_init() {
-  uint16_t sprites = 0;
-  gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites * sizeof(gfx_sprite_info));
+  uint16_t sprites = GFX_SPRITE_MAX_ID + 1;
+  gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites 
+    * sizeof(gfx_sprite_info));
 
   // HERE SPRITES
-  si[0] = (gfx_sprite_info) {0,0,16,16};    // GFX_SPRITE_GRASS_A
-  si[1] = (gfx_sprite_info) {16,0,16,16};   // GFX_SPRITE_GRASS_B
-  si[2] = (gfx_sprite_info) {32,0,16,16};   // GFX_SPRITE_GRASS_C
+  _reg_sprite(GFX_SPRITE_GRASS_A,0,0);
+  _reg_sprite(GFX_SPRITE_GRASS_B,16,0);
+  _reg_sprite(GFX_SPRITE_GRASS_C,32,0);
+
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_V,48,0);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_H,48,16);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_VTE,48,32);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_HRE,48,48);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_VBE,48,64);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_HLE,48,80);
+
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_D1,64,0);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_D2,64,16);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_D3,64,32);
+  _reg_sprite(GFX_SPRITE_GRASS_PATH_D4,64,48);
+
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_TL,80,0);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_L,80,16);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_BL,80,32);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_T,96,0);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND,96,16);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_B,96,32);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_TR,112,0);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_R,112,16);
+  _reg_sprite(GFX_SPRITE_GRASS_SAND_BR,112,32);
+
+  _reg_sprite(GFX_SPRITE_GRASS_FLOWER_A,128,0);
+  _reg_sprite(GFX_SPRITE_GRASS_FLOWER_B,128,16);
+  _reg_sprite(GFX_SPRITE_GRASS_FLOWER_C,128,32);
+
+  _reg_sprite(GFX_SPRITE_WATER_1,160,16);
+  _reg_sprite(GFX_SPRITE_WATER_2,160,32);
+  _reg_sprite(GFX_SPRITE_WATER_3,160,48);
+  _reg_sprite(GFX_SPRITE_WATER_4,160,64);
+
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_TL, 144, 48);
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_L, 144, 64);
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_BL, 144, 80);
+
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_T, 160, 0);
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_B, 160, 80);
+
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_TR, 176, 48);
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_R, 176, 64);
+  _reg_sprite(GFX_SPRITE_GRASS_WATER_BR, 176, 80);
+
+  _reg_sprite_c(GFX_SPRITE_FLOWER_1, 0, 112, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_FLOWER_2, 16, 112, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_FLOWER_3, 32, 112, 16, 32);
+  _reg_sprite(GFX_SPRITE_DUSTBALL_1, 48, 112);
+  _reg_sprite(GFX_SPRITE_DUSTBALL_2, 48, 128);
+  _reg_sprite(GFX_SPRITE_DUSTBALL_3, 48, 144);
+  _reg_sprite(GFX_SPRITE_DUSTBALL_4, 48, 160);
+  _reg_sprite_c(GFX_SPRITE_TREE, 64, 112, 32, 64);
+  _reg_sprite_c(GFX_SPRITE_TREE_PACK_A, 96, 112, 32, 64);
+  _reg_sprite_c(GFX_SPRITE_TREE_PACK_B, 128, 112, 32, 32);
+
+  _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_D, 0, 208, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_U, 16, 208, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_R, 32, 208, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_L, 48, 208, 16, 32);
+
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_D, 0, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_U, 16, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_R, 32, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_L, 48, 240, 16, 32);
 
   return si;
 }

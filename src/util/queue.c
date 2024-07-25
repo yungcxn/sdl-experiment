@@ -1,7 +1,5 @@
 #include "./queue.h"
 
-#include <stdlib.h>
-
  bool queue_is_full(queue* q) {
   return ((q->rear + 1) % q->size) == q->front;
 }

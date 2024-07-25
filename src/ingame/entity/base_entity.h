@@ -7,11 +7,13 @@
 #define BASE_ENTITY_NAME_LEN 15
 
 typedef uint32_t entity_id; 
+typedef uint8_t entity_type;
 
 typedef struct {
+  entity_type type;
   entity_id id;
   char name[BASE_ENTITY_NAME_LEN];
-  vec3f pos; // this is ideally in the bottom center of the entity
+  vec2f pos; // this is ideally in the bottom center of the entity
   mat22f collision_box; 
   mat22f alt_collision_box; 
   mat22f hurt_box;

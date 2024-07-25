@@ -11,7 +11,7 @@ experiment
 
 # Linker output
 *.ilk
-*.map
+*.world
 *.exp
 
 # Precompiled Headers

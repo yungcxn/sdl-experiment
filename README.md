@@ -29,7 +29,7 @@ sudo dnf install SDL2-devel SDL2_mixer-devel
 
 - work on input
 - work on player
-- solve map sprite update
+- solve world sprite update
 
 ## Notes
 
@@ -38,7 +38,7 @@ sudo dnf install SDL2-devel SDL2_mixer-devel
 - implement the color table in the res.h header
 - transform rgba color arrays into 
 - use Input Buffers
-- resource handler as hashmap: id to bool
+- resource handler as hashworld: id to bool
 - camera should not need a height
 - camera should have a small delay and move like a bezier curve?
 - camera should have fine jitter effect on special event

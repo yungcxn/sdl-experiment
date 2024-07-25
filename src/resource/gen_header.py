@@ -35,7 +35,6 @@ def transform_file(path):
     for x in range(w):
       rgba_tuple = tuple(a[y, x])
       rgba_tuple = rgba_tuple[:3]
-      print(rgba_tuple)
       try:
         b.append(list(global_color_table.keys())[list(global_color_table.values()).index(rgba_tuple)])
       except:

@@ -28,7 +28,7 @@ void debug_calc_and_print_fps() {
   debug_frames_per_sec++;
   if (debug_current_time - debug_start_time >= 1000) {
     float fps = debug_frames_per_sec / ((debug_current_time - debug_start_time) / 1000.0f);
-    debug_printf("FPS: %.2f\n", fps);
+    printf("FPS: %.2f\n", fps);
     debug_start_time = debug_current_time;
     debug_frames_per_sec = 0;
   }

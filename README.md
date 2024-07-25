@@ -52,7 +52,3 @@ sudo dnf install SDL2-devel SDL2_mixer-devel
 - normalized move distance vectors
 - move acceleration, not instantanious
 - darkness in caves manages by dithering!
-
-My stolen palette:
-
-![alt text](palette.png)

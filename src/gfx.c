@@ -87,19 +87,16 @@ static gfx_sprite_info* gfx_sprite_info_init() {
   _reg_sprite(GFX_SPRITE_GRASS_A,0,0);
   _reg_sprite(GFX_SPRITE_GRASS_B,16,0);
   _reg_sprite(GFX_SPRITE_GRASS_C,32,0);
-
   _reg_sprite(GFX_SPRITE_GRASS_PATH_V,48,0);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_H,48,16);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_VTE,48,32);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_HRE,48,48);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_VBE,48,64);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_HLE,48,80);
-
   _reg_sprite(GFX_SPRITE_GRASS_PATH_D1,64,0);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_D2,64,16);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_D3,64,32);
   _reg_sprite(GFX_SPRITE_GRASS_PATH_D4,64,48);
-
   _reg_sprite(GFX_SPRITE_GRASS_SAND_TL,80,0);
   _reg_sprite(GFX_SPRITE_GRASS_SAND_L,80,16);
   _reg_sprite(GFX_SPRITE_GRASS_SAND_BL,80,32);
@@ -109,23 +106,18 @@ static gfx_sprite_info* gfx_sprite_info_init() {
   _reg_sprite(GFX_SPRITE_GRASS_SAND_TR,112,0);
   _reg_sprite(GFX_SPRITE_GRASS_SAND_R,112,16);
   _reg_sprite(GFX_SPRITE_GRASS_SAND_BR,112,32);
-
   _reg_sprite(GFX_SPRITE_GRASS_FLOWER_A,128,0);
   _reg_sprite(GFX_SPRITE_GRASS_FLOWER_B,128,16);
   _reg_sprite(GFX_SPRITE_GRASS_FLOWER_C,128,32);
-
   _reg_sprite(GFX_SPRITE_WATER_1,160,16);
   _reg_sprite(GFX_SPRITE_WATER_2,160,32);
   _reg_sprite(GFX_SPRITE_WATER_3,160,48);
   _reg_sprite(GFX_SPRITE_WATER_4,160,64);
-
   _reg_sprite(GFX_SPRITE_GRASS_WATER_TL, 144, 48);
   _reg_sprite(GFX_SPRITE_GRASS_WATER_L, 144, 64);
   _reg_sprite(GFX_SPRITE_GRASS_WATER_BL, 144, 80);
-
   _reg_sprite(GFX_SPRITE_GRASS_WATER_T, 160, 0);
   _reg_sprite(GFX_SPRITE_GRASS_WATER_B, 160, 80);
-
   _reg_sprite(GFX_SPRITE_GRASS_WATER_TR, 176, 48);
   _reg_sprite(GFX_SPRITE_GRASS_WATER_R, 176, 64);
   _reg_sprite(GFX_SPRITE_GRASS_WATER_BR, 176, 80);
@@ -145,11 +137,51 @@ static gfx_sprite_info* gfx_sprite_info_init() {
   _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_U, 16, 208, 16, 32);
   _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_R, 32, 208, 16, 32);
   _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_L, 48, 208, 16, 32);
-
   _reg_sprite_c(GFX_SPRITE_CAN_IDLE_D, 0, 240, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_IDLE_U, 16, 240, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_IDLE_R, 32, 240, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_IDLE_L, 48, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_1, 0, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_2, 16, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_3, 32, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_4, 48, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_5, 64, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_6, 80, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_1, 96, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_2, 112, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_3, 128, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_4, 144, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_5, 160, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_U_6, 176, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_1, 192, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_2, 208, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_3, 224, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_4, 240, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_5, 256, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_R_6, 272, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_1, 288, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_2, 304, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_3, 320, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_4, 336, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_5, 352, 272, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_RUN_L_6, 368, 272, 16, 32);
+
+  _reg_sprite(GFX_SPRITE_HEART, 672, 208);
+  _reg_sprite(GFX_SPRITE_HEART_HALF, 688, 208);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_1, 672, 224);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_2, 688, 224);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_3, 704, 224);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_1, 720, 224);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_HALF_1, 672, 240);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_HALF_2, 688, 240);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_HALF_3, 704, 240);
+  _reg_sprite(GFX_SPRITE_GOLD_HEART_HALF_1, 720, 240);
+  _reg_sprite_c(GFX_SPRITE_NO_STAMINA_L, 672, 256, 5, 8);
+  _reg_sprite_c(GFX_SPRITE_NO_STAMINA_M, 678, 256, 3, 8);
+  _reg_sprite_c(GFX_SPRITE_NO_STAMINA_R, 682, 256, 5, 8);
+  _reg_sprite_c(GFX_SPRITE_STAMINA_L, 672, 264, 5, 8);
+  _reg_sprite_c(GFX_SPRITE_STAMINA_M, 678, 264, 3, 8);
+  _reg_sprite_c(GFX_SPRITE_STAMINA_R, 682, 264, 5, 8);
 
   return si;
 }

@@ -1,7 +1,7 @@
 #include "./game.h"
 
 static void game_update(bool* running, game_data_t* game_data, float dt) {
-  event_handle(running, dt, game_data->input_keystroke_queue);
+  event_handle(running, dt);
 
   if ((game_data->state == GAME_STATE_TITLE) || (game_data->state == GAME_STATE_UNDEFINED))
     return;
@@ -20,7 +20,6 @@ int game_mainloop() {
     return 0;
 
   game_data->ingame_data = ingame_init();
-  game_data->input_keystroke_queue = input_keystroke_queue_init();
 
   bool running = true;
   uint32_t current_ticks = time_get_ticks();
@@ -49,7 +48,6 @@ int game_mainloop() {
   }
 
   ingame_destroy(game_data->ingame_data);
-  input_keystroke_queue_destroy(game_data->input_keystroke_queue);
   gfx_destroy(game_data->gt);
   free(game_data);
 

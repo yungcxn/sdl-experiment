@@ -75,9 +75,51 @@
 #define GFX_SPRITE_CAN_IDLE_U         52
 #define GFX_SPRITE_CAN_IDLE_R         53
 #define GFX_SPRITE_CAN_IDLE_L         54
+#define GFX_SPRITE_CAN_RUN_D_1        55
+#define GFX_SPRITE_CAN_RUN_D_2        56
+#define GFX_SPRITE_CAN_RUN_D_3        57
+#define GFX_SPRITE_CAN_RUN_D_4        58
+#define GFX_SPRITE_CAN_RUN_D_5        59
+#define GFX_SPRITE_CAN_RUN_D_6        60
+#define GFX_SPRITE_CAN_RUN_U_1        61
+#define GFX_SPRITE_CAN_RUN_U_2        62
+#define GFX_SPRITE_CAN_RUN_U_3        63
+#define GFX_SPRITE_CAN_RUN_U_4        64
+#define GFX_SPRITE_CAN_RUN_U_5        65
+#define GFX_SPRITE_CAN_RUN_U_6        66
+#define GFX_SPRITE_CAN_RUN_R_1        67
+#define GFX_SPRITE_CAN_RUN_R_2        67
+#define GFX_SPRITE_CAN_RUN_R_3        68
+#define GFX_SPRITE_CAN_RUN_R_4        69
+#define GFX_SPRITE_CAN_RUN_R_5        70
+#define GFX_SPRITE_CAN_RUN_R_6        71
+#define GFX_SPRITE_CAN_RUN_L_1        72
+#define GFX_SPRITE_CAN_RUN_L_2        73
+#define GFX_SPRITE_CAN_RUN_L_3        74
+#define GFX_SPRITE_CAN_RUN_L_4        75
+#define GFX_SPRITE_CAN_RUN_L_5        76
+#define GFX_SPRITE_CAN_RUN_L_6        77
+
+#define GFX_SPRITE_HEART              78
+#define GFX_SPRITE_HEART_HALF         79
+#define GFX_SPRITE_GOLD_HEART_1       80
+#define GFX_SPRITE_GOLD_HEART_2       81
+#define GFX_SPRITE_GOLD_HEART_3       82
+#define GFX_SPRITE_GOLD_HEART_4       83
+#define GFX_SPRITE_GOLD_HEART_HALF_1  84
+#define GFX_SPRITE_GOLD_HEART_HALF_2  85
+#define GFX_SPRITE_GOLD_HEART_HALF_3  86
+#define GFX_SPRITE_GOLD_HEART_HALF_4  87
+#define GFX_SPRITE_NO_STAMINA_L       88
+#define GFX_SPRITE_NO_STAMINA_M       89
+#define GFX_SPRITE_NO_STAMINA_R       90
+#define GFX_SPRITE_STAMINA_L          91
+#define GFX_SPRITE_STAMINA_M          92
+#define GFX_SPRITE_STAMINA_R          93
 
 
-#define GFX_SPRITE_MAX_ID GFX_SPRITE_CAN_IDLE_L
+
+#define GFX_SPRITE_MAX_ID GFX_SPRITE_STAMINA_R
 
 typedef uint16_t sprite_code_t;
 

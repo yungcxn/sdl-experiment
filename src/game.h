@@ -24,7 +24,6 @@ typedef enum {
 typedef struct {
   game_state_t state;
   ingame_data_t* ingame_data;
-  input_keystroke_queue_t* input_keystroke_queue;
   gfx_tool_t* gt;
 } game_data_t;
 

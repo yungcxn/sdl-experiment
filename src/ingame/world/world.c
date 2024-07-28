@@ -1,5 +1,13 @@
 #include "./world.h"
 
+static void world_create_entities_overworld(world_handler_t* world_handler) {
+  world_handler->entity_count = 0;
+  //world_handler->entity_array = (base_entity_t*) 
+  //  malloc(world_handler->entity_count * sizeof(base_entity_t));
+
+  player_spawn(world_handler->player, (vec2f) {100.0f, 100.0f});
+}
+
 
 static void world_load_overworld(world_handler_t* world_handler) {
   debug_printf("Loading Overworld...\n");
@@ -18,14 +26,19 @@ static void world_load_overworld(world_handler_t* world_handler) {
 
   (world_handler->current_loaded_world.base)[49 + 100 * 49] = GFX_SPRITE_GRASS_C;
   world_handler->current_world_number = world_OVERWORLD_ID;
+
+  world_create_entities_overworld(world_handler);
 }
+
 
 
 world_handler_t* world_handler_init(player_t* player) {
   world_handler_t* world_handler = (world_handler_t*) malloc(sizeof(world_handler_t));
   world_handler->current_loaded_world = (world_world_t) {0,0,0,0,0,0,0,0,0};
   world_handler->current_world_number = 0;
-  world_handler->player = player;
+  world_handler->player = player; // is initialised before the world handler
+  world_handler->entity_count = 0;
+  world_handler->entity_array = 0;
   return world_handler;
 }
 
@@ -47,6 +60,11 @@ void world_load_world(world_handler_t* world_handler, uint16_t world_number) {
 
   if (world_handler->current_world_number != 0) {
     // unload world
+
+    if (world_handler->entity_array != 0) {
+      safe_free(world_handler->entity_array);
+      world_handler->entity_count = 0;
+    }
 
     //..
     if (world_handler->current_loaded_world.base != 0) {

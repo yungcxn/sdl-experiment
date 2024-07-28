@@ -10,14 +10,14 @@
 #include "./resource/res.h"
 #include "./resource/palette.h"
 
-#define GFX_SCREEN_WIDTH 512 // 32 tiles
-#define GFX_SCREEN_HEIGHT 288 // 18
-#define GFX_SCREEN_TILES_HOR 32
-#define GFX_SCREEN_TILES_VERT 18
-#define GFX_SCREEN_TILES_HOR_H 16
-#define GFX_SCREEN_TILES_VERT_H 9
+#define GFX_SCREEN_WIDTH 256
+#define GFX_SCREEN_HEIGHT 144 
+#define GFX_SCREEN_TILES_HOR (GFX_SCREEN_WIDTH/16)
+#define GFX_SCREEN_TILES_VERT (GFX_SCREEN_HEIGHT/16)
+#define GFX_SCREEN_TILES_HOR_H (GFX_SCREEN_TILES_HOR/2)
+#define GFX_SCREEN_TILES_VERT_H (GFX_SCREEN_TILES_VERT/2)
 
-#define GFX_SPRITE_NONE               -1
+#define GFX_SPRITE_NONE               0b1111111111111111
 #define GFX_SPRITE_GRASS_A            0
 #define GFX_SPRITE_GRASS_B            1
 #define GFX_SPRITE_GRASS_C            2

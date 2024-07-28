@@ -7,6 +7,7 @@
 #include "./util/primitive.h"
 #include "./ingame/cam/cam.h"
 #include "./ingame/ingame.h"
+#include "./util/debug.h"
 
 void render_render(gfx_tool_t* gt, ingame_data_t* ingame_data, float dt);
 

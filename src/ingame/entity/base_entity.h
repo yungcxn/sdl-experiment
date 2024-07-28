@@ -14,6 +14,7 @@ typedef struct {
   entity_id id;
   char name[BASE_ENTITY_NAME_LEN];
   vec2f pos; // this is ideally in the bottom center of the entity
+  vec2f sprite_offset;
   mat22f collision_box; 
   mat22f alt_collision_box; 
   mat22f hurt_box;

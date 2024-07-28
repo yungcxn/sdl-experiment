@@ -217,9 +217,7 @@ gfx_tool_t* gfx_init() {
     SDL_Log("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
     return 0;
   }
-
-  SDL_SetRenderDrawColor(t->renderer, 0, 0, 0, 255);
-  SDL_RenderPresent(t->renderer);
+  
   SDL_RenderSetLogicalSize(t->renderer, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT);
 
   t->pixel_array = gfx_pixel_array_init();

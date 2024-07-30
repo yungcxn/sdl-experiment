@@ -5,11 +5,11 @@ player_t* player_init() {
   player->core.type = PLAYER_TYPE;
   player->core.id = PLAYER_TYPE; // will be also 1
   strcpy(player->core.name, "can");
-  player->core.pos = (vec2f) {0.0f, 0.0f};
-  player->core.sprite_offset = (vec2f) {-0.5f, -1.875f};
-  player->core.collision_box = (mat22f) {-0.4375f, -0.5625f, 0.875f, 0.625f};
-  player->core.alt_collision_box = (mat22f) {0.0f, 0.0f, 0.0f, 0.0f};
-  player->core.hurt_box = player->core.collision_box;
+  vec2_set(player->core.pos, 0.0f, 0.0f);
+  vec2_set(player->core.sprite_offset, -0.5f, -1.875f);
+  mat22_set(player->core.collision_box, -0.4375f, -0.5625f, 0.875f, 0.625f);
+  mat22_set(player->core.alt_collision_box, 0.0f, 0.0f, 0.0f, 0.0f);
+  mat22_copy(player->core.hurt_box, player->core.collision_box);
   player->state = PLAYER_STATE_NONE;
   player->sprite = GFX_SPRITE_NONE;
   return player;
@@ -17,12 +17,12 @@ player_t* player_init() {
 
 
 void player_destroy(player_t* player) {
-  free(player);
+  safe_free(player);
 }
 
 
 void player_spawn(player_t* player, vec2f pos) {
-  player->core.pos = pos;
+  vec2_copy(player->core.pos, pos);
   player->state = PLAYER_STATE_IDLE;
   player->sprite = GFX_SPRITE_CAN_IDLE_D;
 }

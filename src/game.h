@@ -27,6 +27,6 @@ typedef struct {
   gfx_tool_t* gt;
 } game_data_t;
 
-int game_mainloop();
+int32_t game_mainloop();
 
 #endif

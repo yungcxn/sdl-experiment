@@ -8,7 +8,7 @@
   return q->rear == q->front;
 }
 
-queue* queue_init(int size){
+queue* queue_init(int32_t size){
   queue* q = (queue*) malloc(sizeof(queue));
   q->rear = -1;
   q->front = -1;
@@ -18,8 +18,8 @@ queue* queue_init(int size){
 }
 
 void queue_destroy(queue* q){
-  free(q->array);
-  free(q);
+  safe_free(q->array);
+  safe_free(q);
 }
 
 void queue_en(queue* q, QUEUE_INT x){

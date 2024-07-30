@@ -1,6 +1,6 @@
 #include "./game.h"
 
-static void game_update(bool* running, game_data_t* game_data, float dt) {
+static void _game_update(bool* running, game_data_t* game_data, float dt) {
   event_handle(running, dt);
 
   if ((game_data->state == GAME_STATE_TITLE) || (game_data->state == GAME_STATE_UNDEFINED))
@@ -10,7 +10,7 @@ static void game_update(bool* running, game_data_t* game_data, float dt) {
 }
 
 
-int game_mainloop() {
+int32_t game_mainloop() {
 
   game_data_t* game_data = (game_data_t*) malloc(sizeof(game_data_t));
   game_data->state = GAME_STATE_UNDEFINED;
@@ -29,7 +29,7 @@ int game_mainloop() {
   debug_joystick_count();
   // TEST 
   world_load_world(game_data->ingame_data->world_handler, world_OVERWORLD_ID);
-  game_data->ingame_data->cam.pos = (vec2f) {100.0f, 100.0f};
+  vec2_set(game_data->ingame_data->cam.pos, 100.0f, 100.0f);
   
   while (running) {
     /* PRE */
@@ -40,7 +40,7 @@ int game_mainloop() {
     debug_update_current_time();
 
     /* IN */
-    game_update(&running, game_data, dt);
+    _game_update(&running, game_data, dt);
     render_render(game_data->gt, game_data->ingame_data, dt);
 
     /* POST */
@@ -49,7 +49,7 @@ int game_mainloop() {
 
   ingame_destroy(game_data->ingame_data);
   gfx_destroy(game_data->gt);
-  free(game_data);
+  safe_free(game_data);
 
   return 0;
 }

@@ -6,7 +6,7 @@
 
 typedef struct {
   char name[MAX_ITEM_NAME];
-  int id;
+  int32_t id;
   //img_anim_sprite* icon_animation;
 } item_t;
 

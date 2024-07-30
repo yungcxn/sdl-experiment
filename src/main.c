@@ -1,5 +1,5 @@
 #include "./game.h"
 
-int main() {
+int32_t main() {
   return game_mainloop();
 }

@@ -11,15 +11,15 @@
 
 /* right growing queue */
 typedef struct {
-  int rear;
-  int front;
-  int size;
+  int32_t rear;
+  int32_t front;
+  int32_t size;
   QUEUE_INT* array;
 } queue;
 
 bool queue_is_full(queue* q);
 bool queue_is_empty(queue* q);
-queue* queue_init(int size);
+queue* queue_init(int32_t size);
 void queue_destroy(queue* q);
 void queue_en(queue* q, QUEUE_INT x);
 QUEUE_INT queue_peak(queue* q);

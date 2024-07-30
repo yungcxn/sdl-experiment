@@ -4,7 +4,7 @@
 #include "../../util/primitive.h"
 
 typedef struct {
-  int id;
+  uint32_t id;
   //img_anim_sprite* animation;
 } particle_t;
 

@@ -12,7 +12,7 @@
 #define PLAYER_STATE_NONE 0
 #define PLAYER_STATE_IDLE 1
 
-typedef uint32_t player_state_t;
+typedef uint8_t player_state_t;
 
 typedef struct {
   base_entity_t core;

@@ -15,7 +15,7 @@
 #endif
 
 extern uint32_t debug_start_time;
-extern int debug_frames_per_sec;
+extern int32_t debug_frames_per_sec;
 extern uint32_t debug_current_time;
 #endif
 

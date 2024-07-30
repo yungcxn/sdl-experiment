@@ -4,6 +4,7 @@
 
 // TODO directly write
 
+/*
 vec2f vec2f_normalized(vec2f v){
   float mag = math_sqrt(v.x * v.x + v.y * v.y);
   return (vec2f) {v.x / mag, v.y / mag};
@@ -29,3 +30,4 @@ vec2f vec2f_scaled(vec2f v, float s){
 vec3f vec3f_scaled(vec3f v, float s){
   return (vec3f) {v.x * s, v.y * s, v.z * s};
 }
+*/

@@ -4,6 +4,9 @@
 #include "../../util/vec.h"
 #include "../../util/primitive.h"
 
+#define CAM_FIXED_FLAG     0b00000010
+#define CAM_ACTIVATED_FLAG 0b00000001
+
 typedef enum {
   CAM_NORMAL = 0,
   CAM_DARKNESS,
@@ -13,12 +16,11 @@ typedef enum {
 /* camera width and height is determined by gfx */
 typedef struct {
   vec2f pos;
-  bool is_needed;
-  bool fixed;
+  uint8_t flags;
   uint32_t shake_ticks_left;
   uint8_t shake_mod;
-  uint32_t lag_ticks_left;
-  uint8_t lag_mod;
+  uint32_t freeze_ticks_left;
+  uint8_t freeze_mod;
 } cam_t;
 
 #endif

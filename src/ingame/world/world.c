@@ -1,6 +1,6 @@
 #include "./world.h"
 
-static void world_create_entities_overworld(world_handler_t* world_handler) {
+static void _world_create_entities_overworld(world_handler_t* world_handler) {
   world_handler->entity_count = 0;
   //world_handler->entity_array = (base_entity_t*) 
   //  malloc(world_handler->entity_count * sizeof(base_entity_t));
@@ -9,7 +9,7 @@ static void world_create_entities_overworld(world_handler_t* world_handler) {
 }
 
 
-static void world_load_overworld(world_handler_t* world_handler) {
+static void _world_load_overworld(world_handler_t* world_handler) {
   debug_printf("Loading Overworld...\n");
   // gotta alloc base1, base2, fg, bg
   world_handler->current_loaded_world.base_tile_height = 100;
@@ -27,9 +27,8 @@ static void world_load_overworld(world_handler_t* world_handler) {
   (world_handler->current_loaded_world.base)[49 + 100 * 49] = GFX_SPRITE_GRASS_C;
   world_handler->current_world_number = world_OVERWORLD_ID;
 
-  world_create_entities_overworld(world_handler);
+  _world_create_entities_overworld(world_handler);
 }
-
 
 
 world_handler_t* world_handler_init(player_t* player) {
@@ -86,6 +85,6 @@ void world_load_world(world_handler_t* world_handler, uint16_t world_number) {
   } 
 
   if (world_number == world_OVERWORLD_ID) {
-    world_load_overworld(world_handler);
+    _world_load_overworld(world_handler);
   }
 }

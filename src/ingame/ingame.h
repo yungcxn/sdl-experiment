@@ -5,6 +5,7 @@
 #include "./world/world.h"
 #include "./particle/particle.h"
 #include "./cam/cam.h"
+#include "./gui/hud.h"
 #include "../event/event.h"
 
 typedef struct {
@@ -12,6 +13,7 @@ typedef struct {
   world_handler_t* world_handler;
   cam_t cam;
   event_input_t input;
+  hud_t hud;
 } ingame_data_t;
 
 ingame_data_t* ingame_init();

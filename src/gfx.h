@@ -104,22 +104,41 @@
 
 #define GFX_SPRITE_HEART              80
 #define GFX_SPRITE_HEART_HALF         81
-#define GFX_SPRITE_GOLD_HEART_1       82
-#define GFX_SPRITE_GOLD_HEART_2       83
-#define GFX_SPRITE_GOLD_HEART_3       84
-#define GFX_SPRITE_GOLD_HEART_4       85
-#define GFX_SPRITE_GOLD_HEART_HALF_1  86
-#define GFX_SPRITE_GOLD_HEART_HALF_2  87
-#define GFX_SPRITE_GOLD_HEART_HALF_3  88
-#define GFX_SPRITE_GOLD_HEART_HALF_4  89
-#define GFX_SPRITE_NO_STAMINA_L       90
-#define GFX_SPRITE_NO_STAMINA_M       91
-#define GFX_SPRITE_NO_STAMINA_R       92
-#define GFX_SPRITE_STAMINA_L          93
-#define GFX_SPRITE_STAMINA_M          94
-#define GFX_SPRITE_STAMINA_R          95
+#define GFX_SPRITE_NO_HEART           82
+#define GFX_SPRITE_GOLD_HEART_1       83
+#define GFX_SPRITE_GOLD_HEART_2       84
+#define GFX_SPRITE_GOLD_HEART_3       85
+#define GFX_SPRITE_GOLD_HEART_4       86
+#define GFX_SPRITE_GOLD_HEART_HALF_1  87
+#define GFX_SPRITE_GOLD_HEART_HALF_2  88
+#define GFX_SPRITE_GOLD_HEART_HALF_3  89
+#define GFX_SPRITE_GOLD_HEART_HALF_4  90
+#define GFX_SPRITE_NO_STAMINA_L       91
+#define GFX_SPRITE_NO_STAMINA_M       92
+#define GFX_SPRITE_NO_STAMINA_R       93
+#define GFX_SPRITE_STAMINA_L          94
+#define GFX_SPRITE_STAMINA_M          95
+#define GFX_SPRITE_STAMINA_R          96
 
-#define GFX_SPRITE_MAX_ID GFX_SPRITE_STAMINA_R
+#define GFX_SPRITE_SMALL_HEART              97
+#define GFX_SPRITE_SMALL_HEART_HALF         98
+#define GFX_SPRITE_SMALL_NO_HEART           99
+#define GFX_SPRITE_SMALL_GOLD_HEART_1       100
+#define GFX_SPRITE_SMALL_GOLD_HEART_2       101
+#define GFX_SPRITE_SMALL_GOLD_HEART_3       102
+#define GFX_SPRITE_SMALL_GOLD_HEART_4       103
+#define GFX_SPRITE_SMALL_GOLD_HEART_HALF_1  104
+#define GFX_SPRITE_SMALL_GOLD_HEART_HALF_2  105
+#define GFX_SPRITE_SMALL_GOLD_HEART_HALF_3  106
+#define GFX_SPRITE_SMALL_GOLD_HEART_HALF_4  107
+#define GFX_SPRITE_SMALL_NO_STAMINA_L       108
+#define GFX_SPRITE_SMALL_NO_STAMINA_M       109
+#define GFX_SPRITE_SMALL_NO_STAMINA_R       110
+#define GFX_SPRITE_SMALL_STAMINA_L          111
+#define GFX_SPRITE_SMALL_STAMINA_M          112
+#define GFX_SPRITE_SMALL_STAMINA_R          113
+
+#define GFX_SPRITE_MAX_ID GFX_SPRITE_SMALL_STAMINA_R
 
 #define gfx_anim(var, elapsed, duration, current, next) do {  \
   if (((elapsed) >= (duration)) && ((var) == (current))) {   \

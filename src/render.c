@@ -2,6 +2,64 @@
 
 // TODO: Bad Code!
 
+static void _render_hud(gfx_tool_t* gt, hud_t* hud) {
+  uint8_t heartwidth = 11;
+
+  uint8_t hnum = 0;
+  for (int i = 0; i < hud->player->maxhealth; hnum++) {
+    gfx_render_sprite_i(gt, GFX_SPRITE_SMALL_NO_HEART, hnum*heartwidth, 0);
+    i += 2;
+  }
+  hnum = 0;
+  for (int i = hud->player->health; i > 0; hnum++) {
+    if (i == 1) {
+      gfx_render_sprite_i(gt, GFX_SPRITE_SMALL_HEART_HALF, hnum*heartwidth, 0);
+      break;
+    }
+    gfx_render_sprite_i(gt, GFX_SPRITE_SMALL_HEART, hnum*heartwidth, 0);
+    i -= 2;
+  }
+
+  uint8_t orgxoff = 1;
+  uint8_t staminawidth1 = 4;
+  uint8_t staminawidth2 = 3;
+  uint8_t current = hud->player->maxstamina;
+  uint8_t xoff = orgxoff;
+  uint8_t yoff = heartwidth;
+  uint8_t accoff = 0;
+  for (int i = 0; i < current; i++) {
+    sprite_code_t c = GFX_SPRITE_SMALL_NO_STAMINA_M;
+    uint8_t addingoff = staminawidth2;
+    if (i == 0) {
+      c = GFX_SPRITE_SMALL_NO_STAMINA_L;
+      addingoff = staminawidth1;
+    } else if (i == hud->player->maxstamina-1) {
+      c = GFX_SPRITE_SMALL_NO_STAMINA_R;
+      addingoff = staminawidth1;
+    }
+    gfx_render_sprite_i(gt, c, xoff + accoff ,yoff);
+    accoff += addingoff;
+  }
+
+  current = hud->player->stamina;
+  xoff = orgxoff;
+  accoff = 0;
+  for (int i = 0; i < current; i++) {
+    sprite_code_t c = GFX_SPRITE_SMALL_STAMINA_M;
+    uint8_t addingoff = staminawidth2;
+    if (i == 0) {
+      c = GFX_SPRITE_SMALL_STAMINA_L;
+      addingoff = staminawidth1;
+    } else if (i == hud->player->maxstamina-1) {
+      c = GFX_SPRITE_SMALL_STAMINA_R;
+      addingoff = staminawidth1;
+    }
+    
+    gfx_render_sprite_i(gt, c, xoff + accoff ,yoff);
+    accoff += addingoff;
+  }
+}
+
 static inline void _render_on_map(
   gfx_tool_t* gt, sprite_code_t sprite,
   int32_t screen_tlp_x, int32_t screen_tlp_y, //screen top left pixel
@@ -80,9 +138,11 @@ void render_render(gfx_tool_t* gt, ingame_data_t* ingame_data, float dt) {
   gfx_fill_rect_a(gt, 0, 0, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT,
     PALETTE_BLACK_R, PALETTE_BLACK_G, PALETTE_BLACK_B, 255);
 
-  if (ingame_data->world_handler->current_world_number != 0) 
+  if (ingame_data->world_handler->current_world_number != 0) {
     _render_world(gt, ingame_data->world_handler,
       &(ingame_data->cam));
-
+    _render_hud(gt, &(ingame_data->hud));
+  }
+    
   gfx_commit(gt);
 }

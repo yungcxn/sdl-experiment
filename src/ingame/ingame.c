@@ -4,6 +4,7 @@ ingame_data_t* ingame_init() {
   ingame_data_t* ingame_data = (ingame_data_t*) malloc(sizeof(ingame_data_t));
   ingame_data->player = player_init();
   ingame_data->world_handler = world_handler_init(ingame_data->player);
+  ingame_data->hud = (hud_t) {ingame_data->player};
   return ingame_data; // TODO
 }
 

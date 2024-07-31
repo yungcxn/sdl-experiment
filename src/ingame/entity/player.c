@@ -19,6 +19,10 @@ player_t* player_init() {
     math_fpow(player->diam_speed)/2.0f
   );
   vec2_set(player->current_speed, 0.0f, 0.0f);
+  player->maxhealth = 4; // should be even
+  player->health = 4;
+  player->maxstamina = 5; // should be odd
+  player->stamina = 5;
   return player;
 }
 
@@ -54,11 +58,11 @@ void player_update(player_t* player, event_input_t input, float dt) {
   if (state_to_be == 0) 
     state_to_be = PLAYER_STATE_IDLE;
 
-  /*
-  if ((~(state_to_be ^ 0b1010)) || (~(state_to_be ^ 0b0101))) {
+  
+  if ((!(state_to_be ^ 0b1010)) || (!(state_to_be ^ 0b0101))) {
     state_to_be = PLAYER_STATE_IDLE;
   }
-  */
+  
 
   bool state_changed = state_to_be != player->state;
 

@@ -35,6 +35,10 @@ typedef struct {
   float diam_speed;
   float diag_speed;
   vec2f current_speed;
+  uint8_t maxhealth;
+  uint8_t health;
+  uint8_t maxstamina;
+  uint8_t stamina;
 } player_t;
 
 player_t* player_init();

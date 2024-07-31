@@ -78,6 +78,7 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t* rgba
 #define _reg_sprite(i,x,y) si[i] = (gfx_sprite_info) {x,y,16,16}
 #define _reg_sprite_c(i,x,y,w,h) si[i] = (gfx_sprite_info) {x,y,w,h}
 
+// TODO: rework with variables
 static gfx_sprite_info* _gfx_sprite_info_init() {
   uint16_t sprites = GFX_SPRITE_MAX_ID + 1;
   gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites 
@@ -169,6 +170,7 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
 
   _reg_sprite(GFX_SPRITE_HEART, 672, 208);
   _reg_sprite(GFX_SPRITE_HEART_HALF, 688, 208);
+  _reg_sprite(GFX_SPRITE_NO_HEART, 704, 208);
   _reg_sprite(GFX_SPRITE_GOLD_HEART_1, 672, 224);
   _reg_sprite(GFX_SPRITE_GOLD_HEART_2, 688, 224);
   _reg_sprite(GFX_SPRITE_GOLD_HEART_3, 704, 224);
@@ -183,6 +185,25 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
   _reg_sprite_c(GFX_SPRITE_STAMINA_L, 672, 264, 5, 8);
   _reg_sprite_c(GFX_SPRITE_STAMINA_M, 678, 264, 3, 8);
   _reg_sprite_c(GFX_SPRITE_STAMINA_R, 682, 264, 5, 8);
+
+  int smalloff = 64;
+  _reg_sprite_c(GFX_SPRITE_SMALL_HEART, 672+smalloff, 208, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_HEART_HALF, 688+smalloff, 208, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_NO_HEART, 704+smalloff, 208, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_1, 672+smalloff, 224, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_2, 688+smalloff, 224, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_3, 704+smalloff, 224, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_1, 720+smalloff, 224, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_HALF_1, 672+smalloff, 240, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_HALF_2, 688+smalloff, 240, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_HALF_3, 704+smalloff, 240, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_GOLD_HEART_HALF_1, 720+smalloff, 240, 11, 11);
+  _reg_sprite_c(GFX_SPRITE_SMALL_NO_STAMINA_L, 672+smalloff, 256, 5, 8);
+  _reg_sprite_c(GFX_SPRITE_SMALL_NO_STAMINA_M, 678+smalloff, 256, 3, 8);
+  _reg_sprite_c(GFX_SPRITE_SMALL_NO_STAMINA_R, 682+smalloff, 256, 5, 8);
+  _reg_sprite_c(GFX_SPRITE_SMALL_STAMINA_L, 672+smalloff, 264, 4, 7);
+  _reg_sprite_c(GFX_SPRITE_SMALL_STAMINA_M, 678+smalloff, 264, 3, 7);
+  _reg_sprite_c(GFX_SPRITE_SMALL_STAMINA_R, 682+smalloff, 264, 4, 7);
 
   return si;
 }
@@ -220,6 +241,7 @@ gfx_tool_t* gfx_init() {
   }
   
   SDL_RenderSetLogicalSize(t->renderer, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT);
+  SDL_RenderSetIntegerScale(t->renderer, 1);
 
   t->pixel_array = _gfx_pixel_array_init();
   t->spritesheet = _gfx_spritesheet_init(t->renderer, t->pixel_array, RES_ALL_WIDTH, RES_ALL_HEIGHT);

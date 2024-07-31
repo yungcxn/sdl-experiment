@@ -13,7 +13,7 @@ void cam_move_clean(cam_t* cam, vec2f dest, float dt) {
   //debug_printf("%.2f, %.2f\n", diff[0], diff[1]);
   //vec2_scale(diff, CAM_DIST_PER_SEC*dt);
   //if (vec2_len(diff) > vec2_len(orgdiff)) {
-    vec2_copy(cam->pos, dest);
+  vec2_copy(cam->pos, dest);
   //  cam->move_elapsed_ticks = 0;
   //} else {
   //  vec2_add(cam->pos, diff);

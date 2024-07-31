@@ -73,52 +73,66 @@
 #define GFX_SPRITE_PRINCESS_IDLE_R    49
 #define GFX_SPRITE_PRINCESS_IDLE_L    50
 #define GFX_SPRITE_CAN_IDLE_D         51
-#define GFX_SPRITE_CAN_IDLE_U         52
-#define GFX_SPRITE_CAN_IDLE_R         53
-#define GFX_SPRITE_CAN_IDLE_L         54
-#define GFX_SPRITE_CAN_RUN_D_1        55
-#define GFX_SPRITE_CAN_RUN_D_2        56
-#define GFX_SPRITE_CAN_RUN_D_3        57
-#define GFX_SPRITE_CAN_RUN_D_4        58
-#define GFX_SPRITE_CAN_RUN_D_5        59
-#define GFX_SPRITE_CAN_RUN_D_6        60
-#define GFX_SPRITE_CAN_RUN_U_1        61
-#define GFX_SPRITE_CAN_RUN_U_2        62
-#define GFX_SPRITE_CAN_RUN_U_3        63
-#define GFX_SPRITE_CAN_RUN_U_4        64
-#define GFX_SPRITE_CAN_RUN_U_5        65
-#define GFX_SPRITE_CAN_RUN_U_6        66
-#define GFX_SPRITE_CAN_RUN_R_1        67
-#define GFX_SPRITE_CAN_RUN_R_2        67
-#define GFX_SPRITE_CAN_RUN_R_3        68
-#define GFX_SPRITE_CAN_RUN_R_4        69
-#define GFX_SPRITE_CAN_RUN_R_5        70
-#define GFX_SPRITE_CAN_RUN_R_6        71
-#define GFX_SPRITE_CAN_RUN_L_1        72
-#define GFX_SPRITE_CAN_RUN_L_2        73
-#define GFX_SPRITE_CAN_RUN_L_3        74
-#define GFX_SPRITE_CAN_RUN_L_4        75
-#define GFX_SPRITE_CAN_RUN_L_5        76
-#define GFX_SPRITE_CAN_RUN_L_6        77
+#define GFX_SPRITE_CAN_IDLE_D_2       52
+#define GFX_SPRITE_CAN_IDLE_U         53
+#define GFX_SPRITE_CAN_IDLE_R         54
+#define GFX_SPRITE_CAN_IDLE_L         55
+#define GFX_SPRITE_CAN_RUN_D_1        56
+#define GFX_SPRITE_CAN_RUN_D_2        57
+#define GFX_SPRITE_CAN_RUN_D_3        58
+#define GFX_SPRITE_CAN_RUN_D_4        59
+#define GFX_SPRITE_CAN_RUN_D_5        60
+#define GFX_SPRITE_CAN_RUN_D_6        61
+#define GFX_SPRITE_CAN_RUN_U_1        62
+#define GFX_SPRITE_CAN_RUN_U_2        63
+#define GFX_SPRITE_CAN_RUN_U_3        64
+#define GFX_SPRITE_CAN_RUN_U_4        65
+#define GFX_SPRITE_CAN_RUN_U_5        66
+#define GFX_SPRITE_CAN_RUN_U_6        67
+#define GFX_SPRITE_CAN_RUN_R_1        68
+#define GFX_SPRITE_CAN_RUN_R_2        69
+#define GFX_SPRITE_CAN_RUN_R_3        70
+#define GFX_SPRITE_CAN_RUN_R_4        71
+#define GFX_SPRITE_CAN_RUN_R_5        72
+#define GFX_SPRITE_CAN_RUN_R_6        73
+#define GFX_SPRITE_CAN_RUN_L_1        74
+#define GFX_SPRITE_CAN_RUN_L_2        75
+#define GFX_SPRITE_CAN_RUN_L_3        76
+#define GFX_SPRITE_CAN_RUN_L_4        77
+#define GFX_SPRITE_CAN_RUN_L_5        78
+#define GFX_SPRITE_CAN_RUN_L_6        79
 
-#define GFX_SPRITE_HEART              78
-#define GFX_SPRITE_HEART_HALF         79
-#define GFX_SPRITE_GOLD_HEART_1       80
-#define GFX_SPRITE_GOLD_HEART_2       81
-#define GFX_SPRITE_GOLD_HEART_3       82
-#define GFX_SPRITE_GOLD_HEART_4       83
-#define GFX_SPRITE_GOLD_HEART_HALF_1  84
-#define GFX_SPRITE_GOLD_HEART_HALF_2  85
-#define GFX_SPRITE_GOLD_HEART_HALF_3  86
-#define GFX_SPRITE_GOLD_HEART_HALF_4  87
-#define GFX_SPRITE_NO_STAMINA_L       88
-#define GFX_SPRITE_NO_STAMINA_M       89
-#define GFX_SPRITE_NO_STAMINA_R       90
-#define GFX_SPRITE_STAMINA_L          91
-#define GFX_SPRITE_STAMINA_M          92
-#define GFX_SPRITE_STAMINA_R          93
+#define GFX_SPRITE_HEART              80
+#define GFX_SPRITE_HEART_HALF         81
+#define GFX_SPRITE_GOLD_HEART_1       82
+#define GFX_SPRITE_GOLD_HEART_2       83
+#define GFX_SPRITE_GOLD_HEART_3       84
+#define GFX_SPRITE_GOLD_HEART_4       85
+#define GFX_SPRITE_GOLD_HEART_HALF_1  86
+#define GFX_SPRITE_GOLD_HEART_HALF_2  87
+#define GFX_SPRITE_GOLD_HEART_HALF_3  88
+#define GFX_SPRITE_GOLD_HEART_HALF_4  89
+#define GFX_SPRITE_NO_STAMINA_L       90
+#define GFX_SPRITE_NO_STAMINA_M       91
+#define GFX_SPRITE_NO_STAMINA_R       92
+#define GFX_SPRITE_STAMINA_L          93
+#define GFX_SPRITE_STAMINA_M          94
+#define GFX_SPRITE_STAMINA_R          95
 
 #define GFX_SPRITE_MAX_ID GFX_SPRITE_STAMINA_R
+
+#define gfx_anim(var, elapsed, duration, current, next) do {  \
+  if (((elapsed) >= (duration)) && ((var) == (current))) {   \
+    (var) = (next);                                          \
+    (elapsed) = 0.0f;                                        \
+  }                                                          \
+} while (0)
+
+#define gfx_start_anim(var, state_changed, start)  do {  \
+  if (state_changed) {                                  \
+    (var) = (start);                                    \
+  }                                                     \
+} while (0)
 
 typedef uint16_t sprite_code_t;
 

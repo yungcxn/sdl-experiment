@@ -5,17 +5,18 @@
 #include "./world/world.h"
 #include "./particle/particle.h"
 #include "./cam/cam.h"
-
+#include "../event/event.h"
 
 typedef struct {
   player_t* player; // in world_handler as base_entity_t
   world_handler_t* world_handler;
   cam_t cam;
+  event_input_t input;
 } ingame_data_t;
 
 ingame_data_t* ingame_init();
 void ingame_destroy(ingame_data_t* ingame_data);
-void ingame_update(ingame_data_t* ingame_data); // TODO needs input dequeued in this frame
+void ingame_update(ingame_data_t* ingame_data, event_input_t input, float dt); // TODO needs input dequeued in this frame
 
 
 #endif

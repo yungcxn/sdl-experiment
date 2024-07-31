@@ -138,9 +138,10 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
   _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_R, 32, 208, 16, 32);
   _reg_sprite_c(GFX_SPRITE_PRINCESS_IDLE_L, 48, 208, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_IDLE_D, 0, 240, 16, 32);
-  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_U, 16, 240, 16, 32);
-  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_R, 32, 240, 16, 32);
-  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_L, 48, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_D_2, 16, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_U, 32, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_R, 48, 240, 16, 32);
+  _reg_sprite_c(GFX_SPRITE_CAN_IDLE_L, 64, 240, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_1, 0, 272, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_2, 16, 272, 16, 32);
   _reg_sprite_c(GFX_SPRITE_CAN_RUN_D_3, 32, 272, 16, 32);

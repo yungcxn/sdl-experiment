@@ -12,19 +12,17 @@
 
 #define GAME_LAG_TIMEOUT 0.25f
 
-// TODO should be a state machine
-typedef enum {
-  GAME_STATE_UNDEFINED = 0,
-  GAME_STATE_TITLE,
-  GAME_STATE_GUI,
-  GAME_STATE_CUTSCENE,
-  GAME_STATE_INGAME
-} game_state_t;
+#define GAME_STATE_UNDEFINED 0
+#define GAME_STATE_TITLE 1
+#define GAME_STATE_GUI 2
+#define GAME_STATE_CUTSCENE 3
+#define GAME_STATE_INGAME 4
 
 typedef struct {
-  game_state_t state;
+  uint8_t state;
   ingame_data_t* ingame_data;
   gfx_tool_t* gt;
+  event_input_t input;
 } game_data_t;
 
 int32_t game_mainloop();

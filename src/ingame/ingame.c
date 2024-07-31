@@ -15,7 +15,8 @@ void ingame_destroy(ingame_data_t* ingame_data) {
 }
 
 
-void ingame_update(ingame_data_t* ingame_data) {
-  // TODO
-  return;
+void ingame_update(ingame_data_t* ingame_data, event_input_t input, float dt) {
+  ingame_data->input = input;
+  player_update(ingame_data->player, input, dt);
+  cam_move_clean(&(ingame_data->cam), ingame_data->player->core.pos, dt);
 }

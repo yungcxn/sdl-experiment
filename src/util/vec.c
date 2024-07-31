@@ -4,11 +4,14 @@
 
 // TODO directly write
 
-/*
-vec2f vec2f_normalized(vec2f v){
-  float mag = math_sqrt(v.x * v.x + v.y * v.y);
-  return (vec2f) {v.x / mag, v.y / mag};
+
+void vec2f_normalized(vec2f *v){
+  float mag = math_fsqrt((*v)[0] * (*v)[0] + (*v)[1] * (*v)[1]);
+  (*v)[0] /= mag;
+  (*v)[1] /= mag;
 }
+
+/*
 
 
 bool vec2f_is_unit(vec2f v){

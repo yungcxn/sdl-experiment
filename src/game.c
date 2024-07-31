@@ -1,12 +1,13 @@
 #include "./game.h"
 
+
 static void _game_update(bool* running, game_data_t* game_data, float dt) {
-  event_handle(running, dt);
+  event_handle(running, dt, &(game_data->input));
 
   if ((game_data->state == GAME_STATE_TITLE) || (game_data->state == GAME_STATE_UNDEFINED))
     return;
 
-  ingame_update(game_data->ingame_data);
+  ingame_update(game_data->ingame_data, game_data->input, dt);
 }
 
 
@@ -28,6 +29,7 @@ int32_t game_mainloop() {
   debug_reset_fps_count();
   debug_joystick_count();
   // TEST 
+  game_data->state = GAME_STATE_INGAME;
   world_load_world(game_data->ingame_data->world_handler, world_OVERWORLD_ID);
   vec2_set(game_data->ingame_data->cam.pos, 100.0f, 100.0f);
   

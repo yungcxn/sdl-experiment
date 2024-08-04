@@ -24,8 +24,8 @@ typedef struct {
 typedef struct {
   uint16_t base_tile_width; // height in tiles
   uint16_t base_tile_height;
-  sprite_code_t* base;
-  sprite_code_t base2_len;
+  gfx_sprite_code_t* base;
+  gfx_sprite_code_t base2_len;
   world_tile_t* base2;
   uint16_t bg_len;
   world_tile_t* bg;

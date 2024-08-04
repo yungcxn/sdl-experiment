@@ -74,127 +74,51 @@ void player_update(player_t* player, event_input_t input, float dt) {
   /* UPDATE SECTION  */
   
   if (player->state & PLAYER_STATE_RUN_D) {
-
-    gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_RUN_D_1);
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_1, GFX_SPRITE_CAN_RUN_D_2
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_2, GFX_SPRITE_CAN_RUN_D_3
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_3, GFX_SPRITE_CAN_RUN_D_4
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_4, GFX_SPRITE_CAN_RUN_D_5
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_5, GFX_SPRITE_CAN_RUN_D_6
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_D_6, GFX_SPRITE_CAN_RUN_D_1
+    
+    anim_loop(
+      &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
+      state_changed, 6, 
+      GFX_SPRITE_CAN_RUN_D_1, GFX_SPRITE_CAN_RUN_D_2, GFX_SPRITE_CAN_RUN_D_3,
+      GFX_SPRITE_CAN_RUN_D_4, GFX_SPRITE_CAN_RUN_D_5, GFX_SPRITE_CAN_RUN_D_6
     );
 
   } else if (player->state & PLAYER_STATE_RUN_U) {
 
-    gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_RUN_U_1);
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_1, GFX_SPRITE_CAN_RUN_U_2
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_2, GFX_SPRITE_CAN_RUN_U_3
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_3, GFX_SPRITE_CAN_RUN_U_4
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_4, GFX_SPRITE_CAN_RUN_U_5
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_5, GFX_SPRITE_CAN_RUN_U_6
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_U_6, GFX_SPRITE_CAN_RUN_U_1
+    anim_loop(
+      &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
+      state_changed, 6, 
+      GFX_SPRITE_CAN_RUN_U_1, GFX_SPRITE_CAN_RUN_U_2, GFX_SPRITE_CAN_RUN_U_3,
+      GFX_SPRITE_CAN_RUN_U_4, GFX_SPRITE_CAN_RUN_U_5, GFX_SPRITE_CAN_RUN_U_6
     );
 
   } else if (player->state & PLAYER_STATE_RUN_R) {
 
-    gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_RUN_R_1);
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_1, GFX_SPRITE_CAN_RUN_R_2
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_2, GFX_SPRITE_CAN_RUN_R_3
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_3, GFX_SPRITE_CAN_RUN_R_4
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_4, GFX_SPRITE_CAN_RUN_R_5
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_5, GFX_SPRITE_CAN_RUN_R_6
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_R_6, GFX_SPRITE_CAN_RUN_R_1
+    anim_loop(
+      &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
+      state_changed, 6, 
+      GFX_SPRITE_CAN_RUN_R_1, GFX_SPRITE_CAN_RUN_R_2, GFX_SPRITE_CAN_RUN_R_3,
+      GFX_SPRITE_CAN_RUN_R_4, GFX_SPRITE_CAN_RUN_R_5, GFX_SPRITE_CAN_RUN_R_6
     );
 
   } else if (player->state & PLAYER_STATE_RUN_L) {
 
-    gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_RUN_L_1);
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_1, GFX_SPRITE_CAN_RUN_L_2
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_2, GFX_SPRITE_CAN_RUN_L_3
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_3, GFX_SPRITE_CAN_RUN_L_4
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_4, GFX_SPRITE_CAN_RUN_L_5
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_5, GFX_SPRITE_CAN_RUN_L_6
-    );
-    gfx_anim(
-      player->sprite, player->sprite_elapsed_time, PLAYER_RUN_ANIM_TIME,
-      GFX_SPRITE_CAN_RUN_L_6, GFX_SPRITE_CAN_RUN_L_1
+    anim_loop(
+      &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
+      state_changed, 6, 
+      GFX_SPRITE_CAN_RUN_L_1, GFX_SPRITE_CAN_RUN_L_2, GFX_SPRITE_CAN_RUN_L_3,
+      GFX_SPRITE_CAN_RUN_L_4, GFX_SPRITE_CAN_RUN_L_5, GFX_SPRITE_CAN_RUN_L_6
     );
 
   } else if (player->state == PLAYER_STATE_IDLE) {
 
-    if (player->last_state & PLAYER_STATE_RUN_U) {
-      gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_IDLE_U);
-    } else if (player->last_state & PLAYER_STATE_RUN_D) {
-      gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_IDLE_D);
-    } else if (player->last_state == PLAYER_STATE_RUN_R) {
-      gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_IDLE_R);
-    } else if (player->last_state == PLAYER_STATE_RUN_L) {
-      gfx_start_anim(player->sprite, state_changed, GFX_SPRITE_CAN_IDLE_L);
+    if ((player->last_state & PLAYER_STATE_RUN_U) && state_changed) {
+      player->sprite = GFX_SPRITE_CAN_IDLE_U;
+    } else if ((player->last_state & PLAYER_STATE_RUN_D) && state_changed) {
+      player->sprite = GFX_SPRITE_CAN_IDLE_D;
+    } else if (player->last_state == PLAYER_STATE_RUN_R && state_changed) {
+      player->sprite = GFX_SPRITE_CAN_IDLE_R;
+    } else if (player->last_state == PLAYER_STATE_RUN_L && state_changed) {
+      player->sprite = GFX_SPRITE_CAN_IDLE_L;
     }
 
   }

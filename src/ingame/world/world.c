@@ -18,7 +18,7 @@ static void _world_load_overworld(world_handler_t* world_handler) {
     * world_handler->current_loaded_world.base_tile_width;
 
   world_handler->current_loaded_world.base 
-    = (sprite_code_t*) malloc(size * sizeof(sprite_code_t));
+    = (gfx_sprite_code_t*) malloc(size * sizeof(gfx_sprite_code_t));
 
   for(uint32_t x = 0; x < size; x++) {
     (world_handler->current_loaded_world.base)[x] = GFX_SPRITE_GRASS_A;

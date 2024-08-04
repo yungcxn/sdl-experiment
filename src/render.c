@@ -28,7 +28,7 @@ static void _render_hud(gfx_tool_t* gt, hud_t* hud) {
   uint8_t yoff = heartwidth;
   uint8_t accoff = 0;
   for (int i = 0; i < current; i++) {
-    sprite_code_t c = GFX_SPRITE_SMALL_NO_STAMINA_M;
+    gfx_sprite_code_t c = GFX_SPRITE_SMALL_NO_STAMINA_M;
     uint8_t addingoff = staminawidth2;
     if (i == 0) {
       c = GFX_SPRITE_SMALL_NO_STAMINA_L;
@@ -45,7 +45,7 @@ static void _render_hud(gfx_tool_t* gt, hud_t* hud) {
   xoff = orgxoff;
   accoff = 0;
   for (int i = 0; i < current; i++) {
-    sprite_code_t c = GFX_SPRITE_SMALL_STAMINA_M;
+    gfx_sprite_code_t c = GFX_SPRITE_SMALL_STAMINA_M;
     uint8_t addingoff = staminawidth2;
     if (i == 0) {
       c = GFX_SPRITE_SMALL_STAMINA_L;
@@ -61,7 +61,7 @@ static void _render_hud(gfx_tool_t* gt, hud_t* hud) {
 }
 
 static inline void _render_on_map(
-  gfx_tool_t* gt, sprite_code_t sprite,
+  gfx_tool_t* gt, gfx_sprite_code_t sprite,
   int32_t screen_tlp_x, int32_t screen_tlp_y, //screen top left pixel
   vec2f sprite_mapcoord
 ) {
@@ -101,7 +101,7 @@ static void _render_world(
         if (i >= 0 && j >= 0 && i < world.base_tile_width 
           && j < world.base_tile_height) {
           // try to render world
-          sprite_code_t target_sprite_code 
+          gfx_sprite_code_t target_sprite_code 
             = world.base[j * world.base_tile_width + i];
           if (target_sprite_code != GFX_SPRITE_NONE) {
             gfx_render_sprite_i(gt, target_sprite_code, scr_x, scr_y);

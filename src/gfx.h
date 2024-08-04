@@ -140,20 +140,7 @@
 
 #define GFX_SPRITE_MAX_ID GFX_SPRITE_SMALL_STAMINA_R
 
-#define gfx_anim(var, elapsed, duration, current, next) do {  \
-  if (((elapsed) >= (duration)) && ((var) == (current))) {   \
-    (var) = (next);                                          \
-    (elapsed) = 0.0f;                                        \
-  }                                                          \
-} while (0)
-
-#define gfx_start_anim(var, state_changed, start)  do {  \
-  if (state_changed) {                                  \
-    (var) = (start);                                    \
-  }                                                     \
-} while (0)
-
-typedef uint16_t sprite_code_t;
+typedef uint16_t gfx_sprite_code_t;
 
 typedef struct {
   uint16_t x,y,w,h;

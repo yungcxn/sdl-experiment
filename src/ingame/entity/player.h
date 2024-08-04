@@ -8,6 +8,7 @@
 #include "../../gfx.h"
 #include "../../event/event.h"
 #include "../../util/math.h"
+#include "../../util/anim.h"
 
 #define PLAYER_TYPE 1
 
@@ -29,7 +30,7 @@ typedef struct {
   base_entity_t core;
   player_state_t state;
   player_state_t last_state;
-  sprite_code_t sprite;
+  gfx_sprite_code_t sprite;
   float sprite_elapsed_time;
   vec2f sprite_bias;
   float diam_speed;

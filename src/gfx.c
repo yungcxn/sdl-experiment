@@ -264,7 +264,7 @@ void gfx_destroy(gfx_tool_t* t) {
   SDL_Quit();
 }
 
-void gfx_render_sprite_i(gfx_tool_t* t, sprite_code_t si_index, int32_t x, int32_t y) {
+void gfx_render_sprite_i(gfx_tool_t* t, gfx_sprite_code_t si_index, int32_t x, int32_t y) {
     gfx_sprite_info si = t->si_array[si_index];
     SDL_Rect src = { si.x, si.y, si.w, si.h };
     SDL_Rect dest = { x, y, si.w, si.h };

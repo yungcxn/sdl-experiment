@@ -1,6 +1,10 @@
 #ifndef CCE_H
 #define CCE_H
 
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdint.h>
+
 // can's character encoding
 // base is ascii
 
@@ -23,9 +27,7 @@
 #define CCE_LOWER_TURK_I      0x95 // without dot
 #define CCE_UPPER_TURK_S      0x96
 #define CCE_LOWER_TURK_S      0x97
-#define CCE_SKIP              0xff
-#define CCE_FORMATTER  '\a'
 
-void cce_transform(char* t);
+char* cce_create(wchar_t* w);
 
 #endif

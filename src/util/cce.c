@@ -1,71 +1,76 @@
 #include "./cce.h"
 
-void cce_transform(char* t) {
-  char replace_mode = 0;
-  while(*t != '\0') {
-    if (*t == CCE_FORMATTER) {
-      *t = CCE_SKIP;
-      replace_mode = 1;
-      continue;
-    }
+char* cce_create(wchar_t* t) {
+  int len = -1;
+  wchar_t* r = t;
+  for (; r != 0; r++) 
+    ++len;
 
-    if (replace_mode) {
+  if (len == -1)
+    return 0;
+
+  char* x = (char*) malloc(len * sizeof(char));
+  for (; t != 0; t++) {
+    if (*t <= 0x7f) {
+      // fits in ascii
+      *x = (char) *t;
+    }
+    else {
       switch(*t) {
-        case 'A':
-          *t = CCE_UPPER_AE;
+        case L'Ä':
+          *x = CCE_UPPER_AE;
           break;
-        case 'a':
-          *t = CCE_LOWER_AE;
+        case L'ä':
+          *x = CCE_LOWER_AE;
           break;
-        case 'O':
-          *t = CCE_UPPER_OE;
+        case L'Ö':
+          *x = CCE_UPPER_OE;
           break;
-        case 'o':
-          *t = CCE_LOWER_OE;
+        case L'ö':
+          *x = CCE_LOWER_OE;
           break;
-        case 'U':
-          *t = CCE_UPPER_UE;
+        case L'Ü':
+          *x = CCE_UPPER_UE;
           break;
-        case 'u':
-          *t = CCE_LOWER_UE;
+        case L'ü':
+          *x = CCE_LOWER_UE;
           break;
-        case 'Z':
-          *t = CCE_UPPER_ESZETT;
+        case L'ẞ':
+          *x = CCE_UPPER_ESZETT;
           break;
-        case 'z':
-          *t = CCE_LOWER_ESZETT;
+        case L'ß':
+          *x = CCE_LOWER_ESZETT;
           break;
-        case 'C':
-          *t = CCE_UPPER_TURK_C;
+        case L'Ç':
+          *x = CCE_UPPER_TURK_C;
           break;
-        case 'c':
-          *t = CCE_LOWER_TURK_C;
+        case L'ç':
+          *x = CCE_LOWER_TURK_C;
           break;
-        case 'G':
-          *t = CCE_UPPER_TURK_G;
+        case L'Ğ':
+          *x = CCE_UPPER_TURK_G;
           break;
-        case 'g':
-          *t = CCE_LOWER_TURK_G;
+        case L'ğ':
+          *x = CCE_LOWER_TURK_G;
           break;
-        case 'I':
-          *t = CCE_UPPER_TURK_I;
+        case L'İ':
+          *x = CCE_UPPER_TURK_I;
           break;
-        case 'i':
-          *t = CCE_LOWER_TURK_I;
+        case L'ı':
+          *x = CCE_LOWER_TURK_I;
           break;
-        case 'S':
-          *t = CCE_UPPER_TURK_S;
+        case L'Ş':
+          *x = CCE_UPPER_TURK_S;
           break;
-        case 's':
-          *t = CCE_LOWER_TURK_S;
+        case L'ş':
+          *x = CCE_LOWER_TURK_S;
           break;
-        case '"':
-          *t = CCE_LOWER_QUOT;
+        case L'„':
+          *x = CCE_LOWER_QUOT;
           break;
       }
-
-      replace_mode = 0;
     }
-    ++t;
+    ++x;  
   }
+  return x;
 }

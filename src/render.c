@@ -135,8 +135,6 @@ static void _render_world(
 
 void render_render(gfx_tool_t* gt, ingame_data_t* ingame_data, float dt) {
   gfx_clear(gt);
-  gfx_fill_rect_a(gt, 0, 0, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT,
-    PALETTE_BLACK_R, PALETTE_BLACK_G, PALETTE_BLACK_B, 255);
 
   if (ingame_data->world_handler->current_world_number != 0) {
     _render_world(gt, ingame_data->world_handler,

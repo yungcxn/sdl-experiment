@@ -1,65 +1,38 @@
 #include "./gfx.h"
+static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t width,
+                                          uint32_t height) {
+  uint8_t arr[] = {RES_ALL_DATA};
+  
+  // Create Palette
+  SDL_Color pal[256]; 
+  pal[0] = (SDL_Color) {PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0};
+  pal[1] = (SDL_Color) {PALETTE_COLOR_1_R, PALETTE_COLOR_1_G, PALETTE_COLOR_1_B, 0xff};
+  pal[2] = (SDL_Color) {PALETTE_COLOR_2_R, PALETTE_COLOR_2_G, PALETTE_COLOR_2_B, 0xff};
+  pal[3] = (SDL_Color) {PALETTE_COLOR_3_R, PALETTE_COLOR_3_G, PALETTE_COLOR_3_B, 0xff};
+  pal[4] = (SDL_Color) {PALETTE_COLOR_4_R, PALETTE_COLOR_4_G, PALETTE_COLOR_4_B, 0xff};
+  pal[5] = (SDL_Color) {PALETTE_COLOR_5_R, PALETTE_COLOR_5_G, PALETTE_COLOR_5_B, 0xff};
+  pal[6] = (SDL_Color) {PALETTE_COLOR_6_R, PALETTE_COLOR_6_G, PALETTE_COLOR_6_B, 0xff};
+  pal[7] = (SDL_Color) {PALETTE_COLOR_7_R, PALETTE_COLOR_7_G, PALETTE_COLOR_7_B, 0xff};
+  pal[8] = (SDL_Color) {PALETTE_COLOR_8_R, PALETTE_COLOR_8_G, PALETTE_COLOR_8_B, 0xff};
+  pal[9] = (SDL_Color) {PALETTE_COLOR_9_R, PALETTE_COLOR_9_G, PALETTE_COLOR_9_B, 0xff};
+  pal[10] = (SDL_Color) {PALETTE_COLOR_10_R, PALETTE_COLOR_10_G, PALETTE_COLOR_10_B, 0xff};
+  pal[11] = (SDL_Color) {PALETTE_COLOR_11_R, PALETTE_COLOR_11_G, PALETTE_COLOR_11_B, 0xff};
+  pal[12] = (SDL_Color) {PALETTE_COLOR_12_R, PALETTE_COLOR_12_G, PALETTE_COLOR_12_B, 0xff};
+  pal[13] = (SDL_Color) {PALETTE_COLOR_13_R, PALETTE_COLOR_13_G, PALETTE_COLOR_13_B, 0xff};
+  pal[14] = (SDL_Color) {PALETTE_COLOR_14_R, PALETTE_COLOR_14_G, PALETTE_COLOR_14_B, 0xff};
+  pal[15] = (SDL_Color) {PALETTE_COLOR_15_R, PALETTE_COLOR_15_G, PALETTE_COLOR_15_B, 0xff};
+  pal[16] = (SDL_Color) {PALETTE_COLOR_16_R, PALETTE_COLOR_16_G, PALETTE_COLOR_16_B, 0xff};
 
-static uint32_t* _gfx_pixel_array_init() {
-  uint8_t data[] = {RES_ALL_DATA};
-  uint16_t width = RES_ALL_WIDTH;
-  uint16_t height = RES_ALL_HEIGHT;
-
-  uint32_t* pixel_array = (uint32_t*) malloc(sizeof(uint32_t) * width * height);
-
-  for (uint16_t j = 0; j < height; j++) {
-    for (uint16_t i = 0; i < width; i++) {
-      uint32_t translated_color = 0x00000000;
-      uint32_t ind = j * width + i;
-      uint8_t palette_color_index = data[ind];
-      
-      switch (palette_color_index) {
-        case 0: translated_color = PALETTE_COLOR_0; break;
-        case 1: translated_color = PALETTE_COLOR_1; break;
-        case 2: translated_color = PALETTE_COLOR_2; break;
-        case 3: translated_color = PALETTE_COLOR_3; break;
-        case 4: translated_color = PALETTE_COLOR_4; break;
-        case 5: translated_color = PALETTE_COLOR_5; break;
-        case 6: translated_color = PALETTE_COLOR_6; break;
-        case 7: translated_color = PALETTE_COLOR_7; break;
-        case 8: translated_color = PALETTE_COLOR_8; break;
-        case 9: translated_color = PALETTE_COLOR_9; break;
-        case 10: translated_color = PALETTE_COLOR_10; break;
-        case 11: translated_color = PALETTE_COLOR_11; break;
-        case 12: translated_color = PALETTE_COLOR_12; break;
-        case 13: translated_color = PALETTE_COLOR_13; break;
-        case 14: translated_color = PALETTE_COLOR_14; break;
-        case 15: translated_color = PALETTE_COLOR_15; break;
-      }
-      pixel_array[ind] = translated_color;
-    }
-  }
-
-  return pixel_array;
-}
-
-
-static void _gfx_pixel_array_destroy(uint32_t* pixel_array) {
-  safe_free(pixel_array);
-}
-
-static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t* rgba_array, int32_t width, int32_t height) {
   // Create SDL_Surface from the pixel data 
   SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
-    rgba_array, 
-    width, 
-    height, 
-    32,     
-    width * 4,    
-    0xFF000000,    
-    0x00FF0000,   
-    0x0000FF00,    
-    0x000000FF     
+    arr, width, height, 8, width * 1, 0, 0, 0, 0     
   );
 
   if (!surface) {
     printf("SDL_CreateRGBSurfaceFrom failed: %s\n", SDL_GetError());
   }
+
+  SDL_SetPaletteColors(surface->format->palette, pal, 0, 256);
 
   // Create texture from the surface
   SDL_Texture* in = SDL_CreateTextureFromSurface(renderer, surface);
@@ -71,6 +44,8 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer, uint32_t* rgba
     printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
     return 0;
   }
+
+  SDL_SetTextureBlendMode(in, SDL_BLENDMODE_BLEND);
 
   return in;
 }
@@ -243,8 +218,7 @@ gfx_tool_t* gfx_init() {
   SDL_RenderSetLogicalSize(t->renderer, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT);
   SDL_RenderSetIntegerScale(t->renderer, 1);
 
-  t->pixel_array = _gfx_pixel_array_init();
-  t->spritesheet = _gfx_spritesheet_init(t->renderer, t->pixel_array, RES_ALL_WIDTH, RES_ALL_HEIGHT);
+  t->spritesheet = _gfx_spritesheet_init(t->renderer, RES_ALL_WIDTH, RES_ALL_HEIGHT);
   if(t->spritesheet == 0)
     return 0;
 
@@ -259,12 +233,12 @@ void gfx_destroy(gfx_tool_t* t) {
   SDL_DestroyWindow(t->window);
   SDL_DestroyTexture(t->spritesheet);
   _gfx_sprite_info_destroy(t->si_array);
-  _gfx_pixel_array_destroy(t->pixel_array);
   safe_free(t);
   SDL_Quit();
 }
 
-void gfx_render_sprite_i(gfx_tool_t* t, gfx_sprite_code_t si_index, int32_t x, int32_t y) {
+void gfx_render_sprite_i(gfx_tool_t* t, gfx_sprite_code_t si_index, int32_t x, 
+                         int32_t y) {
     gfx_sprite_info si = t->si_array[si_index];
     SDL_Rect src = { si.x, si.y, si.w, si.h };
     SDL_Rect dest = { x, y, si.w, si.h };
@@ -279,13 +253,14 @@ void gfx_render_sprite_xy(gfx_tool_t* t, gfx_sprite_info si, int32_t x, int32_t 
 
 
 void gfx_clear(gfx_tool_t* t) {
-  SDL_SetRenderDrawColor(t->renderer, PALETTE_BLACK_R, PALETTE_BLACK_G, PALETTE_BLACK_B, 255);
+  SDL_SetRenderDrawColor(t->renderer, PALETTE_COLOR_1_R, PALETTE_COLOR_1_G, 
+    PALETTE_COLOR_1_B, 255);
   SDL_RenderClear(t->renderer);  
 }
 
 
 void gfx_draw_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
- uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+                     uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 
   SDL_Rect rect = {x,y,w,h};
   SDL_SetRenderDrawColor(t->renderer, r, g, b, a);

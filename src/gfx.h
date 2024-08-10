@@ -149,7 +149,6 @@ typedef struct {
 typedef struct {
   SDL_Window* window;
   SDL_Renderer* renderer;
-  uint32_t* pixel_array; // rgba
   SDL_Texture* spritesheet;
   gfx_sprite_info* si_array; // sprite info array
 } gfx_tool_t;

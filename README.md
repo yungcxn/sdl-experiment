@@ -1,5 +1,5 @@
 # sdl-experiment
-This COMPLETELY FROM SCRATCH! C + SDL game aims to be:
+This completely from scratch C + SDL game aims to be:
 - minimal
 - performant
 - modular in regards to graphics libraries: should be easy to exchange
@@ -11,12 +11,12 @@ This COMPLETELY FROM SCRATCH! C + SDL game aims to be:
 
 ### Arch
 ```
-sudo pacman -S sdl2 sdl2_mixer gcc make
+sudo pacman -S sdl2 sdl2_mixer gcc cmake
 ```
 
 ### Fedora
 ```
-sudo dnf install SDL2-devel SDL2_mixer-devel
+sudo dnf install SDL2-devel SDL2_mixer-devel gcc cmake
 ```
 
 ## Build & Run
@@ -27,7 +27,6 @@ sudo dnf install SDL2-devel SDL2_mixer-devel
 
 ## Urgent TODOs
 
-- work on input
 - work on player
 - solve world sprite update
 

@@ -1,4 +1,6 @@
 experiment
+./build
+./build/*
 
 # Prerequisites
 *.d

@@ -11,12 +11,12 @@ This completely from scratch C + SDL game aims to be:
 
 ### Arch
 ```
-sudo pacman -S sdl2 sdl2_mixer gcc cmake
+sudo pacman -S sdl2 sdl2_mixer gcc make
 ```
 
 ### Fedora
 ```
-sudo dnf install SDL2-devel SDL2_mixer-devel gcc cmake
+sudo dnf install SDL2-devel SDL2_mixer-devel gcc make
 ```
 
 ## Build & Run

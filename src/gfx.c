@@ -279,7 +279,7 @@ void gfx_render_sprite_xy(gfx_tool_t* t, gfx_sprite_info si, int32_t x, int32_t 
 
 
 void gfx_clear(gfx_tool_t* t) {
-  SDL_SetRenderDrawColor(t->renderer, 0, 0, 0, 255);
+  SDL_SetRenderDrawColor(t->renderer, PALETTE_BLACK_R, PALETTE_BLACK_G, PALETTE_BLACK_B, 255);
   SDL_RenderClear(t->renderer);  
 }
 

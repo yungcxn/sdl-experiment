@@ -1,1 +1,1 @@
-valgrind --leak-check=full --show-leak-kinds=all ./experiment
+valgrind --leak-check=full --track-origins=yes ./experiment

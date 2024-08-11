@@ -35,7 +35,6 @@
     "vector": "c",
     "forward_list": "c",
     "gfx.h": "c",
-    "res.h": "c",
     "gmem.h": "c",
     "queue.h": "c",
     "render.h": "c",
@@ -53,6 +52,14 @@
     "event.h": "c",
     "math.h": "c",
     "random": "c",
-    "chrono": "c"
+    "chrono": "c",
+    "res.h": "c",
+    "res_handler.h": "c"
+  },
+  "files.exclude": {
+    "src/resource/res.h": true
+  },
+  "search.exclude": {
+    "src/resource/res.h": true
   }
 }

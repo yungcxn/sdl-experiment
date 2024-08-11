@@ -7,7 +7,7 @@
 #include <SDL2/SDL_image.h>
 #include <stdint.h>
 #include "./util/primitive.h"
-#include "./resource/res.h"
+#include "./resource/res_handler.h"
 #include "./resource/palette.h"
 #include "./util/vec.h"
 
@@ -156,16 +156,24 @@ typedef struct {
 gfx_tool_t* gfx_init();
 void gfx_destroy(gfx_tool_t*);
 void gfx_clear(gfx_tool_t* t);
-void gfx_draw_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-void gfx_draw_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, uint8_t r, uint8_t g, uint8_t b); 
-void gfx_fill_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-void gfx_fill_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, uint8_t r, uint8_t g, uint8_t b); 
-void gfx_draw_point_a(gfx_tool_t* t, int32_t x, int32_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-void gfx_draw_point(gfx_tool_t* t, int32_t x, int32_t y, uint8_t r, uint8_t g, uint8_t b); 
+void gfx_draw_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
+                     uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void gfx_draw_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
+                   uint8_t r, uint8_t g, uint8_t b); 
+void gfx_fill_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
+                     uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void gfx_fill_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, 
+                  uint8_t r, uint8_t g, uint8_t b); 
+void gfx_draw_point_a(gfx_tool_t* t, int32_t x, int32_t y, 
+                      uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void gfx_draw_point(gfx_tool_t* t, int32_t x, int32_t y, 
+                    uint8_t r, uint8_t g, uint8_t b); 
 // p = paletted
-void gfx_draw_point_c16_split(gfx_tool_t* t, int32_t x, int32_t y, uint8_t ref, uint8_t a);
+void gfx_draw_point_c16_split(gfx_tool_t* t, int32_t x, int32_t y, 
+                              uint8_t ref, uint8_t a);
 void gfx_render_sprite_i(gfx_tool_t* t, uint16_t si_index, int32_t x, int32_t y);
-void gfx_render_sprite_xy(gfx_tool_t* t, gfx_sprite_info si, int32_t x, int32_t y);
+void gfx_render_sprite_xy(gfx_tool_t* t, gfx_sprite_info si, 
+                          int32_t x, int32_t y);
 
 void gfx_delay(uint32_t d);
 void gfx_commit(gfx_tool_t* t);

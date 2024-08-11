@@ -1,5 +1,8 @@
 CC = gcc
-CFLAGS = -DDEBUG_GAME -Wall -Wextra -Wshadow -std=c99 -I./include -gz -flarge-source-files
+CFLAGS_COMMON = -DDEBUG_GAME -Wall -Wextra -Wshadow -std=c99 -I./include
+CFLAGS_NORMAL = $(CFLAGS_COMMON) -O3 -g3
+CFLAGS_LARGE = $(CFLAGS_COMMON) -flarge-source-files
+
 LIBS = -lSDL2 -lSDL2_mixer
 SRCS := $(shell find . -name '*.c')
 OBJS := $(SRCS:.c=.o)
@@ -10,19 +13,24 @@ EXEC = experiment
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+	@$(CC) $(CFLAGS_COMMON) -o $@ $^ $(LIBS)
 
-# Rule for building object files
+# Rule for building object files in src/resource with different flags
+src/resource/%.o: src/resource/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS_LARGE) -c $< -o $@
+
+# Rule for building object files elsewhere with the normal flags
 %.o: %.c
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS_NORMAL) -c $< -o $@
 
 clean-obj:
-	find . -name '*.o' -type f -delete
+	@find . -name '*.o' -type f -delete
 
 clean:
-	find . -name '*.o' -type f -delete
-	rm -rf $(EXEC)
+	@find . -name '*.o' -type f -delete
+	@rm -rf $(EXEC)
 
 print-%:
 	@echo '$*=$($*)'

@@ -163,7 +163,7 @@ void gfx_draw_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
 void gfx_fill_rect_a(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h,
                      uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void gfx_fill_rect(gfx_tool_t* t, int32_t x, int32_t y, int32_t w, int32_t h, 
-                  uint8_t r, uint8_t g, uint8_t b); 
+                   uint8_t r, uint8_t g, uint8_t b); 
 void gfx_draw_point_a(gfx_tool_t* t, int32_t x, int32_t y, 
                       uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void gfx_draw_point(gfx_tool_t* t, int32_t x, int32_t y, 

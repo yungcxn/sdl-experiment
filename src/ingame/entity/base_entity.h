@@ -20,5 +20,6 @@ typedef struct {
   mat22f hurt_box;
 } base_entity_t;
 
+// TODO: lookup table'd update function
 
 #endif

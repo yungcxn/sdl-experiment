@@ -3,41 +3,42 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer) {
   res_handler_spritesheet_t pixels = res_handler_init_spritesheet();
 
   // Create Palette
-  SDL_Color pal[256] = {0}; 
-  pal[0] = (SDL_Color) 
-    {PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0};
-  pal[1] = (SDL_Color) 
-    {PALETTE_COLOR_1_R, PALETTE_COLOR_1_G, PALETTE_COLOR_1_B, 0xff};
-  pal[2] = (SDL_Color) 
-    {PALETTE_COLOR_2_R, PALETTE_COLOR_2_G, PALETTE_COLOR_2_B, 0xff};
-  pal[3] = (SDL_Color) 
-    {PALETTE_COLOR_3_R, PALETTE_COLOR_3_G, PALETTE_COLOR_3_B, 0xff};
-  pal[4] = (SDL_Color) 
-    {PALETTE_COLOR_4_R, PALETTE_COLOR_4_G, PALETTE_COLOR_4_B, 0xff};
-  pal[5] = (SDL_Color) 
-    {PALETTE_COLOR_5_R, PALETTE_COLOR_5_G, PALETTE_COLOR_5_B, 0xff};
-  pal[6] = (SDL_Color) 
-    {PALETTE_COLOR_6_R, PALETTE_COLOR_6_G, PALETTE_COLOR_6_B, 0xff};
-  pal[7] = (SDL_Color) 
-    {PALETTE_COLOR_7_R, PALETTE_COLOR_7_G, PALETTE_COLOR_7_B, 0xff};
-  pal[8] = (SDL_Color) 
-    {PALETTE_COLOR_8_R, PALETTE_COLOR_8_G, PALETTE_COLOR_8_B, 0xff};
-  pal[9] = (SDL_Color) 
-    {PALETTE_COLOR_9_R, PALETTE_COLOR_9_G, PALETTE_COLOR_9_B, 0xff};
-  pal[10] = (SDL_Color) 
-    {PALETTE_COLOR_10_R, PALETTE_COLOR_10_G, PALETTE_COLOR_10_B, 0xff};
-  pal[11] = (SDL_Color) 
-    {PALETTE_COLOR_11_R, PALETTE_COLOR_11_G, PALETTE_COLOR_11_B, 0xff};
-  pal[12] = (SDL_Color) 
-    {PALETTE_COLOR_12_R, PALETTE_COLOR_12_G, PALETTE_COLOR_12_B, 0xff};
-  pal[13] = (SDL_Color) 
-    {PALETTE_COLOR_13_R, PALETTE_COLOR_13_G, PALETTE_COLOR_13_B, 0xff};
-  pal[14] = (SDL_Color) 
-    {PALETTE_COLOR_14_R, PALETTE_COLOR_14_G, PALETTE_COLOR_14_B, 0xff};
-  pal[15] = (SDL_Color) 
-    {PALETTE_COLOR_15_R, PALETTE_COLOR_15_G, PALETTE_COLOR_15_B, 0xff};
-  pal[16] = (SDL_Color) 
-    {PALETTE_COLOR_16_R, PALETTE_COLOR_16_G, PALETTE_COLOR_16_B, 0xff};
+  SDL_Color pal[256] = {
+    [0] = (SDL_Color) 
+        {PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0, PALETTE_COLOR_0},
+    [1] = (SDL_Color) 
+        {PALETTE_COLOR_1_R, PALETTE_COLOR_1_G, PALETTE_COLOR_1_B, 0xff},
+    [2] = (SDL_Color) 
+        {PALETTE_COLOR_2_R, PALETTE_COLOR_2_G, PALETTE_COLOR_2_B, 0xff},
+    [3] = (SDL_Color) 
+        {PALETTE_COLOR_3_R, PALETTE_COLOR_3_G, PALETTE_COLOR_3_B, 0xff},
+    [4] = (SDL_Color) 
+        {PALETTE_COLOR_4_R, PALETTE_COLOR_4_G, PALETTE_COLOR_4_B, 0xff},
+    [5] = (SDL_Color) 
+        {PALETTE_COLOR_5_R, PALETTE_COLOR_5_G, PALETTE_COLOR_5_B, 0xff},
+    [6] = (SDL_Color) 
+        {PALETTE_COLOR_6_R, PALETTE_COLOR_6_G, PALETTE_COLOR_6_B, 0xff},
+    [7] = (SDL_Color) 
+        {PALETTE_COLOR_7_R, PALETTE_COLOR_7_G, PALETTE_COLOR_7_B, 0xff},
+    [8] = (SDL_Color) 
+        {PALETTE_COLOR_8_R, PALETTE_COLOR_8_G, PALETTE_COLOR_8_B, 0xff},
+    [9] = (SDL_Color) 
+        {PALETTE_COLOR_9_R, PALETTE_COLOR_9_G, PALETTE_COLOR_9_B, 0xff},
+    [10] = (SDL_Color) 
+        {PALETTE_COLOR_10_R, PALETTE_COLOR_10_G, PALETTE_COLOR_10_B, 0xff},
+    [11] = (SDL_Color) 
+        {PALETTE_COLOR_11_R, PALETTE_COLOR_11_G, PALETTE_COLOR_11_B, 0xff},
+    [12] = (SDL_Color) 
+        {PALETTE_COLOR_12_R, PALETTE_COLOR_12_G, PALETTE_COLOR_12_B, 0xff},
+    [13] = (SDL_Color) 
+        {PALETTE_COLOR_13_R, PALETTE_COLOR_13_G, PALETTE_COLOR_13_B, 0xff},
+    [14] = (SDL_Color) 
+        {PALETTE_COLOR_14_R, PALETTE_COLOR_14_G, PALETTE_COLOR_14_B, 0xff},
+    [15] = (SDL_Color) 
+        {PALETTE_COLOR_15_R, PALETTE_COLOR_15_G, PALETTE_COLOR_15_B, 0xff},
+    [16] = (SDL_Color) 
+        {PALETTE_COLOR_16_R, PALETTE_COLOR_16_G, PALETTE_COLOR_16_B, 0xff}
+  };
 
   // Create SDL_Surface from the pixel data 
   SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(

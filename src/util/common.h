@@ -18,18 +18,18 @@ typedef char* string;
 
 #define safe_free(ptr) do { free((ptr)); (ptr) = NULL; } while (0)
 
-#define assert(x)                       \
-  do {                                  \
-    if (!(x)) {                         \
+#define assert(x)                           \
+  do {                                      \
+    if (!(x)) {                             \
       debug_printf("SDL_ERROR: %s", #x);    \
-      exit(1);                          \
-    }                                   \
+      exit(1);                              \
+    }                                       \
   } while(0);
 
 #define sdl_assert(x)                                       \
   do {                                                      \
     if (!(x)) {                                             \
-      debug_printf("ERROR - %s %s", SDL_GetError(), #x);   \
+      debug_printf("ERROR - %s %s", SDL_GetError(), #x);    \
       exit(1);                                              \
     }                                                       \
   } while(0);

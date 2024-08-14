@@ -6,7 +6,7 @@
 
 
 #ifdef DEBUG_GAME
-    #define debug_printf(fmt, ...)                                         \
+    #define debug_printf(fmt, ...)                                           \
     fprintf(stderr, "%s:%d - %s(): " fmt "\n", __FILE__, __LINE__, __func__, \
             ##__VA_ARGS__)
 #else

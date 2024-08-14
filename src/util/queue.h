@@ -1,9 +1,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "./primitive.h"
+#include "./common.h"
 #include <stdint.h>
-#include <stdlib.h>
 
 /* should be the biggest needed space across the project */
 /* or i will use custom size queues for every size       */

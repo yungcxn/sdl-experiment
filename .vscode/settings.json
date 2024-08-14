@@ -5,7 +5,7 @@
     "time.h": "c",
     "color.h": "c",
     "stdint.h": "c",
-    "primitive.h": "c",
+    "common.h": "c",
     "ingame.h": "c",
     "debug.h": "c",
     "world.h": "c",

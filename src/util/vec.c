@@ -1,6 +1,6 @@
 #include "./vec.h"
  
-#include "./primitive.h"
+#include "./common.h"
 
 // TODO directly write
 

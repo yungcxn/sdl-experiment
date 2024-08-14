@@ -1,7 +1,7 @@
 #ifndef BASE_ENTITY_H
 #define BASE_ENTITY_H
 
-#include "../../util/primitive.h"
+#include "../../util/common.h"
 #include "../../util/vec.h"
 
 #define BASE_ENTITY_NAME_LEN 15

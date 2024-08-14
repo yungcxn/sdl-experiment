@@ -2,14 +2,13 @@
 #define DEBUG_H
 
 #ifdef DEBUG_GAME
-#include "./time.h"
 #include <stdint.h>
-#include <stdio.h>
-#include <SDL2/SDL.h>
+
 
 #ifdef DEBUG_GAME
-    #define debug_printf(fmt, ...) fprintf(stderr, "%s:%s(): " fmt, \
-            __FILE__, __func__, ##__VA_ARGS__)
+    #define debug_printf(fmt, ...)                                         \
+    fprintf(stderr, "%s:%d - %s(): " fmt "\n", __FILE__, __LINE__, __func__, \
+            ##__VA_ARGS__)
 #else
     #define debug_printf(fmt, ...) ((void)0)
 #endif

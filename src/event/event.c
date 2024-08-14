@@ -1,5 +1,7 @@
 #include "./event.h"
 
+#include <SDL2/SDL.h>
+
 void event_handle(bool* running, uint32_t current_ticks, event_input_t* input) {
   SDL_Event event = {0};
   const uint8_t* state = SDL_GetKeyboardState(NULL);

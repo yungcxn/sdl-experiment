@@ -2,7 +2,7 @@
 #define CAM_H
 
 #include "../../util/vec.h"
-#include "../../util/primitive.h"
+#include "../../util/common.h"
 #include "../../util/debug.h"
 
 #define CAM_FIXED_FLAG     0b00000010

@@ -45,25 +45,16 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer) {
     pixels.sheet, pixels.width, pixels.height, 8, pixels.width, 0, 0,
     0, 0     
   );
-
-  if (!surface) {
-    printf("SDL_CreateRGBSurfaceFrom failed: %s\n", SDL_GetError());
-  }
+  sdl_assert(surface);
 
   SDL_SetPaletteColors(surface->format->palette, pal, 0, 256);
 
   // Create texture from the surface
   SDL_Texture* in = SDL_CreateTextureFromSurface(renderer, surface);
-
+  sdl_assert(in);
   // Free the surface as it is no longer needed
   SDL_FreeSurface(surface);
   res_handler_destroy_spritesheet(pixels);
-
-  if (!in) {
-    printf("SDL_CreateTextureFromSurface failed: %s\n", SDL_GetError());
-    return 0;
-  }
-
   SDL_SetTextureBlendMode(in, SDL_BLENDMODE_BLEND);
 
   return in;
@@ -220,34 +211,23 @@ gfx_tool_t* gfx_init() {
 
   gfx_tool_t* t = (gfx_tool_t*) malloc(sizeof(gfx_tool_t));
 
-  if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-    SDL_Log("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-    return 0;
-  }
+  sdl_assert(SDL_Init(SDL_INIT_VIDEO) >= 0);
 
   t->window = SDL_CreateWindow("Minimal SDL Example", SDL_WINDOWPOS_UNDEFINED,
    SDL_WINDOWPOS_UNDEFINED, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT,
    SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-  if (t->window == 0) {
-    SDL_Log("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-    return 0;
-  }
+  sdl_assert(t->window);
 
   t->renderer = SDL_CreateRenderer(t->window, -1,
    /*SDL_RENDERER_PRESENTVSYNC | */SDL_RENDERER_ACCELERATED);
-
-  if (t->renderer == 0) {
-    SDL_Log("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
-    return 0;
-  }
+  sdl_assert(t->renderer);
   
   SDL_RenderSetLogicalSize(t->renderer, GFX_SCREEN_WIDTH, GFX_SCREEN_HEIGHT);
   SDL_RenderSetIntegerScale(t->renderer, 1);
 
   t->spritesheet = _gfx_spritesheet_init(t->renderer);
-  if(t->spritesheet == 0)
-    return 0;
+  sdl_assert(t->spritesheet);
 
   t->si_array = _gfx_sprite_info_init();
 

@@ -2,7 +2,7 @@
 #define ITEM_H
 
 #define MAX_ITEM_NAME 10
-#include "../../util/primitive.h"
+#include "../../util/common.h"
 
 typedef struct {
   char name[MAX_ITEM_NAME];

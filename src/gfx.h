@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdint.h>
-#include "./util/primitive.h"
+#include "./util/common.h"
 #include "./resource/res_handler.h"
 #include "./resource/palette.h"
 #include "./util/vec.h"

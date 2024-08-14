@@ -1,14 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "./util/primitive.h"
+#include "./util/common.h"
 #include "./gfx.h"
 #include "./ingame/ingame.h"
-#include "./ingame/world/world.h"
-#include "./render.h"
 #include "./event/event.h"
-#include "./util/time.h"
-#include "./util/debug.h"
+
 
 #define GAME_LAG_TIMEOUT 0.25f
 

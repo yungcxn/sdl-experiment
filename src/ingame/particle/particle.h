@@ -1,7 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
-#include "../../util/primitive.h"
+#include "../../util/common.h"
 
 typedef struct {
   uint32_t id;

@@ -1,9 +1,8 @@
 #ifndef CCE_H
 #define CCE_H
 
-#include <stdlib.h>
 #include <stddef.h>
-#include <stdint.h>
+
 
 // can's character encoding
 // base is ascii

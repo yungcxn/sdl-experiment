@@ -2,8 +2,7 @@
 #define world_H
 
 #include <stdint.h>
-#include <stdlib.h>
-#include "../../util/primitive.h"
+#include "../../util/common.h"
 #include "../../util/debug.h"
 #include "../../gfx.h"
 #include "../entity/base_entity.h"

@@ -1,5 +1,8 @@
 #include "./cce.h"
 
+#include <stdlib.h>
+#include <stdint.h>
+
 char* cce_create(wchar_t* t) {
   int len = -1;
   wchar_t* r = t;

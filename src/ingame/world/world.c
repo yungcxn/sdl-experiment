@@ -1,5 +1,7 @@
 #include "./world.h"
 
+#include <stdlib.h>
+
 static void _world_create_entities_overworld(world_handler_t* world_handler) {
   world_handler->entity_count = 0;
   //world_handler->entity_array = (base_entity_t*) 

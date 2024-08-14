@@ -1,10 +1,12 @@
 #include "./queue.h"
 
- bool queue_is_full(queue* q) {
+#include <stdlib.h>
+
+bool queue_is_full(queue* q) {
   return ((q->rear + 1) % q->size) == q->front;
 }
 
- bool queue_is_empty(queue* q) {
+bool queue_is_empty(queue* q) {
   return q->rear == q->front;
 }
 

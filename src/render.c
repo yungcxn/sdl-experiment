@@ -1,5 +1,8 @@
 #include "./render.h"
 
+#include "./ingame/cam/cam.h"
+#include "./util/debug.h"
+
 // TODO: Bad Code!
 
 static void _render_hud(gfx_tool_t* gt, hud_t* hud) {

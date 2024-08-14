@@ -1,7 +1,11 @@
+#ifdef DEBUG_GAME
 
 #include "./debug.h"
 
-#ifdef DEBUG_GAME
+#include "./time.h"
+#include <stdio.h>
+#include <SDL2/SDL.h>
+
 uint32_t debug_start_time = 0;
 int32_t debug_frames_per_sec = 0;
 uint32_t debug_current_time = 0;

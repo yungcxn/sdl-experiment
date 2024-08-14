@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "./res.h"
-#include "../util/primitive.h"
+#include "../util/common.h"
 
 typedef struct {
   uint8_t* sheet;

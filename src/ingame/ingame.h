@@ -3,7 +3,7 @@
 
 #include "./entity/player.h"
 #include "./world/world.h"
-#include "./particle/particle.h"
+#include "./particle/particle.h" //currently unused
 #include "./cam/cam.h"
 #include "./gui/hud.h"
 #include "../event/event.h"

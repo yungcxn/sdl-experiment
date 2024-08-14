@@ -1,5 +1,9 @@
 #include "./game.h"
 
+#include "./util/time.h"
+#include "./ingame/world/world.h"
+#include "./render.h"
+#include "./util/debug.h"
 
 static void _game_update(bool* running, game_data_t* game_data, float dt) {
   event_handle(running, dt, &(game_data->input));
@@ -17,8 +21,7 @@ int32_t game_mainloop() {
   game_data->state = GAME_STATE_UNDEFINED;
   game_data->gt = gfx_init();
 
-  if (game_data->gt == 0)
-    return 0;
+  assert(game_data->gt);
 
   game_data->ingame_data = ingame_init();
 

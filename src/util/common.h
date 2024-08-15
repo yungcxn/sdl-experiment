@@ -24,7 +24,7 @@ typedef char* string;
       debug_printf("SDL_ERROR: %s", #x);    \
       exit(1);                              \
     }                                       \
-  } while(0);
+  } while(0)
 
 #define sdl_assert(x)                                       \
   do {                                                      \
@@ -32,7 +32,7 @@ typedef char* string;
       debug_printf("ERROR - %s %s", SDL_GetError(), #x);    \
       exit(1);                                              \
     }                                                       \
-  } while(0);
+  } while(0)
 
 
 #define STATUS char

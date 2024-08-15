@@ -61,5 +61,6 @@
   },
   "search.exclude": {
     "src/resource/res.h": true
-  }
+  },
+  "editor.fontFamily": " \"BigBlueTermPlus Nerd Font\"",
 }

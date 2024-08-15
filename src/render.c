@@ -63,11 +63,9 @@ static void _render_hud(gfx_tool_t* gt, hud_t* hud) {
   }
 }
 
-static inline void _render_on_map(
-  gfx_tool_t* gt, gfx_sprite_code_t sprite,
-  int32_t screen_tlp_x, int32_t screen_tlp_y, //screen top left pixel
-  vec2f sprite_mapcoord
-) {
+static inline void _render_on_map(gfx_tool_t* gt, gfx_sprite_code_t sprite,
+                                  int32_t screen_tlp_x, int32_t screen_tlp_y,
+                                  vec2f sprite_mapcoord) {
   gfx_render_sprite_i(
     gt,
     sprite,
@@ -76,9 +74,8 @@ static inline void _render_on_map(
   );
 }
 
-static void _render_world(
-  gfx_tool_t* gt, world_handler_t* world_handler, cam_t* cam
-) {
+static void _render_world(gfx_tool_t* gt, world_handler_t* world_handler,
+                          cam_t* cam) {
   world_world_t world = world_handler->current_loaded_world;
 
   uint8_t pixel_offx = ((int) (cam->pos[0] * 16.0f)) % 16;
@@ -141,7 +138,7 @@ void render_render(gfx_tool_t* gt, ingame_data_t* ingame_data, float dt) {
 
   if (ingame_data->world_handler->current_world_number != 0) {
     _render_world(gt, ingame_data->world_handler,
-      &(ingame_data->cam));
+                  &(ingame_data->cam));
     _render_hud(gt, &(ingame_data->hud));
   }
     

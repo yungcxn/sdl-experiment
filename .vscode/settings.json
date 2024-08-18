@@ -54,7 +54,13 @@
     "random": "c",
     "chrono": "c",
     "res.h": "c",
-    "res_handler.h": "c"
+    "res_handler.h": "c",
+    "any": "c",
+    "type_traits": "c",
+    "limits": "c",
+    "ratio": "c",
+    "tuple": "c",
+    "variant": "c"
   },
   "files.exclude": {
     "src/resource/res.h": true

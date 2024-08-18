@@ -3,8 +3,9 @@
 
 #ifdef DEBUG_GAME
 #include <stdint.h>
+#include <stdio.h>
 
-
+#endif 
 #ifdef DEBUG_GAME
     #define debug_printf(fmt, ...)                                           \
     fprintf(stderr, "%s:%d - %s(): " fmt "\n", __FILE__, __LINE__, __func__, \
@@ -12,7 +13,7 @@
 #else
     #define debug_printf(fmt, ...) ((void)0)
 #endif
-
+#ifdef DEBUG_GAME
 extern uint32_t debug_start_time;
 extern int32_t debug_frames_per_sec;
 extern uint32_t debug_current_time;

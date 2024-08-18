@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS_COMMON = -DDEBUG_GAME -Wall -Wextra -Wshadow -std=c99 -I./include
-CFLAGS_NORMAL = $(CFLAGS_COMMON) -O3 -g3
-CFLAGS_LARGE = $(CFLAGS_COMMON) -flarge-source-files
+CFLAGS_COMMON = -DDEBUG_GAME -std=c99 -I./include
+CFLAGS_NORMAL = $(CFLAGS_COMMON) -O3 -g3 -Wall -Wextra -Wshadow 
+CFLAGS_LARGE = $(CFLAGS_COMMON) -flarge-source-files -fno-diagnostics-show-caret -ftrack-macro-expansion=0
 
 LIBS = -lSDL2 -lSDL2_mixer
 SRCS := $(shell find . -name '*.c')

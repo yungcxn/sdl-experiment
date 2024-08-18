@@ -24,6 +24,18 @@ global_color_table = {
   15: (0x9e, 0x52, 0x52),
   16: (0x4d, 0x25, 0x36)
 }
+color_to_index = {v: k for k, v in global_color_table.items()}
+
+def rc(l):
+  r = []
+  i = 0
+  while i < len(l):
+    count = 1
+    while i + count < len(l) and l[i + count] == l[i]:
+      count += 1
+    r.extend([count, l[i]])
+    i += count
+  return r
 
 
 def transform_file(path):
@@ -34,16 +46,21 @@ def transform_file(path):
   for y in range(h):
     for x in range(w):
       rgba_tuple = tuple(a[y, x])
-      rgba_tuple = rgba_tuple[:3]
-      try:
-        b.append(list(global_color_table.keys())[list(global_color_table.values()).index(rgba_tuple)])
-      except:
-        print(f"Color not found in global color table: {rgba_tuple}")
-        raise
+      rgb_tuple = rgba_tuple[:3]
+      if rgb_tuple in color_to_index:
+        b.append(color_to_index[rgb_tuple])
+      else:
+        print(f"Color not found in global color table: {rgb_tuple}")
+        raise ValueError("Color not found in global color table")
       
   name = "RES_" + (path.split('.')[0]).upper()
   width_entry = f"#define {name}_WIDTH {w}\n"
   height_entry = f"#define {name}_HEIGHT {h}\n"
+  oldlen = len(b)
+  print("----- orglen of b", oldlen)
+  b = rc(b)
+  print("----- newlen of b", len(b))
+  print("----- compression by ", f"{(oldlen / len(b)):.2f}x" )
   data_entry = f"#define {name}_DATA {','.join([str(i) for i in b])}\n\n"
   return width_entry + height_entry + data_entry
 
@@ -58,14 +75,12 @@ content = ""
 for root, dirs, files in os.walk(here + "/files"):
   for file in files:
     if file.endswith(".png"):
-      content += transform_file(file)
-
+      content = transform_file(file)
+      
 content = header_header + content + header_footer
 
 with open(here + "/" + filename, "w") as f:
   f.write(content)
-
-print(content)
 
 file_stats = os.stat(here + "/" + filename)
 print(f'----- fsize: {file_stats.st_size / (1024 * 1024)} MB')

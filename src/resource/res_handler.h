@@ -3,11 +3,9 @@
 
 // this should be unoptimized and have no debug information
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
 #include "./res.h"
 #include "../util/common.h"
+#include <stdint.h>
 
 typedef struct {
   uint8_t* sheet;

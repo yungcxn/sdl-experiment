@@ -7,11 +7,11 @@
 
 #endif 
 #ifdef DEBUG_GAME
-    #define debug_printf(fmt, ...)                                           \
+    #define DEBUG_PRINTF(fmt, ...)                                           \
     fprintf(stderr, "%s:%d - %s(): " fmt "\n", __FILE__, __LINE__, __func__, \
             ##__VA_ARGS__)
 #else
-    #define debug_printf(fmt, ...) ((void)0)
+    #define DEBUG_PRINTF(fmt, ...) ((void)0)
 #endif
 #ifdef DEBUG_GAME
 extern uint32_t debug_start_time;

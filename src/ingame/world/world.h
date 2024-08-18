@@ -1,5 +1,5 @@
-#ifndef world_H
-#define world_H
+#ifndef WORLD_H
+#define WORLD_H
 
 #include <stdint.h>
 #include "../../util/common.h"
@@ -8,7 +8,7 @@
 #include "../entity/base_entity.h"
 #include "../entity/player.h"
 
-#define world_OVERWORLD_ID 1
+#define WORLD_OVERWORLD_ID 1
 
 typedef struct {
   uint32_t world_tile_x; // positioning is top left

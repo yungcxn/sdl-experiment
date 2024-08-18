@@ -21,7 +21,7 @@ int32_t game_mainloop() {
   game_data->state = GAME_STATE_UNDEFINED;
   game_data->gt = gfx_init();
 
-  assert(game_data->gt);
+  ASSERT(game_data->gt);
 
   game_data->ingame_data = ingame_init();
 
@@ -34,7 +34,7 @@ int32_t game_mainloop() {
   // TEST 
   game_data->state = GAME_STATE_INGAME;
   world_load_world(game_data->ingame_data->world_handler, world_OVERWORLD_ID);
-  vec2_set(game_data->ingame_data->cam.pos, 100.0f, 100.0f);
+  VEC2_SET(game_data->ingame_data->cam.pos, 100.0f, 100.0f);
   
   while (running) {
     /* PRE */
@@ -54,7 +54,7 @@ int32_t game_mainloop() {
 
   ingame_destroy(game_data->ingame_data);
   gfx_destroy(game_data->gt);
-  safe_free(game_data);
+  SAFE_FREE(game_data);
 
   return 0;
 }

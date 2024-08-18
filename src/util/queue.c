@@ -20,8 +20,8 @@ queue* queue_init(int32_t size){
 }
 
 void queue_destroy(queue* q){
-  safe_free(q->array);
-  safe_free(q);
+  SAFE_FREE(q->array);
+  SAFE_FREE(q);
 }
 
 void queue_en(queue* q, QUEUE_INT x){

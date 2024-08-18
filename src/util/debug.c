@@ -40,6 +40,6 @@ void debug_calc_and_print_fps() {
 
 void debug_joystick_count() {
   #ifdef DEBUG_GAME
-  debug_printf("%i joysticks were found.\n", SDL_NumJoysticks());
+  DEBUG_PRINTF("%i joysticks were found.\n", SDL_NumJoysticks());
   #endif
 }

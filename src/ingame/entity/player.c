@@ -5,11 +5,11 @@ player_t* player_init() {
   player->core.type = PLAYER_TYPE;
   player->core.id = PLAYER_TYPE; // will be also 1
   strcpy(player->core.name, "can");
-  vec2_set(player->core.pos, 0.0f, 0.0f);
-  vec2_set(player->core.sprite_offset, -0.5f, -1.875f);
-  mat22_set(player->core.collision_box, -0.4375f, -0.5625f, 0.875f, 0.625f);
-  mat22_set(player->core.alt_collision_box, 0.0f, 0.0f, 0.0f, 0.0f);
-  mat22_copy(player->core.hurt_box, player->core.collision_box);
+  VEC2_SET(player->core.pos, 0.0f, 0.0f);
+  VEC2_SET(player->core.sprite_offset, -0.5f, -1.875f);
+  MAT22_SET(player->core.collision_box, -0.4375f, -0.5625f, 0.875f, 0.625f);
+  MAT22_SET(player->core.alt_collision_box, 0.0f, 0.0f, 0.0f, 0.0f);
+  MAT22_COPY(player->core.hurt_box, player->core.collision_box);
   player->state = PLAYER_STATE_IDLE;
   player->last_state = PLAYER_STATE_IDLE;
   player->sprite = GFX_SPRITE_NONE;
@@ -18,7 +18,7 @@ player_t* player_init() {
   player->diag_speed = math_fsqrt(
     math_fpow(player->diam_speed)/2.0f
   );
-  vec2_set(player->current_speed, 0.0f, 0.0f);
+  VEC2_SET(player->current_speed, 0.0f, 0.0f);
   player->maxhealth = 4; // should be even
   player->health = 4;
   player->maxstamina = 5; // should be odd
@@ -28,12 +28,12 @@ player_t* player_init() {
 
 
 void player_destroy(player_t* player) {
-  safe_free(player);
+  SAFE_FREE(player);
 }
 
 
 void player_spawn(player_t* player, vec2f pos) {
-  vec2_copy(player->core.pos, pos);
+  VEC2_COPY(player->core.pos, pos);
   player->state = PLAYER_STATE_IDLE;
   player->sprite = GFX_SPRITE_CAN_IDLE_D;
 }
@@ -125,38 +125,38 @@ void player_update(player_t* player, event_input_t input, float dt) {
 
   switch (player->state) {
     case PLAYER_STATE_IDLE: 
-      vec2_set(player->current_speed, 0, 0);
+      VEC2_SET(player->current_speed, 0, 0);
       break;
     case PLAYER_STATE_RUN_U: 
-      vec2_set(player->current_speed, 0, -player->diam_speed);
+      VEC2_SET(player->current_speed, 0, -player->diam_speed);
       break;
     case PLAYER_STATE_RUN_R:
-      vec2_set(player->current_speed, player->diam_speed, 0);
+      VEC2_SET(player->current_speed, player->diam_speed, 0);
       break;
     case PLAYER_STATE_RUN_D:
-      vec2_set(player->current_speed, 0, player->diam_speed);
+      VEC2_SET(player->current_speed, 0, player->diam_speed);
       break;
     case PLAYER_STATE_RUN_L:
-      vec2_set(player->current_speed, -player->diam_speed, 0);
+      VEC2_SET(player->current_speed, -player->diam_speed, 0);
       break;
     case PLAYER_STATE_RUN_UR:
-      vec2_set(player->current_speed, player->diag_speed, -player->diag_speed);
+      VEC2_SET(player->current_speed, player->diag_speed, -player->diag_speed);
       break;
     case PLAYER_STATE_RUN_RD:
-      vec2_set(player->current_speed, player->diag_speed, player->diag_speed);
+      VEC2_SET(player->current_speed, player->diag_speed, player->diag_speed);
       break;
     case PLAYER_STATE_RUN_DL:
-      vec2_set(player->current_speed, -player->diag_speed, player->diag_speed);
+      VEC2_SET(player->current_speed, -player->diag_speed, player->diag_speed);
       break;
     case PLAYER_STATE_RUN_LU:
-      vec2_set(player->current_speed, -player->diag_speed, -player->diag_speed);
+      VEC2_SET(player->current_speed, -player->diag_speed, -player->diag_speed);
       break;
   }
 
   // moving
   if ((player->state & 0b1111)) {
-    vec2_scale(player->current_speed, dt);
-    vec2_add(player->core.pos, player->current_speed);
+    VEC2_SCALE(player->current_speed, dt);
+    VEC2_ADD(player->core.pos, player->current_speed);
   }
 
 }

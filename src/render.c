@@ -123,8 +123,8 @@ static void _render_world(gfx_tool_t* gt, world_handler_t* world_handler,
   }
 
   vec2f spr_pos;
-  vec2_copy(spr_pos, world_handler->player->core.pos);
-  vec2_add(spr_pos, world_handler->player->core.sprite_offset);
+  VEC2_COPY(spr_pos, world_handler->player->core.pos);
+  VEC2_ADD(spr_pos, world_handler->player->core.sprite_offset);
   // player will be drawn all the time
   _render_on_map(gt, world_handler->player->sprite, screen_tlp_x, screen_tlp_y, spr_pos);
 

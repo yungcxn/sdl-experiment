@@ -60,7 +60,8 @@
     "limits": "c",
     "ratio": "c",
     "tuple": "c",
-    "variant": "c"
+    "variant": "c",
+    "string.h": "c"
   },
   "files.exclude": {
     "src/resource/res.h": true

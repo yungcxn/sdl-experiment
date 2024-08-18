@@ -8,8 +8,8 @@ res_handler_spritesheet_t res_handler_init_spritesheet() {
   uint8_t* buf = (uint8_t*) malloc(sizeof(uint8_t) 
                                    * RES_ALL_WIDTH * RES_ALL_HEIGHT);
   /* the following solves the RLE encoding of arr[] */
-  uint32_t len = array_len(arr);
-  assert(len % 2 == 0); //throws if array is not partitioned in RLE-pairs
+  uint32_t len = ARRAY_LEN(arr);
+  ASSERT(len % 2 == 0); //throws if array is not partitioned in RLE-pairs
   uint32_t copy_at = 0;
   uint32_t i = 0;
   uint32_t j = 0;
@@ -25,6 +25,7 @@ res_handler_spritesheet_t res_handler_init_spritesheet() {
   return (res_handler_spritesheet_t) {buf, RES_ALL_WIDTH, RES_ALL_HEIGHT};
 }
 
+
 void res_handler_destroy_spritesheet(res_handler_spritesheet_t x) {
-  safe_free(x.sheet);
+  SAFE_FREE(x.sheet);
 }

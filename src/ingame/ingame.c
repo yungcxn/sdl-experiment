@@ -12,7 +12,7 @@ ingame_data_t* ingame_init() {
 void ingame_destroy(ingame_data_t* ingame_data) {
   player_destroy(ingame_data->player);
   world_handler_destroy(ingame_data->world_handler);
-  safe_free(ingame_data);
+  SAFE_FREE(ingame_data);
 }
 
 

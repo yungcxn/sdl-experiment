@@ -177,7 +177,8 @@ static void _gfx_sprite_info_destroy(gfx_sprite_info* si) {
 
 gfx_tool_t* gfx_init() {
   gfx_tool_t* t = (gfx_tool_t*) malloc(sizeof(gfx_tool_t));
-  SDL_ASSERT(SDL_Init(SDL_INIT_VIDEO) >= 0);
+  SDL_ASSERT(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK 
+                      | SDL_INIT_GAMECONTROLLER) >= 0);
   t->window = SDL_CreateWindow("Minimal SDL Example", SDL_WINDOWPOS_UNDEFINED,
                                SDL_WINDOWPOS_UNDEFINED, GFX_SCREEN_WIDTH,
                                GFX_SCREEN_HEIGHT,

@@ -6,10 +6,10 @@
 #include "./util/debug.h"
 
 static void _game_update(bool* running, game_data_t* game_data, float dt) {
-  event_handle(running, dt, &(game_data->input));
+  event_handle(running, &(game_data->input), &(game_data->event_controller));
 
-  if ((game_data->state == GAME_STATE_TITLE) || (game_data->state == GAME_STATE_UNDEFINED))
-    return;
+  if ((game_data->state == GAME_STATE_TITLE) 
+      || (game_data->state == GAME_STATE_UNDEFINED)) return;
 
   ingame_update(game_data->ingame_data, game_data->input, dt);
 }
@@ -20,6 +20,7 @@ int32_t game_mainloop() {
   game_data_t* game_data = (game_data_t*) malloc(sizeof(game_data_t));
   game_data->state = GAME_STATE_UNDEFINED;
   game_data->gt = gfx_init();
+  game_data->event_controller = 0; // handled by event_handle
 
   ASSERT(game_data->gt);
 
@@ -33,7 +34,7 @@ int32_t game_mainloop() {
   debug_joystick_count();
   // TEST 
   game_data->state = GAME_STATE_INGAME;
-  world_load_world(game_data->ingame_data->world_handler, world_OVERWORLD_ID);
+  world_load_world(game_data->ingame_data->world_handler, WORLD_OVERWORLD_ID);
   VEC2_SET(game_data->ingame_data->cam.pos, 100.0f, 100.0f);
   
   while (running) {

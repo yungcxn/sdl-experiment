@@ -61,7 +61,10 @@
     "ratio": "c",
     "tuple": "c",
     "variant": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "sdl_keycode.h": "c",
+    "__node_handle": "c",
+    "locale": "c"
   },
   "files.exclude": {
     "src/resource/res.h": true

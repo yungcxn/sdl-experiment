@@ -20,6 +20,7 @@ typedef struct {
   ingame_data_t* ingame_data;
   gfx_tool_t* gt;
   event_input_t input;
+  event_controller_t* event_controller;
 } game_data_t;
 
 int32_t game_mainloop();

@@ -1,6 +1,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include <SDL2/SDL.h>
+
 #include "../util/common.h"
 #include "../util/debug.h"
 
@@ -36,7 +38,9 @@
 #define event_select_down(i)  (i & 0b0010000000000000)
 
 typedef uint16_t event_input_t;
+typedef SDL_GameController event_controller_t;
 
-void event_handle(bool* running, uint32_t current_ticks, event_input_t* input);
+void event_handle(bool* running, event_input_t* input,
+                  event_controller_t** event_controller);
 
 #endif 

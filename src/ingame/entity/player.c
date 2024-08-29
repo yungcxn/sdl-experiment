@@ -23,6 +23,7 @@ player_t* player_init() {
   player->health = 4;
   player->maxstamina = 5; // should be odd
   player->stamina = 5;
+  player->anim_over = false;
   return player;
 }
 
@@ -43,47 +44,77 @@ static inline bool _player_update_state(player_t* player, event_input_t input,
                                         float dt) {
   player_state_t state_to_be = 0;
 
-  if (event_up_down(input))
-    state_to_be |= PLAYER_STATE_RUN_U;
-  if (event_right_down(input)) 
-    state_to_be |= PLAYER_STATE_RUN_R;
-  if (event_down_down(input)) 
-    state_to_be |= PLAYER_STATE_RUN_D;
-  if (event_left_down(input)) {
-    state_to_be |= PLAYER_STATE_RUN_L;
+  if (!(player->state & PLAYER_STATE_ROLL)) {
+    if (event_a_down(input))
+      state_to_be |= PLAYER_STATE_ROLL;
+    if (event_up_down(input))
+      state_to_be |= PLAYER_STATE_RUN_U;
+    if (event_right_down(input)) 
+      state_to_be |= PLAYER_STATE_RUN_R;
+    if (event_down_down(input)) 
+      state_to_be |= PLAYER_STATE_RUN_D;
+    if (event_left_down(input))
+      state_to_be |= PLAYER_STATE_RUN_L;
   }
-  if (state_to_be == 0) 
-    state_to_be = PLAYER_STATE_IDLE;
+  
+  if (state_to_be == PLAYER_STATE_ROLL) // rolling without direction
+    state_to_be |= player->last_state; // direction he is looking
 
-  
-  if ((!(state_to_be ^ 0b1010)) || (!(state_to_be ^ 0b0101))) {
+  if (state_to_be == 0
+      || (!(state_to_be ^ 0b1010)) || (!(state_to_be ^ 0b0101))) 
     state_to_be = PLAYER_STATE_IDLE;
-  }
-  
 
   bool state_changed = state_to_be != player->state;
 
   if (state_changed) {
-    player->last_state = player->state;
-    player->state = state_to_be;
+    if ((player->state & PLAYER_STATE_ROLL) && player->anim_over) {
+      player->last_state = player->state ^ PLAYER_STATE_ROLL;
+      player->state = PLAYER_STATE_IDLE;
+    } else {
+      player->last_state = player->state;
+      player->state = state_to_be;
+    }
   }
 
   return state_changed;
 }
 
-static inline void _player_update_sprite(player_t* player, bool state_changed,
-                                    float dt) {
+static inline bool _player_update_sprite(player_t* player, bool state_changed,
+                                         float dt) {
+
+  // return when animover?
 
   if (player->state & PLAYER_STATE_RUN_D) {
     
+    if (player->state & PLAYER_STATE_ROLL)
+      return anim(
+        &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
+        state_changed, 6, GFX_SPRITE_CAN_ROLL_D_1, GFX_SPRITE_CAN_ROLL_D_2,
+        GFX_SPRITE_CAN_ROLL_D_3, GFX_SPRITE_CAN_ROLL_D_4,
+        GFX_SPRITE_CAN_ROLL_D_5, GFX_SPRITE_CAN_ROLL_D_6,
+        GFX_SPRITE_CAN_ROLL_D_7, GFX_SPRITE_CAN_ROLL_D_8,
+        GFX_SPRITE_CAN_ROLL_D_9
+      );
+
     anim_loop(
       &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
       state_changed, 6, 
       GFX_SPRITE_CAN_RUN_D_1, GFX_SPRITE_CAN_RUN_D_2, GFX_SPRITE_CAN_RUN_D_3,
       GFX_SPRITE_CAN_RUN_D_4, GFX_SPRITE_CAN_RUN_D_5, GFX_SPRITE_CAN_RUN_D_6
     );
+    return false;
 
   } else if (player->state & PLAYER_STATE_RUN_U) {
+    
+    if (player->state & PLAYER_STATE_ROLL)
+      return anim(
+        &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
+        state_changed, 6, GFX_SPRITE_CAN_ROLL_U_1, GFX_SPRITE_CAN_ROLL_U_2,
+        GFX_SPRITE_CAN_ROLL_U_3, GFX_SPRITE_CAN_ROLL_U_4,
+        GFX_SPRITE_CAN_ROLL_U_5, GFX_SPRITE_CAN_ROLL_U_6,
+        GFX_SPRITE_CAN_ROLL_U_7, GFX_SPRITE_CAN_ROLL_U_8,
+        GFX_SPRITE_CAN_ROLL_U_9
+      );
 
     anim_loop(
       &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
@@ -91,8 +122,19 @@ static inline void _player_update_sprite(player_t* player, bool state_changed,
       GFX_SPRITE_CAN_RUN_U_1, GFX_SPRITE_CAN_RUN_U_2, GFX_SPRITE_CAN_RUN_U_3,
       GFX_SPRITE_CAN_RUN_U_4, GFX_SPRITE_CAN_RUN_U_5, GFX_SPRITE_CAN_RUN_U_6
     );
+    return false;
 
   } else if (player->state & PLAYER_STATE_RUN_R) {
+
+    if (player->state & PLAYER_STATE_ROLL)
+      return anim(
+        &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
+        state_changed, 6, GFX_SPRITE_CAN_ROLL_R_1, GFX_SPRITE_CAN_ROLL_R_2,
+        GFX_SPRITE_CAN_ROLL_R_3, GFX_SPRITE_CAN_ROLL_R_4,
+        GFX_SPRITE_CAN_ROLL_R_5, GFX_SPRITE_CAN_ROLL_R_6,
+        GFX_SPRITE_CAN_ROLL_R_7, GFX_SPRITE_CAN_ROLL_R_8,
+        GFX_SPRITE_CAN_ROLL_R_9
+      );
 
     anim_loop(
       &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
@@ -102,6 +144,16 @@ static inline void _player_update_sprite(player_t* player, bool state_changed,
     );
 
   } else if (player->state & PLAYER_STATE_RUN_L) {
+
+    if (player->state & PLAYER_STATE_ROLL)
+      return anim(
+        &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
+        state_changed, 6, GFX_SPRITE_CAN_ROLL_L_1, GFX_SPRITE_CAN_ROLL_L_2,
+        GFX_SPRITE_CAN_ROLL_L_3, GFX_SPRITE_CAN_ROLL_L_4,
+        GFX_SPRITE_CAN_ROLL_L_5, GFX_SPRITE_CAN_ROLL_L_6,
+        GFX_SPRITE_CAN_ROLL_L_7, GFX_SPRITE_CAN_ROLL_L_8,
+        GFX_SPRITE_CAN_ROLL_L_9
+      );
 
     anim_loop(
       &(player->sprite), &(player->sprite_elapsed_time), PLAYER_RUN_ANIM_TIME,
@@ -128,7 +180,7 @@ static inline void _player_update_sprite(player_t* player, bool state_changed,
 
 static inline void _player_update_movement(player_t* player, float dt) {
 
-  switch (player->state) {
+  switch (player->state & 0b1111) {
     case PLAYER_STATE_IDLE: 
       VEC2_SET(player->current_speed, 0, 0);
       break;
@@ -170,6 +222,6 @@ static inline void _player_update_movement(player_t* player, float dt) {
 void player_update(player_t* player, event_input_t input, float dt) {
   player->sprite_elapsed_time += dt;
   bool state_changed = _player_update_state(player, input, dt);
-  _player_update_sprite(player, state_changed, dt);
+  player->anim_over = _player_update_sprite(player, state_changed, dt);
   _player_update_movement(player, dt);
 }

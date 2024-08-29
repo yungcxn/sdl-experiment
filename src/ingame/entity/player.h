@@ -21,8 +21,10 @@
 #define PLAYER_STATE_RUN_RD 0b0110
 #define PLAYER_STATE_RUN_DL 0b1100
 #define PLAYER_STATE_RUN_LU 0b1001
+#define PLAYER_STATE_ROLL   0b10000 //modificator
 
 #define PLAYER_RUN_ANIM_TIME 0.1f
+#define PLAYER_ROLL_ANIM_TIME 0.1f
 
 typedef uint8_t player_state_t;
 
@@ -40,6 +42,7 @@ typedef struct {
   uint8_t health;
   uint8_t maxstamina;
   uint8_t stamina;
+  bool anim_over;
 } player_t;
 
 player_t* player_init();

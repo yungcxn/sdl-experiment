@@ -33,15 +33,15 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer) {
 #define _REG_SPRITE_C(i,x,y,w,h) si[i] = (gfx_sprite_info) {x,y,w,h}
 
 static gfx_sprite_info* _gfx_sprite_info_init() {
-  int ts = 16;
-  uint16_t sprites = GFX_SPRITE_MAX_ID + 1;
+  uint8_t ts = 16;
+  uint16_t sprites = GFX_SPRITE_MAX_ID;
   gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites 
     * sizeof(gfx_sprite_info));
 
-  int bgy = 0*ts;          // background tiles y pixel-pos
-  int envy = bgy+ts*11;    // environment tiles y pixel-pos
-  int hudy = envy +ts*11;  // hud tiles y pixel-pos
-  int enty = hudy +ts*11;  // entity tiles y pixel-pos
+  uint32_t bgy = 0*ts;          // background tiles y pixel-pos
+  uint32_t envy = bgy+ts*11;    // environment tiles y pixel-pos
+  uint32_t hudy = envy +ts*11;  // hud tiles y pixel-pos
+  uint32_t enty = hudy +ts*11;  // entity tiles y pixel-pos
 
   // HERE SPRITES
   _REG_SPRITE(GFX_SPRITE_GRASS_A,0,bgy);
@@ -93,17 +93,54 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
   _REG_SPRITE_C(GFX_SPRITE_TREE_PACK_A, ts*6, envy, ts*2, ts*4);
   _REG_SPRITE_C(GFX_SPRITE_TREE_PACK_B, ts*8, envy, ts*2, ts*2);
 
+  _REG_SPRITE(GFX_SPRITE_HEART, 0, hudy);
+  _REG_SPRITE(GFX_SPRITE_HEART_HALF, ts*1, hudy);
+  _REG_SPRITE(GFX_SPRITE_NO_HEART, ts*2, hudy);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_1, 0, hudy+ts);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_2, ts*1, hudy+ts);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_3, ts*2, hudy+ts);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_4, ts*3, hudy+ts);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_1, 0, hudy+ts*2);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_2, ts, hudy+ts*2);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_3, ts*2, hudy+ts*2);
+  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_4, ts*3, hudy+ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_L, 0, hudy+ts*3, 5, 8);
+  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_M, 0+6, hudy+ts*3, 3, 8);
+  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_R, 0+10, hudy+ts*3, 5, 8);
+  uint32_t staminoff = 8;
+  _REG_SPRITE_C(GFX_SPRITE_STAMINA_L, 0, (hudy+ts*3) + staminoff, 5, 8);
+  _REG_SPRITE_C(GFX_SPRITE_STAMINA_M, 0+6, (hudy+ts*3) + staminoff, 3, 8);
+  _REG_SPRITE_C(GFX_SPRITE_STAMINA_R, 0+10, (hudy+ts*3) + staminoff, 5, 8);
+
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_HEART, ts*4, hudy, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_HEART_HALF, ts*5, hudy, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_HEART, ts*6, hudy, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_1, ts*4, hudy+ts, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_2, ts*5, hudy+ts, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_3, ts*6, hudy+ts, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_4, ts*7, hudy+ts, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_1, ts*4, hudy+ts*2, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_2, ts*5, hudy+ts*2, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_3, ts*6, hudy+ts*2, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_4, ts*7, hudy+ts*2, 11, 11);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_L, ts*4, hudy+ts*3, 5, 8);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_M, ts*4+6, hudy+ts*3, 3, 8);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_R, ts*4+10, hudy+ts*3, 5, 8);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_L, ts*4, (hudy+ts*3) + staminoff, 4, 7);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_M, ts*4+6, (hudy+ts*3) + staminoff, 3, 7);
+  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_R, ts*4+10, (hudy+ts*3) + staminoff, 4, 7);
+
   _REG_SPRITE_C(GFX_SPRITE_PRINCESS_IDLE_D, 0, enty, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_PRINCESS_IDLE_U, ts, enty, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_PRINCESS_IDLE_R, ts*2, enty, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_PRINCESS_IDLE_L, ts*3, enty, ts, ts*2);
-  int playery = enty + ts*2;
+  uint32_t playery = enty + ts*2;
   _REG_SPRITE_C(GFX_SPRITE_CAN_IDLE_D, 0, playery, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_IDLE_D_2, ts, playery, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_IDLE_U, ts*2, playery, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_IDLE_R, ts*3, playery, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_IDLE_L, ts*4, playery, ts, ts*2);
-  int playerruny = playery + ts*2;
+  uint32_t playerruny = playery + ts*2;
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_D_1, 0,      playerruny, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_D_2, ts*1,   playerruny, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_D_3, ts*2,   playerruny, ts, ts*2);
@@ -128,43 +165,43 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_L_4, ts*21,  playerruny, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_L_5, ts*22,  playerruny, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_RUN_L_6, ts*23,  playerruny, ts, ts*2);
-
-  _REG_SPRITE(GFX_SPRITE_HEART, 0, hudy);
-  _REG_SPRITE(GFX_SPRITE_HEART_HALF, ts*1, hudy);
-  _REG_SPRITE(GFX_SPRITE_NO_HEART, ts*2, hudy);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_1, 0, hudy+ts);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_2, ts*1, hudy+ts);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_3, ts*2, hudy+ts);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_4, ts*3, hudy+ts);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_1, 0, hudy+ts*2);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_2, ts, hudy+ts*2);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_3, ts*2, hudy+ts*2);
-  _REG_SPRITE(GFX_SPRITE_GOLD_HEART_HALF_4, ts*3, hudy+ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_L, 0, hudy+ts*3, 5, 8);
-  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_M, 0+6, hudy+ts*3, 3, 8);
-  _REG_SPRITE_C(GFX_SPRITE_NO_STAMINA_R, 0+10, hudy+ts*3, 5, 8);
-  int staminoff = 8;
-  _REG_SPRITE_C(GFX_SPRITE_STAMINA_L, 0, (hudy+ts*3) + staminoff, 5, 8);
-  _REG_SPRITE_C(GFX_SPRITE_STAMINA_M, 0+6, (hudy+ts*3) + staminoff, 3, 8);
-  _REG_SPRITE_C(GFX_SPRITE_STAMINA_R, 0+10, (hudy+ts*3) + staminoff, 5, 8);
-
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_HEART, ts*4, hudy, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_HEART_HALF, ts*5, hudy, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_HEART, ts*6, hudy, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_1, ts*4, hudy+ts, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_2, ts*5, hudy+ts, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_3, ts*6, hudy+ts, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_4, ts*7, hudy+ts, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_1, ts*4, hudy+ts*2, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_2, ts*5, hudy+ts*2, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_3, ts*6, hudy+ts*2, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_GOLD_HEART_HALF_4, ts*7, hudy+ts*2, 11, 11);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_L, ts*4, hudy+ts*3, 5, 8);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_M, ts*4+6, hudy+ts*3, 3, 8);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_NO_STAMINA_R, ts*4+10, hudy+ts*3, 5, 8);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_L, ts*4, (hudy+ts*3) + staminoff, 4, 7);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_M, ts*4+6, (hudy+ts*3) + staminoff, 3, 7);
-  _REG_SPRITE_C(GFX_SPRITE_SMALL_STAMINA_R, ts*4+10, (hudy+ts*3) + staminoff, 4, 7);
+  uint32_t playerrolly = playerruny + ts*2;
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_1, 0,      playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_2, ts*1,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_3, ts*2,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_4, ts*3,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_5, ts*4,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_6, ts*5,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_7, ts*6,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_8, ts*7,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_9, ts*8,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_1, ts*9,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_2, ts*10,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_3, ts*11,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_4, ts*12,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_5, ts*13,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_6, ts*14,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_7, ts*15,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_8, ts*16,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_9, ts*17,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_1, ts*18,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_2, ts*19,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_3, ts*20,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_4, ts*21,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_5, ts*22,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_6, ts*21,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_7, ts*22,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_8, ts*23,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_9, ts*24,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_1, ts*25,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_2, ts*26,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_3, ts*27,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_4, ts*28,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_5, ts*29,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_6, ts*30,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_7, ts*31,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_8, ts*32,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_9, ts*33,  playerrolly, ts, ts*2);
 
   return si;
 }

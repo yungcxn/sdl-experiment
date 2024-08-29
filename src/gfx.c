@@ -33,7 +33,7 @@ static SDL_Texture* _gfx_spritesheet_init(SDL_Renderer* renderer) {
 #define _REG_SPRITE_C(i,x,y,w,h) si[i] = (gfx_sprite_info) {x,y,w,h}
 
 static gfx_sprite_info* _gfx_sprite_info_init() {
-  uint8_t ts = 16;
+  uint32_t ts = 16;
   uint16_t sprites = GFX_SPRITE_MAX_ID;
   gfx_sprite_info* si = (gfx_sprite_info*) malloc(sprites 
     * sizeof(gfx_sprite_info));
@@ -175,24 +175,24 @@ static gfx_sprite_info* _gfx_sprite_info_init() {
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_7, ts*6,   playerrolly, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_8, ts*7,   playerrolly, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_U_9, ts*8,   playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_1, ts*9,   playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_2, ts*10,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_3, ts*11,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_4, ts*12,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_5, ts*13,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_6, ts*14,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_7, ts*15,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_8, ts*16,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_9, ts*17,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_1, ts*18,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_2, ts*19,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_3, ts*20,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_4, ts*21,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_5, ts*22,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_6, ts*21,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_7, ts*22,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_8, ts*23,  playerrolly, ts, ts*2);
-  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_9, ts*24,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_1, ts*9,   playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_2, ts*10,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_3, ts*11,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_4, ts*12,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_5, ts*13,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_6, ts*14,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_7, ts*15,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_8, ts*16,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_D_9, ts*17,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_1, ts*18,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_2, ts*19,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_3, ts*20,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_4, ts*21,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_5, ts*22,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_6, ts*21,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_7, ts*22,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_8, ts*23,  playerrolly, ts, ts*2);
+  _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_R_9, ts*24,  playerrolly, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_1, ts*25,  playerrolly, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_2, ts*26,  playerrolly, ts, ts*2);
   _REG_SPRITE_C(GFX_SPRITE_CAN_ROLL_L_3, ts*27,  playerrolly, ts, ts*2);

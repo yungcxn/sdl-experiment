@@ -24,7 +24,7 @@
 #define PLAYER_STATE_ROLL   0b10000 //modificator
 
 #define PLAYER_RUN_ANIM_TIME 0.1f
-#define PLAYER_ROLL_ANIM_TIME 0.1f
+#define PLAYER_ROLL_ANIM_TIME 0.3f
 
 typedef uint8_t player_state_t;
 

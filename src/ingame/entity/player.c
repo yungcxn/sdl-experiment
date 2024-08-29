@@ -142,6 +142,7 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
       GFX_SPRITE_CAN_RUN_R_1, GFX_SPRITE_CAN_RUN_R_2, GFX_SPRITE_CAN_RUN_R_3,
       GFX_SPRITE_CAN_RUN_R_4, GFX_SPRITE_CAN_RUN_R_5, GFX_SPRITE_CAN_RUN_R_6
     );
+    return false;
 
   } else if (player->state & PLAYER_STATE_RUN_L) {
 
@@ -161,6 +162,7 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
       GFX_SPRITE_CAN_RUN_L_1, GFX_SPRITE_CAN_RUN_L_2, GFX_SPRITE_CAN_RUN_L_3,
       GFX_SPRITE_CAN_RUN_L_4, GFX_SPRITE_CAN_RUN_L_5, GFX_SPRITE_CAN_RUN_L_6
     );
+    return false;
 
   } else if (player->state == PLAYER_STATE_IDLE) {
 
@@ -173,9 +175,10 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
     } else if (player->last_state == PLAYER_STATE_RUN_L && state_changed) {
       player->sprite = GFX_SPRITE_CAN_IDLE_L;
     }
-
+    return false;
   }
 
+  return false;
 }
 
 static inline void _player_update_movement(player_t* player, float dt) {
@@ -210,11 +213,8 @@ static inline void _player_update_movement(player_t* player, float dt) {
       break;
   }
 
-  // moving
-  if ((player->state & 0b1111)) {
-    VEC2_SCALE(player->current_speed, dt);
-    VEC2_ADD(player->core.pos, player->current_speed);
-  }
+  VEC2_SCALE(player->current_speed, dt);
+  VEC2_ADD(player->core.pos, player->current_speed);
 
 }
 

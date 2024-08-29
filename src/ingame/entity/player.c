@@ -38,12 +38,9 @@ void player_spawn(player_t* player, vec2f pos) {
   player->sprite = GFX_SPRITE_CAN_IDLE_D;
 }
 
-
-void player_update(player_t* player, event_input_t input, float dt) {
-
-  player->sprite_elapsed_time += dt;
-  
-  /* STATE CHANGE SECTION */
+// returns whether the state changed this time
+static inline bool _player_update_state(player_t* player, event_input_t input,
+                                        float dt) {
   player_state_t state_to_be = 0;
 
   if (event_up_down(input))
@@ -71,8 +68,12 @@ void player_update(player_t* player, event_input_t input, float dt) {
     player->state = state_to_be;
   }
 
-  /* UPDATE SECTION  */
-  
+  return state_changed;
+}
+
+static inline void _player_update_sprite(player_t* player, bool state_changed,
+                                    float dt) {
+
   if (player->state & PLAYER_STATE_RUN_D) {
     
     anim_loop(
@@ -123,6 +124,10 @@ void player_update(player_t* player, event_input_t input, float dt) {
 
   }
 
+}
+
+static inline void _player_update_movement(player_t* player, float dt) {
+
   switch (player->state) {
     case PLAYER_STATE_IDLE: 
       VEC2_SET(player->current_speed, 0, 0);
@@ -159,4 +164,12 @@ void player_update(player_t* player, event_input_t input, float dt) {
     VEC2_ADD(player->core.pos, player->current_speed);
   }
 
+}
+
+
+void player_update(player_t* player, event_input_t input, float dt) {
+  player->sprite_elapsed_time += dt;
+  bool state_changed = _player_update_state(player, input, dt);
+  _player_update_sprite(player, state_changed, dt);
+  _player_update_movement(player, dt);
 }

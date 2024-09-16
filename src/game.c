@@ -42,7 +42,6 @@ int32_t game_mainloop() {
     dt = (time_get_ticks() - current_ticks) / 1000.0f;
     dt = dt > GAME_LAG_TIMEOUT ? GAME_LAG_TIMEOUT : dt;
     current_ticks = time_get_ticks();
-
     debug_update_current_time();
 
     /* IN */

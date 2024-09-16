@@ -58,22 +58,13 @@ static inline bool _player_update_state(player_t* player, event_input_t input,
   }
   
   if (state_to_be == PLAYER_STATE_ROLL) // rolling without direction
-    state_to_be |= player->last_state; // direction he is looking
-
-  if (state_to_be == 0
-      || (!(state_to_be ^ 0b1010)) || (!(state_to_be ^ 0b0101))) 
-    state_to_be = PLAYER_STATE_IDLE;
+    state_to_be |= (player->last_state & 0b1111); // direction he is looking
 
   bool state_changed = state_to_be != player->state;
 
   if (state_changed) {
-    if ((player->state & PLAYER_STATE_ROLL) && player->anim_over) {
-      player->last_state = player->state ^ PLAYER_STATE_ROLL;
-      player->state = PLAYER_STATE_IDLE;
-    } else {
-      player->last_state = player->state;
-      player->state = state_to_be;
-    }
+    player->last_state = player->state;
+    player->state = state_to_be;
   }
 
   return state_changed;
@@ -83,13 +74,14 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
                                          float dt) {
 
   // return when animover?
+  if (player->anim_over && !state_changed) return true;
 
   if (player->state & PLAYER_STATE_RUN_D) {
     
     if (player->state & PLAYER_STATE_ROLL)
       return anim(
         &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
-        state_changed, 6, GFX_SPRITE_CAN_ROLL_D_1, GFX_SPRITE_CAN_ROLL_D_2,
+        state_changed, 9, GFX_SPRITE_CAN_ROLL_D_1, GFX_SPRITE_CAN_ROLL_D_2,
         GFX_SPRITE_CAN_ROLL_D_3, GFX_SPRITE_CAN_ROLL_D_4,
         GFX_SPRITE_CAN_ROLL_D_5, GFX_SPRITE_CAN_ROLL_D_6,
         GFX_SPRITE_CAN_ROLL_D_7, GFX_SPRITE_CAN_ROLL_D_8,
@@ -109,7 +101,7 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
     if (player->state & PLAYER_STATE_ROLL)
       return anim(
         &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
-        state_changed, 6, GFX_SPRITE_CAN_ROLL_U_1, GFX_SPRITE_CAN_ROLL_U_2,
+        state_changed, 9, GFX_SPRITE_CAN_ROLL_U_1, GFX_SPRITE_CAN_ROLL_U_2,
         GFX_SPRITE_CAN_ROLL_U_3, GFX_SPRITE_CAN_ROLL_U_4,
         GFX_SPRITE_CAN_ROLL_U_5, GFX_SPRITE_CAN_ROLL_U_6,
         GFX_SPRITE_CAN_ROLL_U_7, GFX_SPRITE_CAN_ROLL_U_8,
@@ -129,7 +121,7 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
     if (player->state & PLAYER_STATE_ROLL)
       return anim(
         &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
-        state_changed, 6, GFX_SPRITE_CAN_ROLL_R_1, GFX_SPRITE_CAN_ROLL_R_2,
+        state_changed, 9, GFX_SPRITE_CAN_ROLL_R_1, GFX_SPRITE_CAN_ROLL_R_2,
         GFX_SPRITE_CAN_ROLL_R_3, GFX_SPRITE_CAN_ROLL_R_4,
         GFX_SPRITE_CAN_ROLL_R_5, GFX_SPRITE_CAN_ROLL_R_6,
         GFX_SPRITE_CAN_ROLL_R_7, GFX_SPRITE_CAN_ROLL_R_8,
@@ -149,7 +141,7 @@ static inline bool _player_update_sprite(player_t* player, bool state_changed,
     if (player->state & PLAYER_STATE_ROLL)
       return anim(
         &(player->sprite), &(player->sprite_elapsed_time), PLAYER_ROLL_ANIM_TIME,
-        state_changed, 6, GFX_SPRITE_CAN_ROLL_L_1, GFX_SPRITE_CAN_ROLL_L_2,
+        state_changed, 9, GFX_SPRITE_CAN_ROLL_L_1, GFX_SPRITE_CAN_ROLL_L_2,
         GFX_SPRITE_CAN_ROLL_L_3, GFX_SPRITE_CAN_ROLL_L_4,
         GFX_SPRITE_CAN_ROLL_L_5, GFX_SPRITE_CAN_ROLL_L_6,
         GFX_SPRITE_CAN_ROLL_L_7, GFX_SPRITE_CAN_ROLL_L_8,
@@ -220,6 +212,7 @@ static inline void _player_update_movement(player_t* player, float dt) {
 
 
 void player_update(player_t* player, event_input_t input, float dt) {
+  DEBUG_PRINTF("%d", player->state);
   player->sprite_elapsed_time += dt;
   bool state_changed = _player_update_state(player, input, dt);
   player->anim_over = _player_update_sprite(player, state_changed, dt);
